@@ -1,5 +1,7 @@
 # MailOdds SDK for Dart
 
+[![pub.dev](https://img.shields.io/pub/v/mailodds)](https://pub.dev/packages/mailodds)
+
 Official Dart client for the [MailOdds Email Validation API](https://mailodds.com/docs).
 
 ## Installation
