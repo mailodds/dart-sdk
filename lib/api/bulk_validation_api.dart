@@ -216,6 +216,7 @@ class BulkValidationApi {
 
     bool hasFields = false;
     final mp = MultipartRequest('POST', Uri.parse(path));
+    // ignore: unnecessary_null_comparison
     if (file != null) {
       hasFields = true;
       mp.fields[r'file'] = file.field;
