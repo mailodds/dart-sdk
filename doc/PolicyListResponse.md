@@ -1,0 +1,17 @@
+# mailodds.model.PolicyListResponse
+
+## Load the model package
+```dart
+import 'package:mailodds/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**schemaVersion** | **String** |  | [optional] 
+**policies** | [**List<Policy>**](Policy.md) |  | [optional] [default to const []]
+**limits** | [**PolicyListResponseLimits**](PolicyListResponseLimits.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
