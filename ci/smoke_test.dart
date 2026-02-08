@@ -26,24 +26,40 @@ Future<void> main() async {
   final client = ApiClient(basePath: 'https://api.mailodds.com', authentication: auth);
   final api = EmailValidationApi(client);
 
-  final cases = <List<String?>>[
-    ['test@deliverable.mailodds.com', 'valid', 'accept', null],
-    ['test@invalid.mailodds.com', 'invalid', 'reject', 'smtp_rejected'],
-    ['test@risky.mailodds.com', 'catch_all', 'accept_with_caution', 'catch_all_detected'],
-    ['test@disposable.mailodds.com', 'do_not_mail', 'reject', 'disposable'],
-    ['test@role.mailodds.com', 'do_not_mail', 'reject', 'role_account'],
-    ['test@timeout.mailodds.com', 'unknown', 'retry_later', 'smtp_unreachable'],
-    ['test@freeprovider.mailodds.com', 'valid', 'accept', null],
+  final cases = <List<Object?>>[
+    ['test@deliverable.mailodds.com', 'valid', 'accept', null, false, false, false, true, 'enhanced'],
+    ['test@invalid.mailodds.com', 'invalid', 'reject', 'smtp_rejected', false, false, false, true, 'enhanced'],
+    ['test@risky.mailodds.com', 'catch_all', 'accept_with_caution', 'catch_all_detected', false, false, false, true, 'enhanced'],
+    ['test@disposable.mailodds.com', 'do_not_mail', 'reject', 'disposable', false, true, false, true, 'enhanced'],
+    ['test@role.mailodds.com', 'do_not_mail', 'reject', 'role_account', false, false, true, true, 'enhanced'],
+    ['test@timeout.mailodds.com', 'unknown', 'retry_later', 'smtp_unreachable', false, false, false, true, 'enhanced'],
+    ['test@freeprovider.mailodds.com', 'valid', 'accept', null, true, false, false, true, 'enhanced'],
   ];
 
   for (final c in cases) {
-    final email = c[0]!;
+    final email = c[0]! as String;
     final domain = email.split('@')[1].split('.')[0];
+    final expFree = c[4] as bool;
+    final expDisp = c[5] as bool;
+    final expRole = c[6] as bool;
+    final expMx = c[7] as bool;
+    final expDepth = c[8] as String;
     try {
       final resp = await api.validateEmail(ValidateRequest(email: email));
       check('$domain.status', c[1], resp?.status?.value);
       check('$domain.action', c[2], resp?.action?.value);
       check('$domain.sub_status', c[3], resp?.subStatus?.value);
+      check('$domain.free_provider', expFree, resp?.freeProvider);
+      check('$domain.disposable', expDisp, resp?.disposable);
+      check('$domain.role_account', expRole, resp?.roleAccount);
+      check('$domain.mx_found', expMx, resp?.mxFound);
+      check('$domain.depth', expDepth, resp?.depth?.value);
+      if (resp?.processedAt == null || resp!.processedAt.toString().isEmpty) {
+        failed++;
+        print('  FAIL: $domain.processed_at is empty');
+      } else {
+        passed++;
+      }
     } catch (e) {
       failed++;
       print('  FAIL: $domain error: $e');
