@@ -16,6 +16,62 @@ class EmailValidationApi {
 
   final ApiClient apiClient;
 
+  /// Validate multiple emails (sync)
+  ///
+  /// Validate up to 100 email addresses synchronously. For larger lists, use the bulk jobs API.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [ValidateBatchRequest] validateBatchRequest (required):
+  Future<Response> validateBatchWithHttpInfo(ValidateBatchRequest validateBatchRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/validate/batch';
+
+    // ignore: prefer_final_locals
+    Object? postBody = validateBatchRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Validate multiple emails (sync)
+  ///
+  /// Validate up to 100 email addresses synchronously. For larger lists, use the bulk jobs API.
+  ///
+  /// Parameters:
+  ///
+  /// * [ValidateBatchRequest] validateBatchRequest (required):
+  Future<ValidateBatch200Response?> validateBatch(ValidateBatchRequest validateBatchRequest,) async {
+    final response = await validateBatchWithHttpInfo(validateBatchRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ValidateBatch200Response',) as ValidateBatch200Response;
+    
+    }
+    return null;
+  }
+
   /// Validate single email
   ///
   /// Validate a single email address. Returns detailed validation results including status, sub-status, and recommended action.

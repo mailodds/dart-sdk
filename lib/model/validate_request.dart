@@ -14,11 +14,15 @@ class ValidateRequest {
   /// Returns a new [ValidateRequest] instance.
   ValidateRequest({
     required this.email,
+    this.depth = const ValidateRequestDepthEnum._('enhanced'),
     this.policyId,
   });
 
   /// Email address to validate
   String email;
+
+  /// Validation depth. 'standard' skips SMTP verification.
+  ValidateRequestDepthEnum depth;
 
   /// Optional policy ID to use instead of default policy
   ///
@@ -32,20 +36,23 @@ class ValidateRequest {
   @override
   bool operator ==(Object other) => identical(this, other) || other is ValidateRequest &&
     other.email == email &&
+    other.depth == depth &&
     other.policyId == policyId;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (email.hashCode) +
+    (depth.hashCode) +
     (policyId == null ? 0 : policyId!.hashCode);
 
   @override
-  String toString() => 'ValidateRequest[email=$email, policyId=$policyId]';
+  String toString() => 'ValidateRequest[email=$email, depth=$depth, policyId=$policyId]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'email'] = this.email;
+      json[r'depth'] = this.depth;
     if (this.policyId != null) {
       json[r'policy_id'] = this.policyId;
     } else {
@@ -74,6 +81,7 @@ class ValidateRequest {
 
       return ValidateRequest(
         email: mapValueOfType<String>(json, r'email')!,
+        depth: ValidateRequestDepthEnum.fromJson(json[r'depth']) as ValidateRequestDepthEnum? ?? ValidateRequestDepthEnum.enhanced,
         policyId: mapValueOfType<int>(json, r'policy_id'),
       );
     }
@@ -125,4 +133,78 @@ class ValidateRequest {
     'email',
   };
 }
+
+/// Validation depth. 'standard' skips SMTP verification.
+class ValidateRequestDepthEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ValidateRequestDepthEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const standard = ValidateRequestDepthEnum._(r'standard');
+  static const enhanced = ValidateRequestDepthEnum._(r'enhanced');
+
+  /// List of all possible values in this [enum][ValidateRequestDepthEnum].
+  static const values = <ValidateRequestDepthEnum>[
+    standard,
+    enhanced,
+  ];
+
+  static ValidateRequestDepthEnum? fromJson(dynamic value) => ValidateRequestDepthEnumTypeTransformer().decode(value);
+
+  static List<ValidateRequestDepthEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ValidateRequestDepthEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ValidateRequestDepthEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ValidateRequestDepthEnum] to String,
+/// and [decode] dynamic data back to [ValidateRequestDepthEnum].
+class ValidateRequestDepthEnumTypeTransformer {
+  factory ValidateRequestDepthEnumTypeTransformer() => _instance ??= const ValidateRequestDepthEnumTypeTransformer._();
+
+  const ValidateRequestDepthEnumTypeTransformer._();
+
+  String encode(ValidateRequestDepthEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ValidateRequestDepthEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ValidateRequestDepthEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'standard': return ValidateRequestDepthEnum.standard;
+        case r'enhanced': return ValidateRequestDepthEnum.enhanced;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ValidateRequestDepthEnumTypeTransformer] instance.
+  static ValidateRequestDepthEnumTypeTransformer? _instance;
+}
+
 

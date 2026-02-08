@@ -43,7 +43,7 @@ Future<void> main() async {
       final resp = await api.validateEmail(ValidateRequest(email: email));
       check('$domain.status', c[1], resp?.status?.value);
       check('$domain.action', c[2], resp?.action?.value);
-      check('$domain.sub_status', c[3], resp?.subStatus);
+      check('$domain.sub_status', c[3], resp?.subStatus?.value);
     } catch (e) {
       failed++;
       print('  FAIL: $domain error: $e');

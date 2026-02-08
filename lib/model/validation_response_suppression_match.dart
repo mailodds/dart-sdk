@@ -13,18 +13,10 @@ part of openapi.api;
 class ValidationResponseSuppressionMatch {
   /// Returns a new [ValidationResponseSuppressionMatch] instance.
   ValidationResponseSuppressionMatch({
-    this.matched,
     this.matchType,
     this.matchValue,
+    this.reason,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  bool? matched;
 
   ValidationResponseSuppressionMatchMatchTypeEnum? matchType;
 
@@ -36,29 +28,32 @@ class ValidationResponseSuppressionMatch {
   ///
   String? matchValue;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? reason;
+
   @override
   bool operator ==(Object other) => identical(this, other) || other is ValidationResponseSuppressionMatch &&
-    other.matched == matched &&
     other.matchType == matchType &&
-    other.matchValue == matchValue;
+    other.matchValue == matchValue &&
+    other.reason == reason;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (matched == null ? 0 : matched!.hashCode) +
     (matchType == null ? 0 : matchType!.hashCode) +
-    (matchValue == null ? 0 : matchValue!.hashCode);
+    (matchValue == null ? 0 : matchValue!.hashCode) +
+    (reason == null ? 0 : reason!.hashCode);
 
   @override
-  String toString() => 'ValidationResponseSuppressionMatch[matched=$matched, matchType=$matchType, matchValue=$matchValue]';
+  String toString() => 'ValidationResponseSuppressionMatch[matchType=$matchType, matchValue=$matchValue, reason=$reason]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.matched != null) {
-      json[r'matched'] = this.matched;
-    } else {
-      json[r'matched'] = null;
-    }
     if (this.matchType != null) {
       json[r'match_type'] = this.matchType;
     } else {
@@ -68,6 +63,11 @@ class ValidationResponseSuppressionMatch {
       json[r'match_value'] = this.matchValue;
     } else {
       json[r'match_value'] = null;
+    }
+    if (this.reason != null) {
+      json[r'reason'] = this.reason;
+    } else {
+      json[r'reason'] = null;
     }
     return json;
   }
@@ -91,9 +91,9 @@ class ValidationResponseSuppressionMatch {
       }());
 
       return ValidationResponseSuppressionMatch(
-        matched: mapValueOfType<bool>(json, r'matched'),
         matchType: ValidationResponseSuppressionMatchMatchTypeEnum.fromJson(json[r'match_type']),
         matchValue: mapValueOfType<String>(json, r'match_value'),
+        reason: mapValueOfType<String>(json, r'reason'),
       );
     }
     return null;

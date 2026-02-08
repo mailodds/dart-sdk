@@ -10,12 +10,13 @@
 
 part of openapi.api;
 
-class ErrorResponse {
-  /// Returns a new [ErrorResponse] instance.
-  ErrorResponse({
+class ValidateBatch200Response {
+  /// Returns a new [ValidateBatch200Response] instance.
+  ValidateBatch200Response({
     this.schemaVersion,
-    required this.error,
-    this.message,
+    this.total,
+    this.summary,
+    this.results = const [],
   });
 
   ///
@@ -26,33 +27,41 @@ class ErrorResponse {
   ///
   String? schemaVersion;
 
-  /// Machine-readable error code
-  String error;
-
-  /// Human-readable error message
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? message;
+  int? total;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  ValidateBatch200ResponseSummary? summary;
+
+  List<ValidationResponse> results;
 
   @override
-  bool operator ==(Object other) => identical(this, other) || other is ErrorResponse &&
+  bool operator ==(Object other) => identical(this, other) || other is ValidateBatch200Response &&
     other.schemaVersion == schemaVersion &&
-    other.error == error &&
-    other.message == message;
+    other.total == total &&
+    other.summary == summary &&
+    _deepEquality.equals(other.results, results);
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (schemaVersion == null ? 0 : schemaVersion!.hashCode) +
-    (error.hashCode) +
-    (message == null ? 0 : message!.hashCode);
+    (total == null ? 0 : total!.hashCode) +
+    (summary == null ? 0 : summary!.hashCode) +
+    (results.hashCode);
 
   @override
-  String toString() => 'ErrorResponse[schemaVersion=$schemaVersion, error=$error, message=$message]';
+  String toString() => 'ValidateBatch200Response[schemaVersion=$schemaVersion, total=$total, summary=$summary, results=$results]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -61,19 +70,24 @@ class ErrorResponse {
     } else {
       json[r'schema_version'] = null;
     }
-      json[r'error'] = this.error;
-    if (this.message != null) {
-      json[r'message'] = this.message;
+    if (this.total != null) {
+      json[r'total'] = this.total;
     } else {
-      json[r'message'] = null;
+      json[r'total'] = null;
     }
+    if (this.summary != null) {
+      json[r'summary'] = this.summary;
+    } else {
+      json[r'summary'] = null;
+    }
+      json[r'results'] = this.results;
     return json;
   }
 
-  /// Returns a new [ErrorResponse] instance and imports its values from
+  /// Returns a new [ValidateBatch200Response] instance and imports its values from
   /// [value] if it's a [Map], null otherwise.
   // ignore: prefer_constructors_over_static_methods
-  static ErrorResponse? fromJson(dynamic value) {
+  static ValidateBatch200Response? fromJson(dynamic value) {
     if (value is Map) {
       final json = value.cast<String, dynamic>();
 
@@ -82,26 +96,27 @@ class ErrorResponse {
       // Note 2: this code is stripped in release mode!
       assert(() {
         requiredKeys.forEach((key) {
-          assert(json.containsKey(key), 'Required key "ErrorResponse[$key]" is missing from JSON.');
-          assert(json[key] != null, 'Required key "ErrorResponse[$key]" has a null value in JSON.');
+          assert(json.containsKey(key), 'Required key "ValidateBatch200Response[$key]" is missing from JSON.');
+          assert(json[key] != null, 'Required key "ValidateBatch200Response[$key]" has a null value in JSON.');
         });
         return true;
       }());
 
-      return ErrorResponse(
+      return ValidateBatch200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
-        error: mapValueOfType<String>(json, r'error')!,
-        message: mapValueOfType<String>(json, r'message'),
+        total: mapValueOfType<int>(json, r'total'),
+        summary: ValidateBatch200ResponseSummary.fromJson(json[r'summary']),
+        results: ValidationResponse.listFromJson(json[r'results']),
       );
     }
     return null;
   }
 
-  static List<ErrorResponse> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <ErrorResponse>[];
+  static List<ValidateBatch200Response> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ValidateBatch200Response>[];
     if (json is List && json.isNotEmpty) {
       for (final row in json) {
-        final value = ErrorResponse.fromJson(row);
+        final value = ValidateBatch200Response.fromJson(row);
         if (value != null) {
           result.add(value);
         }
@@ -110,12 +125,12 @@ class ErrorResponse {
     return result.toList(growable: growable);
   }
 
-  static Map<String, ErrorResponse> mapFromJson(dynamic json) {
-    final map = <String, ErrorResponse>{};
+  static Map<String, ValidateBatch200Response> mapFromJson(dynamic json) {
+    final map = <String, ValidateBatch200Response>{};
     if (json is Map && json.isNotEmpty) {
       json = json.cast<String, dynamic>(); // ignore: parameter_assignments
       for (final entry in json.entries) {
-        final value = ErrorResponse.fromJson(entry.value);
+        final value = ValidateBatch200Response.fromJson(entry.value);
         if (value != null) {
           map[entry.key] = value;
         }
@@ -124,14 +139,14 @@ class ErrorResponse {
     return map;
   }
 
-  // maps a json object with a list of ErrorResponse-objects as value to a dart map
-  static Map<String, List<ErrorResponse>> mapListFromJson(dynamic json, {bool growable = false,}) {
-    final map = <String, List<ErrorResponse>>{};
+  // maps a json object with a list of ValidateBatch200Response-objects as value to a dart map
+  static Map<String, List<ValidateBatch200Response>> mapListFromJson(dynamic json, {bool growable = false,}) {
+    final map = <String, List<ValidateBatch200Response>>{};
     if (json is Map && json.isNotEmpty) {
       // ignore: parameter_assignments
       json = json.cast<String, dynamic>();
       for (final entry in json.entries) {
-        map[entry.key] = ErrorResponse.listFromJson(entry.value, growable: growable,);
+        map[entry.key] = ValidateBatch200Response.listFromJson(entry.value, growable: growable,);
       }
     }
     return map;
@@ -139,7 +154,6 @@ class ErrorResponse {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'error',
   };
 }
 

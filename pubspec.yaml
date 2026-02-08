@@ -1,20 +1,17 @@
-name: mailodds
-version: 1.0.0
-description: "Official Dart client for the MailOdds Email Validation API. Validate emails with format checks, domain validation, MX records, SMTP verification, and disposable email detection."
-homepage: https://mailodds.com
-repository: https://github.com/mailodds/dart-sdk
-documentation: https://mailodds.com/docs
-topics:
-  - email
-  - validation
-  - email-validation
-  - api-client
+#
+# AUTO-GENERATED FILE, DO NOT MODIFY!
+#
+
+name: 'mailodds'
+version: '1.0.0'
+description: 'OpenAPI API client'
+homepage: 'homepage'
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=2.12.0 <4.0.0'
 dependencies:
   collection: '>=1.17.0 <2.0.0'
   http: '>=0.13.0 <2.0.0'
-  intl: ^0.20.2
+  intl: any
   meta: '>=1.1.8 <2.0.0'
 dev_dependencies:
-  test: '>=1.21.6 <2.0.0'
+  test: '>=1.21.6 <1.22.0'

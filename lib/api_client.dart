@@ -276,10 +276,18 @@ class ApiClient {
           return TestPolicyRequestTestResult.fromJson(value);
         case 'UpdatePolicyRequest':
           return UpdatePolicyRequest.fromJson(value);
+        case 'ValidateBatch200Response':
+          return ValidateBatch200Response.fromJson(value);
+        case 'ValidateBatch200ResponseSummary':
+          return ValidateBatch200ResponseSummary.fromJson(value);
+        case 'ValidateBatchRequest':
+          return ValidateBatchRequest.fromJson(value);
         case 'ValidateRequest':
           return ValidateRequest.fromJson(value);
         case 'ValidationResponse':
           return ValidationResponse.fromJson(value);
+        case 'ValidationResponsePolicyApplied':
+          return ValidationResponsePolicyApplied.fromJson(value);
         case 'ValidationResponseSuppressionMatch':
           return ValidationResponseSuppressionMatch.fromJson(value);
         case 'ValidationResult':

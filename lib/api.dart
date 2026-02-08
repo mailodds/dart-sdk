@@ -81,8 +81,12 @@ part 'model/telemetry_summary_totals.dart';
 part 'model/test_policy_request.dart';
 part 'model/test_policy_request_test_result.dart';
 part 'model/update_policy_request.dart';
+part 'model/validate_batch200_response.dart';
+part 'model/validate_batch200_response_summary.dart';
+part 'model/validate_batch_request.dart';
 part 'model/validate_request.dart';
 part 'model/validation_response.dart';
+part 'model/validation_response_policy_applied.dart';
 part 'model/validation_response_suppression_match.dart';
 part 'model/validation_result.dart';
 
