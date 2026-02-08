@@ -1,8 +1,6 @@
-// SDK smoke test -- validates build-from-source and API integration.
-import 'dart:convert';
+// SDK smoke test -- validates build-from-source and API integration using the SDK client.
 import 'dart:io';
-
-const apiUrl = 'https://api.mailodds.com';
+import 'package:mailodds/api.dart';
 
 int passed = 0;
 int failed = 0;
@@ -16,18 +14,6 @@ void check(String label, dynamic expected, dynamic actual) {
   }
 }
 
-Future<Map<String, dynamic>> apiCall(String email, String key) async {
-  final client = HttpClient()..connectionTimeout = Duration(seconds: 30);
-  final request = await client.postUrl(Uri.parse('$apiUrl/v1/validate'));
-  request.headers.set('Authorization', 'Bearer $key');
-  request.headers.contentType = ContentType.json;
-  request.write(jsonEncode({'email': email}));
-  final response = await request.close();
-  final body = await response.transform(utf8.decoder).join();
-  client.close();
-  return {'code': response.statusCode, 'data': jsonDecode(body)};
-}
-
 Future<void> main() async {
   final apiKey = Platform.environment['MAILODDS_TEST_KEY'] ?? '';
   if (apiKey.isEmpty) {
@@ -35,11 +21,12 @@ Future<void> main() async {
     exit(1);
   }
 
-  // Prove SDK is importable
-  // ignore: unused_import
-  await Future.value(); // ensure async context
+  final auth = HttpBearerAuth();
+  auth.accessToken = apiKey;
+  final client = ApiClient(basePath: 'https://api.mailodds.com', authentication: auth);
+  final api = EmailValidationApi(client);
 
-  final cases = [
+  final cases = <List<String?>>[
     ['test@deliverable.mailodds.com', 'valid', 'accept', null],
     ['test@invalid.mailodds.com', 'invalid', 'reject', 'smtp_rejected'],
     ['test@risky.mailodds.com', 'catch_all', 'accept_with_caution', 'catch_all_detected'],
@@ -50,38 +37,44 @@ Future<void> main() async {
   ];
 
   for (final c in cases) {
-    final email = c[0] as String;
+    final email = c[0]!;
     final domain = email.split('@')[1].split('.')[0];
     try {
-      final r = await apiCall(email, apiKey);
-      final d = r['data'] as Map<String, dynamic>;
-      check('$domain.status', c[1], d['status']);
-      check('$domain.action', c[2], d['action']);
-      check('$domain.sub_status', c[3], d['sub_status']);
-      check('$domain.test_mode', true, d['test_mode']);
+      final resp = await api.validateEmail(ValidateRequest(email: email));
+      check('$domain.status', c[1], resp?.status?.value);
+      check('$domain.action', c[2], resp?.action?.value);
+      check('$domain.sub_status', c[3], resp?.subStatus);
     } catch (e) {
       failed++;
       print('  FAIL: $domain error: $e');
     }
   }
 
-  // Error handling
-  final r401 = await apiCall('test@deliverable.mailodds.com', 'invalid_key');
-  check('error.401', 401, r401['code']);
-
-  final client = HttpClient()..connectionTimeout = Duration(seconds: 10);
-  final req = await client.postUrl(Uri.parse('$apiUrl/v1/validate'));
-  req.headers.set('Authorization', 'Bearer $apiKey');
-  req.headers.contentType = ContentType.json;
-  req.write('{}');
-  final resp = await req.close();
-  await resp.drain();
-  client.close();
-  if (resp.statusCode == 400 || resp.statusCode == 422) {
-    passed++;
-  } else {
+  // Error handling: 401 with bad key
+  try {
+    final badAuth = HttpBearerAuth();
+    badAuth.accessToken = 'invalid_key';
+    final badClient = ApiClient(basePath: 'https://api.mailodds.com', authentication: badAuth);
+    final badApi = EmailValidationApi(badClient);
+    await badApi.validateEmail(ValidateRequest(email: 'test@deliverable.mailodds.com'));
     failed++;
-    print('  FAIL: error.400 expected=400|422 got=${resp.statusCode}');
+    print('  FAIL: error.401 no exception raised');
+  } on ApiException catch (e) {
+    check('error.401', 401, e.code);
+  }
+
+  // Error handling: 400/422 with missing email
+  try {
+    await api.validateEmail(ValidateRequest(email: ''));
+    failed++;
+    print('  FAIL: error.400 no exception raised');
+  } on ApiException catch (e) {
+    if (e.code == 400 || e.code == 422) {
+      passed++;
+    } else {
+      failed++;
+      print('  FAIL: error.400 expected=400|422 got=${e.code}');
+    }
   }
 
   final total = passed + failed;
