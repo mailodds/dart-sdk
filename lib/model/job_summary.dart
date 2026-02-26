@@ -15,6 +15,7 @@ class JobSummary {
   JobSummary({
     this.valid,
     this.invalid,
+    this.catchAll,
     this.doNotMail,
     this.unknown,
     this.cancelledPending,
@@ -35,6 +36,14 @@ class JobSummary {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   int? invalid;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? catchAll;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -64,6 +73,7 @@ class JobSummary {
   bool operator ==(Object other) => identical(this, other) || other is JobSummary &&
     other.valid == valid &&
     other.invalid == invalid &&
+    other.catchAll == catchAll &&
     other.doNotMail == doNotMail &&
     other.unknown == unknown &&
     other.cancelledPending == cancelledPending;
@@ -73,12 +83,13 @@ class JobSummary {
     // ignore: unnecessary_parenthesis
     (valid == null ? 0 : valid!.hashCode) +
     (invalid == null ? 0 : invalid!.hashCode) +
+    (catchAll == null ? 0 : catchAll!.hashCode) +
     (doNotMail == null ? 0 : doNotMail!.hashCode) +
     (unknown == null ? 0 : unknown!.hashCode) +
     (cancelledPending == null ? 0 : cancelledPending!.hashCode);
 
   @override
-  String toString() => 'JobSummary[valid=$valid, invalid=$invalid, doNotMail=$doNotMail, unknown=$unknown, cancelledPending=$cancelledPending]';
+  String toString() => 'JobSummary[valid=$valid, invalid=$invalid, catchAll=$catchAll, doNotMail=$doNotMail, unknown=$unknown, cancelledPending=$cancelledPending]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -91,6 +102,11 @@ class JobSummary {
       json[r'invalid'] = this.invalid;
     } else {
       json[r'invalid'] = null;
+    }
+    if (this.catchAll != null) {
+      json[r'catch_all'] = this.catchAll;
+    } else {
+      json[r'catch_all'] = null;
     }
     if (this.doNotMail != null) {
       json[r'do_not_mail'] = this.doNotMail;
@@ -131,6 +147,7 @@ class JobSummary {
       return JobSummary(
         valid: mapValueOfType<int>(json, r'valid'),
         invalid: mapValueOfType<int>(json, r'invalid'),
+        catchAll: mapValueOfType<int>(json, r'catch_all'),
         doNotMail: mapValueOfType<int>(json, r'do_not_mail'),
         unknown: mapValueOfType<int>(json, r'unknown'),
         cancelledPending: mapValueOfType<int>(json, r'cancelled_pending'),

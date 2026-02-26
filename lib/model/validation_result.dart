@@ -28,13 +28,7 @@ class ValidationResult {
   ///
   String? email;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? status;
+  ValidationResultStatusEnum? status;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -44,13 +38,7 @@ class ValidationResult {
   ///
   String? subStatus;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  String? action;
+  ValidationResultActionEnum? action;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -130,9 +118,9 @@ class ValidationResult {
 
       return ValidationResult(
         email: mapValueOfType<String>(json, r'email'),
-        status: mapValueOfType<String>(json, r'status'),
+        status: ValidationResultStatusEnum.fromJson(json[r'status']),
         subStatus: mapValueOfType<String>(json, r'sub_status'),
-        action: mapValueOfType<String>(json, r'action'),
+        action: ValidationResultActionEnum.fromJson(json[r'action']),
         processedAt: mapDateTime(json, r'processed_at', r''),
       );
     }
@@ -183,4 +171,167 @@ class ValidationResult {
   static const requiredKeys = <String>{
   };
 }
+
+
+class ValidationResultStatusEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ValidationResultStatusEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const valid = ValidationResultStatusEnum._(r'valid');
+  static const invalid = ValidationResultStatusEnum._(r'invalid');
+  static const catchAll = ValidationResultStatusEnum._(r'catch_all');
+  static const doNotMail = ValidationResultStatusEnum._(r'do_not_mail');
+  static const unknown = ValidationResultStatusEnum._(r'unknown');
+
+  /// List of all possible values in this [enum][ValidationResultStatusEnum].
+  static const values = <ValidationResultStatusEnum>[
+    valid,
+    invalid,
+    catchAll,
+    doNotMail,
+    unknown,
+  ];
+
+  static ValidationResultStatusEnum? fromJson(dynamic value) => ValidationResultStatusEnumTypeTransformer().decode(value);
+
+  static List<ValidationResultStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ValidationResultStatusEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ValidationResultStatusEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ValidationResultStatusEnum] to String,
+/// and [decode] dynamic data back to [ValidationResultStatusEnum].
+class ValidationResultStatusEnumTypeTransformer {
+  factory ValidationResultStatusEnumTypeTransformer() => _instance ??= const ValidationResultStatusEnumTypeTransformer._();
+
+  const ValidationResultStatusEnumTypeTransformer._();
+
+  String encode(ValidationResultStatusEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ValidationResultStatusEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ValidationResultStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'valid': return ValidationResultStatusEnum.valid;
+        case r'invalid': return ValidationResultStatusEnum.invalid;
+        case r'catch_all': return ValidationResultStatusEnum.catchAll;
+        case r'do_not_mail': return ValidationResultStatusEnum.doNotMail;
+        case r'unknown': return ValidationResultStatusEnum.unknown;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ValidationResultStatusEnumTypeTransformer] instance.
+  static ValidationResultStatusEnumTypeTransformer? _instance;
+}
+
+
+
+class ValidationResultActionEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ValidationResultActionEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const accept = ValidationResultActionEnum._(r'accept');
+  static const acceptWithCaution = ValidationResultActionEnum._(r'accept_with_caution');
+  static const reject = ValidationResultActionEnum._(r'reject');
+  static const retryLater = ValidationResultActionEnum._(r'retry_later');
+
+  /// List of all possible values in this [enum][ValidationResultActionEnum].
+  static const values = <ValidationResultActionEnum>[
+    accept,
+    acceptWithCaution,
+    reject,
+    retryLater,
+  ];
+
+  static ValidationResultActionEnum? fromJson(dynamic value) => ValidationResultActionEnumTypeTransformer().decode(value);
+
+  static List<ValidationResultActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ValidationResultActionEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ValidationResultActionEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ValidationResultActionEnum] to String,
+/// and [decode] dynamic data back to [ValidationResultActionEnum].
+class ValidationResultActionEnumTypeTransformer {
+  factory ValidationResultActionEnumTypeTransformer() => _instance ??= const ValidationResultActionEnumTypeTransformer._();
+
+  const ValidationResultActionEnumTypeTransformer._();
+
+  String encode(ValidationResultActionEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ValidationResultActionEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ValidationResultActionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'accept': return ValidationResultActionEnum.accept;
+        case r'accept_with_caution': return ValidationResultActionEnum.acceptWithCaution;
+        case r'reject': return ValidationResultActionEnum.reject;
+        case r'retry_later': return ValidationResultActionEnum.retryLater;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ValidationResultActionEnumTypeTransformer] instance.
+  static ValidationResultActionEnumTypeTransformer? _instance;
+}
+
 

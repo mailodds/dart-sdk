@@ -30,6 +30,10 @@ class ValidationResponse {
     required this.processedAt,
     this.suggestedEmail,
     this.retryAfterMs,
+    this.hasSpf,
+    this.hasDmarc,
+    this.dmarcPolicy,
+    this.dnsblListed,
     this.suppressionMatch,
     this.policyApplied,
   });
@@ -112,6 +116,36 @@ class ValidationResponse {
   ///
   int? retryAfterMs;
 
+  /// Whether the domain has an SPF record. Omitted for standard depth.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hasSpf;
+
+  /// Whether the domain has a DMARC record. Omitted for standard depth.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? hasDmarc;
+
+  /// The domain's DMARC policy. Omitted when no DMARC record found.
+  ValidationResponseDmarcPolicyEnum? dmarcPolicy;
+
+  /// Whether the domain's MX IP is on a DNS blocklist (Spamhaus ZEN). Omitted for standard depth.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? dnsblListed;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -147,6 +181,10 @@ class ValidationResponse {
     other.processedAt == processedAt &&
     other.suggestedEmail == suggestedEmail &&
     other.retryAfterMs == retryAfterMs &&
+    other.hasSpf == hasSpf &&
+    other.hasDmarc == hasDmarc &&
+    other.dmarcPolicy == dmarcPolicy &&
+    other.dnsblListed == dnsblListed &&
     other.suppressionMatch == suppressionMatch &&
     other.policyApplied == policyApplied;
 
@@ -170,11 +208,15 @@ class ValidationResponse {
     (processedAt.hashCode) +
     (suggestedEmail == null ? 0 : suggestedEmail!.hashCode) +
     (retryAfterMs == null ? 0 : retryAfterMs!.hashCode) +
+    (hasSpf == null ? 0 : hasSpf!.hashCode) +
+    (hasDmarc == null ? 0 : hasDmarc!.hashCode) +
+    (dmarcPolicy == null ? 0 : dmarcPolicy!.hashCode) +
+    (dnsblListed == null ? 0 : dnsblListed!.hashCode) +
     (suppressionMatch == null ? 0 : suppressionMatch!.hashCode) +
     (policyApplied == null ? 0 : policyApplied!.hashCode);
 
   @override
-  String toString() => 'ValidationResponse[schemaVersion=$schemaVersion, email=$email, status=$status, action=$action, subStatus=$subStatus, domain=$domain, mxFound=$mxFound, mxHost=$mxHost, smtpCheck=$smtpCheck, catchAll=$catchAll, disposable=$disposable, roleAccount=$roleAccount, freeProvider=$freeProvider, depth=$depth, processedAt=$processedAt, suggestedEmail=$suggestedEmail, retryAfterMs=$retryAfterMs, suppressionMatch=$suppressionMatch, policyApplied=$policyApplied]';
+  String toString() => 'ValidationResponse[schemaVersion=$schemaVersion, email=$email, status=$status, action=$action, subStatus=$subStatus, domain=$domain, mxFound=$mxFound, mxHost=$mxHost, smtpCheck=$smtpCheck, catchAll=$catchAll, disposable=$disposable, roleAccount=$roleAccount, freeProvider=$freeProvider, depth=$depth, processedAt=$processedAt, suggestedEmail=$suggestedEmail, retryAfterMs=$retryAfterMs, hasSpf=$hasSpf, hasDmarc=$hasDmarc, dmarcPolicy=$dmarcPolicy, dnsblListed=$dnsblListed, suppressionMatch=$suppressionMatch, policyApplied=$policyApplied]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -218,6 +260,26 @@ class ValidationResponse {
       json[r'retry_after_ms'] = this.retryAfterMs;
     } else {
       json[r'retry_after_ms'] = null;
+    }
+    if (this.hasSpf != null) {
+      json[r'has_spf'] = this.hasSpf;
+    } else {
+      json[r'has_spf'] = null;
+    }
+    if (this.hasDmarc != null) {
+      json[r'has_dmarc'] = this.hasDmarc;
+    } else {
+      json[r'has_dmarc'] = null;
+    }
+    if (this.dmarcPolicy != null) {
+      json[r'dmarc_policy'] = this.dmarcPolicy;
+    } else {
+      json[r'dmarc_policy'] = null;
+    }
+    if (this.dnsblListed != null) {
+      json[r'dnsbl_listed'] = this.dnsblListed;
+    } else {
+      json[r'dnsbl_listed'] = null;
     }
     if (this.suppressionMatch != null) {
       json[r'suppression_match'] = this.suppressionMatch;
@@ -268,6 +330,10 @@ class ValidationResponse {
         processedAt: mapDateTime(json, r'processed_at', r'')!,
         suggestedEmail: mapValueOfType<String>(json, r'suggested_email'),
         retryAfterMs: mapValueOfType<int>(json, r'retry_after_ms'),
+        hasSpf: mapValueOfType<bool>(json, r'has_spf'),
+        hasDmarc: mapValueOfType<bool>(json, r'has_dmarc'),
+        dmarcPolicy: ValidationResponseDmarcPolicyEnum.fromJson(json[r'dmarc_policy']),
+        dnsblListed: mapValueOfType<bool>(json, r'dnsbl_listed'),
         suppressionMatch: ValidationResponseSuppressionMatch.fromJson(json[r'suppression_match']),
         policyApplied: ValidationResponsePolicyApplied.fromJson(json[r'policy_applied']),
       );
@@ -516,7 +582,10 @@ class ValidationResponseSubStatusEnum {
   static const roleAccount = ValidationResponseSubStatusEnum._(r'role_account');
   static const greylisted = ValidationResponseSubStatusEnum._(r'greylisted');
   static const catchAllDetected = ValidationResponseSubStatusEnum._(r'catch_all_detected');
+  static const domainNotFound = ValidationResponseSubStatusEnum._(r'domain_not_found');
   static const suppressionMatch = ValidationResponseSubStatusEnum._(r'suppression_match');
+  static const restrictedMilitary = ValidationResponseSubStatusEnum._(r'restricted_military');
+  static const restrictedSanctioned = ValidationResponseSubStatusEnum._(r'restricted_sanctioned');
 
   /// List of all possible values in this [enum][ValidationResponseSubStatusEnum].
   static const values = <ValidationResponseSubStatusEnum>[
@@ -529,7 +598,10 @@ class ValidationResponseSubStatusEnum {
     roleAccount,
     greylisted,
     catchAllDetected,
+    domainNotFound,
     suppressionMatch,
+    restrictedMilitary,
+    restrictedSanctioned,
   ];
 
   static ValidationResponseSubStatusEnum? fromJson(dynamic value) => ValidationResponseSubStatusEnumTypeTransformer().decode(value);
@@ -577,7 +649,10 @@ class ValidationResponseSubStatusEnumTypeTransformer {
         case r'role_account': return ValidationResponseSubStatusEnum.roleAccount;
         case r'greylisted': return ValidationResponseSubStatusEnum.greylisted;
         case r'catch_all_detected': return ValidationResponseSubStatusEnum.catchAllDetected;
+        case r'domain_not_found': return ValidationResponseSubStatusEnum.domainNotFound;
         case r'suppression_match': return ValidationResponseSubStatusEnum.suppressionMatch;
+        case r'restricted_military': return ValidationResponseSubStatusEnum.restrictedMilitary;
+        case r'restricted_sanctioned': return ValidationResponseSubStatusEnum.restrictedSanctioned;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');
@@ -663,6 +738,83 @@ class ValidationResponseDepthEnumTypeTransformer {
 
   /// Singleton [ValidationResponseDepthEnumTypeTransformer] instance.
   static ValidationResponseDepthEnumTypeTransformer? _instance;
+}
+
+
+/// The domain's DMARC policy. Omitted when no DMARC record found.
+class ValidationResponseDmarcPolicyEnum {
+  /// Instantiate a new enum with the provided [value].
+  const ValidationResponseDmarcPolicyEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final String value;
+
+  @override
+  String toString() => value;
+
+  String toJson() => value;
+
+  static const none = ValidationResponseDmarcPolicyEnum._(r'none');
+  static const quarantine = ValidationResponseDmarcPolicyEnum._(r'quarantine');
+  static const reject = ValidationResponseDmarcPolicyEnum._(r'reject');
+
+  /// List of all possible values in this [enum][ValidationResponseDmarcPolicyEnum].
+  static const values = <ValidationResponseDmarcPolicyEnum>[
+    none,
+    quarantine,
+    reject,
+  ];
+
+  static ValidationResponseDmarcPolicyEnum? fromJson(dynamic value) => ValidationResponseDmarcPolicyEnumTypeTransformer().decode(value);
+
+  static List<ValidationResponseDmarcPolicyEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <ValidationResponseDmarcPolicyEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = ValidationResponseDmarcPolicyEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [ValidationResponseDmarcPolicyEnum] to String,
+/// and [decode] dynamic data back to [ValidationResponseDmarcPolicyEnum].
+class ValidationResponseDmarcPolicyEnumTypeTransformer {
+  factory ValidationResponseDmarcPolicyEnumTypeTransformer() => _instance ??= const ValidationResponseDmarcPolicyEnumTypeTransformer._();
+
+  const ValidationResponseDmarcPolicyEnumTypeTransformer._();
+
+  String encode(ValidationResponseDmarcPolicyEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a ValidationResponseDmarcPolicyEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  ValidationResponseDmarcPolicyEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case r'none': return ValidationResponseDmarcPolicyEnum.none;
+        case r'quarantine': return ValidationResponseDmarcPolicyEnum.quarantine;
+        case r'reject': return ValidationResponseDmarcPolicyEnum.reject;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [ValidationResponseDmarcPolicyEnumTypeTransformer] instance.
+  static ValidationResponseDmarcPolicyEnumTypeTransformer? _instance;
 }
 
 

@@ -14,8 +14,8 @@ Name | Type | Description | Notes
 **timezone** | **String** |  | [optional] 
 **totals** | [**TelemetrySummaryTotals**](TelemetrySummaryTotals.md) |  | [optional] 
 **rates** | [**TelemetrySummaryRates**](TelemetrySummaryRates.md) |  | [optional] 
-**topReasons** | [**List<TelemetrySummaryTopReasonsInner>**](TelemetrySummaryTopReasonsInner.md) | Top rejection/status reasons | [optional] [default to const []]
-**topDomains** | [**List<TelemetrySummaryTopDomainsInner>**](TelemetrySummaryTopDomainsInner.md) | Top domains by volume | [optional] [default to const []]
+**topReasons** | [**BuiltList&lt;TelemetrySummaryTopReasonsInner&gt;**](TelemetrySummaryTopReasonsInner.md) | Top rejection/status reasons | [optional] 
+**topDomains** | [**BuiltList&lt;TelemetrySummaryTopDomainsInner&gt;**](TelemetrySummaryTopDomainsInner.md) | Top domains by volume | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

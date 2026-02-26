@@ -23,20 +23,14 @@ Validate up to 100 email addresses synchronously. For larger lists, use the bulk
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = EmailValidationApi();
-final validateBatchRequest = ValidateBatchRequest(); // ValidateBatchRequest | 
+final api = Mailodds().getEmailValidationApi();
+final ValidateBatchRequest validateBatchRequest = ; // ValidateBatchRequest | 
 
 try {
-    final result = api_instance.validateBatch(validateBatchRequest);
-    print(result);
-} catch (e) {
+    final response = api.validateBatch(validateBatchRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling EmailValidationApi->validateBatch: $e\n');
 }
 ```
@@ -72,20 +66,14 @@ Validate a single email address. Returns detailed validation results including s
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = EmailValidationApi();
-final validateRequest = ValidateRequest(); // ValidateRequest | 
+final api = Mailodds().getEmailValidationApi();
+final ValidateRequest validateRequest = ; // ValidateRequest | 
 
 try {
-    final result = api_instance.validateEmail(validateRequest);
-    print(result);
-} catch (e) {
+    final response = api.validateEmail(validateRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling EmailValidationApi->validateEmail: $e\n');
 }
 ```

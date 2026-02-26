@@ -26,3 +26,5 @@
 ci/**
 # Preserve GitHub Actions workflows
 .github/**
+# Preserve package name fix (openapi -> mailodds)
+pubspec.yaml

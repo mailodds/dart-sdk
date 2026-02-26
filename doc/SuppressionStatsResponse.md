@@ -9,6 +9,7 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | [optional] 
+**requestId** | **String** | Unique request identifier | [optional] 
 **total** | **int** |  | [optional] 
 **byType** | [**SuppressionStatsResponseByType**](SuppressionStatsResponseByType.md) |  | [optional] 
 

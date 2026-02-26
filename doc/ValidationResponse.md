@@ -9,6 +9,7 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | 
+**requestId** | **String** | Unique request identifier | [optional] 
 **email** | **String** |  | 
 **status** | **String** | Validation status | 
 **action** | **String** | Recommended action | 
@@ -25,6 +26,10 @@ Name | Type | Description | Notes
 **processedAt** | [**DateTime**](DateTime.md) | ISO 8601 timestamp of validation | 
 **suggestedEmail** | **String** | Typo correction suggestion. Omitted when no typo detected. | [optional] 
 **retryAfterMs** | **int** | Suggested retry delay in milliseconds. Present only for retry_later action. | [optional] 
+**hasSpf** | **bool** | Whether the domain has an SPF record. Omitted for standard depth. | [optional] 
+**hasDmarc** | **bool** | Whether the domain has a DMARC record. Omitted for standard depth. | [optional] 
+**dmarcPolicy** | **String** | The domain's DMARC policy. Omitted when no DMARC record found. | [optional] 
+**dnsblListed** | **bool** | Whether the domain's MX IP is on a DNS blocklist (Spamhaus ZEN). Omitted for standard depth. | [optional] 
 **suppressionMatch** | [**ValidationResponseSuppressionMatch**](ValidationResponseSuppressionMatch.md) |  | [optional] 
 **policyApplied** | [**ValidationResponsePolicyApplied**](ValidationResponsePolicyApplied.md) |  | [optional] 
 

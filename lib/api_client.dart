@@ -190,26 +190,68 @@ class ApiClient {
           return AddSuppressionRequestEntriesInner.fromJson(value);
         case 'AddSuppressionResponse':
           return AddSuppressionResponse.fromJson(value);
+        case 'BatchDeliverRequest':
+          return BatchDeliverRequest.fromJson(value);
+        case 'BatchDeliverRequestStructuredData':
+          return BatchDeliverRequestStructuredData.fromJson(value);
+        case 'BatchDeliverResponse':
+          return BatchDeliverResponse.fromJson(value);
+        case 'BatchDeliverResponseDelivery':
+          return BatchDeliverResponseDelivery.fromJson(value);
+        case 'BatchDeliverResponseRejectedInner':
+          return BatchDeliverResponseRejectedInner.fromJson(value);
         case 'CheckSuppressionRequest':
           return CheckSuppressionRequest.fromJson(value);
+        case 'ConfirmSubscription200Response':
+          return ConfirmSubscription200Response.fromJson(value);
         case 'CreateJobFromS3Request':
           return CreateJobFromS3Request.fromJson(value);
         case 'CreateJobRequest':
           return CreateJobRequest.fromJson(value);
+        case 'CreateList201Response':
+          return CreateList201Response.fromJson(value);
+        case 'CreateListRequest':
+          return CreateListRequest.fromJson(value);
         case 'CreatePolicyFromPresetRequest':
           return CreatePolicyFromPresetRequest.fromJson(value);
         case 'CreatePolicyRequest':
           return CreatePolicyRequest.fromJson(value);
+        case 'CreateSendingDomain201Response':
+          return CreateSendingDomain201Response.fromJson(value);
+        case 'CreateSendingDomainRequest':
+          return CreateSendingDomainRequest.fromJson(value);
         case 'DeleteJob200Response':
           return DeleteJob200Response.fromJson(value);
         case 'DeletePolicy200Response':
           return DeletePolicy200Response.fromJson(value);
         case 'DeletePolicyRule200Response':
           return DeletePolicyRule200Response.fromJson(value);
+        case 'DeliverRequest':
+          return DeliverRequest.fromJson(value);
+        case 'DeliverRequestOptions':
+          return DeliverRequestOptions.fromJson(value);
+        case 'DeliverRequestStructuredData':
+          return DeliverRequestStructuredData.fromJson(value);
+        case 'DeliverRequestToInner':
+          return DeliverRequestToInner.fromJson(value);
+        case 'DeliverResponse':
+          return DeliverResponse.fromJson(value);
+        case 'DeliverResponseDelivery':
+          return DeliverResponseDelivery.fromJson(value);
         case 'ErrorResponse':
           return ErrorResponse.fromJson(value);
+        case 'GetLists200Response':
+          return GetLists200Response.fromJson(value);
         case 'GetPresignedUploadRequest':
           return GetPresignedUploadRequest.fromJson(value);
+        case 'GetSendingDomainIdentityScore200Response':
+          return GetSendingDomainIdentityScore200Response.fromJson(value);
+        case 'GetSendingStats200Response':
+          return GetSendingStats200Response.fromJson(value);
+        case 'GetSendingStats200ResponseStats':
+          return GetSendingStats200ResponseStats.fromJson(value);
+        case 'GetSubscribers200Response':
+          return GetSubscribers200Response.fromJson(value);
         case 'HealthCheck200Response':
           return HealthCheck200Response.fromJson(value);
         case 'Job':
@@ -220,6 +262,8 @@ class ApiClient {
           return JobResponse.fromJson(value);
         case 'JobSummary':
           return JobSummary.fromJson(value);
+        case 'ListSendingDomains200Response':
+          return ListSendingDomains200Response.fromJson(value);
         case 'Pagination':
           return Pagination.fromJson(value);
         case 'Policy':
@@ -250,6 +294,26 @@ class ApiClient {
           return RemoveSuppressionRequest.fromJson(value);
         case 'ResultsResponse':
           return ResultsResponse.fromJson(value);
+        case 'SendingDomain':
+          return SendingDomain.fromJson(value);
+        case 'SendingDomainDnsRecords':
+          return SendingDomainDnsRecords.fromJson(value);
+        case 'SendingDomainDnsRecordsNs':
+          return SendingDomainDnsRecordsNs.fromJson(value);
+        case 'SendingDomainIdentityScore':
+          return SendingDomainIdentityScore.fromJson(value);
+        case 'SendingDomainIdentityScoreChecks':
+          return SendingDomainIdentityScoreChecks.fromJson(value);
+        case 'SendingDomainIdentityScoreChecksDkim':
+          return SendingDomainIdentityScoreChecksDkim.fromJson(value);
+        case 'SendingDomainIdentityScoreChecksDmarc':
+          return SendingDomainIdentityScoreChecksDmarc.fromJson(value);
+        case 'SubscribeRequest':
+          return SubscribeRequest.fromJson(value);
+        case 'Subscriber':
+          return Subscriber.fromJson(value);
+        case 'SubscriberList':
+          return SubscriberList.fromJson(value);
         case 'SuppressionCheckResponse':
           return SuppressionCheckResponse.fromJson(value);
         case 'SuppressionEntry':
@@ -274,6 +338,8 @@ class ApiClient {
           return TestPolicyRequest.fromJson(value);
         case 'TestPolicyRequestTestResult':
           return TestPolicyRequestTestResult.fromJson(value);
+        case 'UnsubscribeSubscriber200Response':
+          return UnsubscribeSubscriber200Response.fromJson(value);
         case 'UpdatePolicyRequest':
           return UpdatePolicyRequest.fromJson(value);
         case 'ValidateBatch200Response':

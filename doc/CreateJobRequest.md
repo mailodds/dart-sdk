@@ -8,9 +8,9 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | **List<String>** | List of emails to validate | [default to const []]
+**emails** | **BuiltList&lt;String&gt;** | List of emails to validate | 
 **dedup** | **bool** | Remove duplicate emails | [optional] [default to false]
-**metadata** | [**Object**](.md) | Custom metadata for the job | [optional] 
+**metadata** | [**JsonObject**](.md) | Custom metadata for the job | [optional] 
 **webhookUrl** | **String** | URL for completion webhook | [optional] 
 **idempotencyKey** | **String** | Unique key for idempotent requests | [optional] 
 

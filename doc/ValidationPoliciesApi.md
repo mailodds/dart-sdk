@@ -31,21 +31,15 @@ Add a new rule to an existing policy.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final policyId = 56; // int | 
-final policyRule = PolicyRule(); // PolicyRule | 
+final api = Mailodds().getValidationPoliciesApi();
+final int policyId = 56; // int | 
+final PolicyRule policyRule = ; // PolicyRule | 
 
 try {
-    final result = api_instance.addPolicyRule(policyId, policyRule);
-    print(result);
-} catch (e) {
+    final response = api.addPolicyRule(policyId, policyRule);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->addPolicyRule: $e\n');
 }
 ```
@@ -82,20 +76,14 @@ Create a new validation policy with rules.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final createPolicyRequest = CreatePolicyRequest(); // CreatePolicyRequest | 
+final api = Mailodds().getValidationPoliciesApi();
+final CreatePolicyRequest createPolicyRequest = ; // CreatePolicyRequest | 
 
 try {
-    final result = api_instance.createPolicy(createPolicyRequest);
-    print(result);
-} catch (e) {
+    final response = api.createPolicy(createPolicyRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->createPolicy: $e\n');
 }
 ```
@@ -131,20 +119,14 @@ Create a policy using a preset template.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final createPolicyFromPresetRequest = CreatePolicyFromPresetRequest(); // CreatePolicyFromPresetRequest | 
+final api = Mailodds().getValidationPoliciesApi();
+final CreatePolicyFromPresetRequest createPolicyFromPresetRequest = ; // CreatePolicyFromPresetRequest | 
 
 try {
-    final result = api_instance.createPolicyFromPreset(createPolicyFromPresetRequest);
-    print(result);
-} catch (e) {
+    final response = api.createPolicyFromPreset(createPolicyFromPresetRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->createPolicyFromPreset: $e\n');
 }
 ```
@@ -180,20 +162,14 @@ Delete a policy and all its rules.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final policyId = 56; // int | 
+final api = Mailodds().getValidationPoliciesApi();
+final int policyId = 56; // int | 
 
 try {
-    final result = api_instance.deletePolicy(policyId);
-    print(result);
-} catch (e) {
+    final response = api.deletePolicy(policyId);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->deletePolicy: $e\n');
 }
 ```
@@ -229,21 +205,15 @@ Delete a rule from a policy.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final policyId = 56; // int | 
-final ruleId = 56; // int | 
+final api = Mailodds().getValidationPoliciesApi();
+final int policyId = 56; // int | 
+final int ruleId = 56; // int | 
 
 try {
-    final result = api_instance.deletePolicyRule(policyId, ruleId);
-    print(result);
-} catch (e) {
+    final response = api.deletePolicyRule(policyId, ruleId);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->deletePolicyRule: $e\n');
 }
 ```
@@ -280,20 +250,14 @@ Get a single policy with its rules.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final policyId = 56; // int | 
+final api = Mailodds().getValidationPoliciesApi();
+final int policyId = 56; // int | 
 
 try {
-    final result = api_instance.getPolicy(policyId);
-    print(result);
-} catch (e) {
+    final response = api.getPolicy(policyId);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->getPolicy: $e\n');
 }
 ```
@@ -329,19 +293,13 @@ Get available preset templates for quick policy creation.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
+final api = Mailodds().getValidationPoliciesApi();
 
 try {
-    final result = api_instance.getPolicyPresets();
-    print(result);
-} catch (e) {
+    final response = api.getPolicyPresets();
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->getPolicyPresets: $e\n');
 }
 ```
@@ -374,20 +332,14 @@ List all validation policies for your account. Includes plan limits.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final includeRules = true; // bool | Include full rules in response
+final api = Mailodds().getValidationPoliciesApi();
+final bool includeRules = true; // bool | Include full rules in response
 
 try {
-    final result = api_instance.listPolicies(includeRules);
-    print(result);
-} catch (e) {
+    final response = api.listPolicies(includeRules);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->listPolicies: $e\n');
 }
 ```
@@ -423,20 +375,14 @@ Test how a policy would evaluate a validation result without affecting productio
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final testPolicyRequest = TestPolicyRequest(); // TestPolicyRequest | 
+final api = Mailodds().getValidationPoliciesApi();
+final TestPolicyRequest testPolicyRequest = ; // TestPolicyRequest | 
 
 try {
-    final result = api_instance.testPolicy(testPolicyRequest);
-    print(result);
-} catch (e) {
+    final response = api.testPolicy(testPolicyRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->testPolicy: $e\n');
 }
 ```
@@ -472,21 +418,15 @@ Update a policy's settings (name, enabled, default).
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = ValidationPoliciesApi();
-final policyId = 56; // int | 
-final updatePolicyRequest = UpdatePolicyRequest(); // UpdatePolicyRequest | 
+final api = Mailodds().getValidationPoliciesApi();
+final int policyId = 56; // int | 
+final UpdatePolicyRequest updatePolicyRequest = ; // UpdatePolicyRequest | 
 
 try {
-    final result = api_instance.updatePolicy(policyId, updatePolicyRequest);
-    print(result);
-} catch (e) {
+    final response = api.updatePolicy(policyId, updatePolicyRequest);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling ValidationPoliciesApi->updatePolicy: $e\n');
 }
 ```

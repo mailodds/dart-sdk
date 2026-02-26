@@ -3,9 +3,9 @@
 #
 
 name: 'mailodds'
-version: '1.1.0'
-description: 'OpenAPI API client'
-homepage: 'https://github.com/mailodds/dart-sdk'
+version: '1.0.0'
+description: 'MailOdds SDK for Dart'
+homepage: 'https://mailodds.com'
 environment:
   sdk: '>=2.12.0 <4.0.0'
 dependencies:

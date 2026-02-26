@@ -9,6 +9,7 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | [optional] 
+**requestId** | **String** | Unique request identifier | [optional] 
 **email** | **String** |  | [optional] 
 **suppressed** | **bool** |  | [optional] 
 **matchType** | **String** |  | [optional] 

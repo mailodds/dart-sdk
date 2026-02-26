@@ -23,20 +23,14 @@ Get validation metrics for your account. Useful for building dashboards and moni
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
-// TODO Configure HTTP Bearer authorization: BearerAuth
-// Case 1. Use String Token
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
-// Case 2. Use Function which generate token.
-// String yourTokenGeneratorFunction() { ... }
-//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api_instance = SystemApi();
-final window = window_example; // String | Time window for metrics
+final api = Mailodds().getSystemApi();
+final String window = window_example; // String | Time window for metrics
 
 try {
-    final result = api_instance.getTelemetrySummary(window);
-    print(result);
-} catch (e) {
+    final response = api.getTelemetrySummary(window);
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling SystemApi->getTelemetrySummary: $e\n');
 }
 ```
@@ -73,12 +67,12 @@ Check API health status. No authentication required.
 ```dart
 import 'package:mailodds/api.dart';
 
-final api_instance = SystemApi();
+final api = Mailodds().getSystemApi();
 
 try {
-    final result = api_instance.healthCheck();
-    print(result);
-} catch (e) {
+    final response = api.healthCheck();
+    print(response);
+} on DioException catch (e) {
     print('Exception when calling SystemApi->healthCheck: $e\n');
 }
 ```

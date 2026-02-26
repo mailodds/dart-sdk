@@ -9,7 +9,8 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | [optional] 
-**results** | [**List<ValidationResult>**](ValidationResult.md) |  | [optional] [default to const []]
+**requestId** | **String** | Unique request identifier | [optional] 
+**results** | [**BuiltList&lt;ValidationResult&gt;**](ValidationResult.md) |  | [optional] 
 **pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
