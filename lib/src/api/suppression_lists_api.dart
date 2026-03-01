@@ -15,6 +15,7 @@ import 'package:mailodds/src/model/check_suppression_request.dart';
 import 'package:mailodds/src/model/error_response.dart';
 import 'package:mailodds/src/model/remove_suppression200_response.dart';
 import 'package:mailodds/src/model/remove_suppression_request.dart';
+import 'package:mailodds/src/model/suppression_audit_response.dart';
 import 'package:mailodds/src/model/suppression_check_response.dart';
 import 'package:mailodds/src/model/suppression_list_response.dart';
 import 'package:mailodds/src/model/suppression_stats_response.dart';
@@ -229,6 +230,95 @@ class SuppressionListsApi {
     );
   }
 
+  /// Get suppression audit log
+  /// Get a chronological log of suppression list changes (additions, removals).
+  ///
+  /// Parameters:
+  /// * [page] 
+  /// * [limit] 
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [SuppressionAuditResponse] as data
+  /// Throws [DioException] if API call or serialization fails
+  Future<Response<SuppressionAuditResponse>> getSuppressionAuditLog({ 
+    int? page = 1,
+    int? limit = 20,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/v1/suppression/audit';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[
+          {
+            'type': 'http',
+            'scheme': 'bearer',
+            'name': 'BearerAuth',
+          },
+        ],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
+      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    SuppressionAuditResponse? _responseData;
+
+    try {
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SuppressionAuditResponse),
+      ) as SuppressionAuditResponse;
+
+    } catch (error, stackTrace) {
+      throw DioException(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioExceptionType.unknown,
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
+
+    return Response<SuppressionAuditResponse>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
   /// Get suppression statistics
   /// Get statistics about the suppression list.
   ///
@@ -316,6 +406,7 @@ class SuppressionListsApi {
   /// * [perPage] 
   /// * [type] 
   /// * [search] 
+  /// * [source_] - Filter by entry source (e.g. api, bounce, complaint)
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
   /// * [extras] - Can be used to add flags to the request
@@ -330,6 +421,7 @@ class SuppressionListsApi {
     int? perPage = 50,
     String? type,
     String? search,
+    String? source_,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? extra,
@@ -361,6 +453,7 @@ class SuppressionListsApi {
       if (perPage != null) r'per_page': encodeQueryParameter(_serializers, perPage, const FullType(int)),
       if (type != null) r'type': encodeQueryParameter(_serializers, type, const FullType(String)),
       if (search != null) r'search': encodeQueryParameter(_serializers, search, const FullType(String)),
+      if (source_ != null) r'source': encodeQueryParameter(_serializers, source_, const FullType(String)),
     };
 
     final _response = await _dio.request<Object>(

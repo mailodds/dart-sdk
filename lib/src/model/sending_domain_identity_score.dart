@@ -3,7 +3,8 @@
 //
 
 // ignore_for_file: unused_element
-import 'package:mailodds/src/model/sending_domain_identity_score_checks.dart';
+import 'package:built_collection/built_collection.dart';
+import 'package:mailodds/src/model/sending_domain_identity_score_breakdown.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -12,16 +13,32 @@ part 'sending_domain_identity_score.g.dart';
 /// SendingDomainIdentityScore
 ///
 /// Properties:
-/// * [overallScore] - Composite score 0-100
-/// * [checks] 
+/// * [score] - Total points earned across all checks
+/// * [maxScore] - Maximum possible score (100)
+/// * [percentage] - Score as percentage (same as score since max is 100)
+/// * [breakdown] 
+/// * [grade] - Letter grade (A+, A, B, C, D, F)
 @BuiltValue()
 abstract class SendingDomainIdentityScore implements Built<SendingDomainIdentityScore, SendingDomainIdentityScoreBuilder> {
-  /// Composite score 0-100
-  @BuiltValueField(wireName: r'overall_score')
-  num? get overallScore;
+  /// Total points earned across all checks
+  @BuiltValueField(wireName: r'score')
+  int get score;
 
-  @BuiltValueField(wireName: r'checks')
-  SendingDomainIdentityScoreChecks? get checks;
+  /// Maximum possible score (100)
+  @BuiltValueField(wireName: r'max_score')
+  int get maxScore;
+
+  /// Score as percentage (same as score since max is 100)
+  @BuiltValueField(wireName: r'percentage')
+  int get percentage;
+
+  @BuiltValueField(wireName: r'breakdown')
+  SendingDomainIdentityScoreBreakdown get breakdown;
+
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueField(wireName: r'grade')
+  SendingDomainIdentityScoreGradeEnum get grade;
+  // enum gradeEnum {  A+,  A,  B,  C,  D,  F,  };
 
   SendingDomainIdentityScore._();
 
@@ -46,20 +63,31 @@ class _$SendingDomainIdentityScoreSerializer implements PrimitiveSerializer<Send
     SendingDomainIdentityScore object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.overallScore != null) {
-      yield r'overall_score';
-      yield serializers.serialize(
-        object.overallScore,
-        specifiedType: const FullType(num),
-      );
-    }
-    if (object.checks != null) {
-      yield r'checks';
-      yield serializers.serialize(
-        object.checks,
-        specifiedType: const FullType(SendingDomainIdentityScoreChecks),
-      );
-    }
+    yield r'score';
+    yield serializers.serialize(
+      object.score,
+      specifiedType: const FullType(int),
+    );
+    yield r'max_score';
+    yield serializers.serialize(
+      object.maxScore,
+      specifiedType: const FullType(int),
+    );
+    yield r'percentage';
+    yield serializers.serialize(
+      object.percentage,
+      specifiedType: const FullType(int),
+    );
+    yield r'breakdown';
+    yield serializers.serialize(
+      object.breakdown,
+      specifiedType: const FullType(SendingDomainIdentityScoreBreakdown),
+    );
+    yield r'grade';
+    yield serializers.serialize(
+      object.grade,
+      specifiedType: const FullType(SendingDomainIdentityScoreGradeEnum),
+    );
   }
 
   @override
@@ -83,19 +111,40 @@ class _$SendingDomainIdentityScoreSerializer implements PrimitiveSerializer<Send
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
-        case r'overall_score':
+        case r'score':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(num),
-          ) as num;
-          result.overallScore = valueDes;
+            specifiedType: const FullType(int),
+          ) as int;
+          result.score = valueDes;
           break;
-        case r'checks':
+        case r'max_score':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(SendingDomainIdentityScoreChecks),
-          ) as SendingDomainIdentityScoreChecks;
-          result.checks.replace(valueDes);
+            specifiedType: const FullType(int),
+          ) as int;
+          result.maxScore = valueDes;
+          break;
+        case r'percentage':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.percentage = valueDes;
+          break;
+        case r'breakdown':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(SendingDomainIdentityScoreBreakdown),
+          ) as SendingDomainIdentityScoreBreakdown;
+          result.breakdown.replace(valueDes);
+          break;
+        case r'grade':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(SendingDomainIdentityScoreGradeEnum),
+          ) as SendingDomainIdentityScoreGradeEnum;
+          result.grade = valueDes;
           break;
         default:
           unhandled.add(key);
@@ -124,5 +173,34 @@ class _$SendingDomainIdentityScoreSerializer implements PrimitiveSerializer<Send
     );
     return result.build();
   }
+}
+
+class SendingDomainIdentityScoreGradeEnum extends EnumClass {
+
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'A+')
+  static const SendingDomainIdentityScoreGradeEnum aPlus = _$sendingDomainIdentityScoreGradeEnum_aPlus;
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'A')
+  static const SendingDomainIdentityScoreGradeEnum A = _$sendingDomainIdentityScoreGradeEnum_A;
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'B')
+  static const SendingDomainIdentityScoreGradeEnum B = _$sendingDomainIdentityScoreGradeEnum_B;
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'C')
+  static const SendingDomainIdentityScoreGradeEnum C = _$sendingDomainIdentityScoreGradeEnum_C;
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'D')
+  static const SendingDomainIdentityScoreGradeEnum D = _$sendingDomainIdentityScoreGradeEnum_D;
+  /// Letter grade (A+, A, B, C, D, F)
+  @BuiltValueEnumConst(wireName: r'F')
+  static const SendingDomainIdentityScoreGradeEnum F = _$sendingDomainIdentityScoreGradeEnum_F;
+
+  static Serializer<SendingDomainIdentityScoreGradeEnum> get serializer => _$sendingDomainIdentityScoreGradeEnumSerializer;
+
+  const SendingDomainIdentityScoreGradeEnum._(String name): super(name);
+
+  static BuiltSet<SendingDomainIdentityScoreGradeEnum> get values => _$sendingDomainIdentityScoreGradeEnumValues;
+  static SendingDomainIdentityScoreGradeEnum valueOf(String name) => _$sendingDomainIdentityScoreGradeEnumValueOf(name);
 }
 

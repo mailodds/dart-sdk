@@ -254,8 +254,12 @@ class ApiClient {
           return GetSubscribers200Response.fromJson(value);
         case 'HealthCheck200Response':
           return HealthCheck200Response.fromJson(value);
+        case 'IdentityScoreCheck':
+          return IdentityScoreCheck.fromJson(value);
         case 'Job':
           return Job.fromJson(value);
+        case 'JobArtifacts':
+          return JobArtifacts.fromJson(value);
         case 'JobListResponse':
           return JobListResponse.fromJson(value);
         case 'JobResponse':
@@ -302,18 +306,18 @@ class ApiClient {
           return SendingDomainDnsRecordsNs.fromJson(value);
         case 'SendingDomainIdentityScore':
           return SendingDomainIdentityScore.fromJson(value);
-        case 'SendingDomainIdentityScoreChecks':
-          return SendingDomainIdentityScoreChecks.fromJson(value);
-        case 'SendingDomainIdentityScoreChecksDkim':
-          return SendingDomainIdentityScoreChecksDkim.fromJson(value);
-        case 'SendingDomainIdentityScoreChecksDmarc':
-          return SendingDomainIdentityScoreChecksDmarc.fromJson(value);
+        case 'SendingDomainIdentityScoreBreakdown':
+          return SendingDomainIdentityScoreBreakdown.fromJson(value);
         case 'SubscribeRequest':
           return SubscribeRequest.fromJson(value);
         case 'Subscriber':
           return Subscriber.fromJson(value);
         case 'SubscriberList':
           return SubscriberList.fromJson(value);
+        case 'SuppressionAuditResponse':
+          return SuppressionAuditResponse.fromJson(value);
+        case 'SuppressionAuditResponseEntriesInner':
+          return SuppressionAuditResponseEntriesInner.fromJson(value);
         case 'SuppressionCheckResponse':
           return SuppressionCheckResponse.fromJson(value);
         case 'SuppressionEntry':
@@ -358,6 +362,10 @@ class ApiClient {
           return ValidationResponseSuppressionMatch.fromJson(value);
         case 'ValidationResult':
           return ValidationResult.fromJson(value);
+        case 'ValidationResultSuppression':
+          return ValidationResultSuppression.fromJson(value);
+        case 'WebhookEvent':
+          return WebhookEvent.fromJson(value);
         default:
           dynamic match;
           if (value is List && (match = _regList.firstMatch(targetType)?.group(1)) != null) {

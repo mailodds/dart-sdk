@@ -4,22 +4,22 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:mailodds/src/model/job.dart';
+import 'package:mailodds/src/model/suppression_audit_response_entries_inner.dart';
+import 'package:mailodds/src/model/pagination.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'job_list_response.g.dart';
+part 'suppression_audit_response.g.dart';
 
-/// JobListResponse
+/// SuppressionAuditResponse
 ///
 /// Properties:
 /// * [schemaVersion] 
 /// * [requestId] - Unique request identifier
-/// * [data] - List of jobs
-/// * [nextCursor] - Cursor for next page. Null when no more results.
-/// * [hasMore] - Whether more results exist beyond this page
+/// * [entries] 
+/// * [pagination] 
 @BuiltValue()
-abstract class JobListResponse implements Built<JobListResponse, JobListResponseBuilder> {
+abstract class SuppressionAuditResponse implements Built<SuppressionAuditResponse, SuppressionAuditResponseBuilder> {
   @BuiltValueField(wireName: r'schema_version')
   String? get schemaVersion;
 
@@ -27,39 +27,33 @@ abstract class JobListResponse implements Built<JobListResponse, JobListResponse
   @BuiltValueField(wireName: r'request_id')
   String? get requestId;
 
-  /// List of jobs
-  @BuiltValueField(wireName: r'data')
-  BuiltList<Job>? get data;
+  @BuiltValueField(wireName: r'entries')
+  BuiltList<SuppressionAuditResponseEntriesInner>? get entries;
 
-  /// Cursor for next page. Null when no more results.
-  @BuiltValueField(wireName: r'next_cursor')
-  String? get nextCursor;
+  @BuiltValueField(wireName: r'pagination')
+  Pagination? get pagination;
 
-  /// Whether more results exist beyond this page
-  @BuiltValueField(wireName: r'has_more')
-  bool? get hasMore;
+  SuppressionAuditResponse._();
 
-  JobListResponse._();
-
-  factory JobListResponse([void updates(JobListResponseBuilder b)]) = _$JobListResponse;
+  factory SuppressionAuditResponse([void updates(SuppressionAuditResponseBuilder b)]) = _$SuppressionAuditResponse;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(JobListResponseBuilder b) => b;
+  static void _defaults(SuppressionAuditResponseBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<JobListResponse> get serializer => _$JobListResponseSerializer();
+  static Serializer<SuppressionAuditResponse> get serializer => _$SuppressionAuditResponseSerializer();
 }
 
-class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse> {
+class _$SuppressionAuditResponseSerializer implements PrimitiveSerializer<SuppressionAuditResponse> {
   @override
-  final Iterable<Type> types = const [JobListResponse, _$JobListResponse];
+  final Iterable<Type> types = const [SuppressionAuditResponse, _$SuppressionAuditResponse];
 
   @override
-  final String wireName = r'JobListResponse';
+  final String wireName = r'SuppressionAuditResponse';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    JobListResponse object, {
+    SuppressionAuditResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
     if (object.schemaVersion != null) {
@@ -76,25 +70,18 @@ class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse
         specifiedType: const FullType(String),
       );
     }
-    if (object.data != null) {
-      yield r'data';
+    if (object.entries != null) {
+      yield r'entries';
       yield serializers.serialize(
-        object.data,
-        specifiedType: const FullType(BuiltList, [FullType(Job)]),
+        object.entries,
+        specifiedType: const FullType(BuiltList, [FullType(SuppressionAuditResponseEntriesInner)]),
       );
     }
-    if (object.nextCursor != null) {
-      yield r'next_cursor';
+    if (object.pagination != null) {
+      yield r'pagination';
       yield serializers.serialize(
-        object.nextCursor,
-        specifiedType: const FullType.nullable(String),
-      );
-    }
-    if (object.hasMore != null) {
-      yield r'has_more';
-      yield serializers.serialize(
-        object.hasMore,
-        specifiedType: const FullType(bool),
+        object.pagination,
+        specifiedType: const FullType(Pagination),
       );
     }
   }
@@ -102,7 +89,7 @@ class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse
   @override
   Object serialize(
     Serializers serializers,
-    JobListResponse object, {
+    SuppressionAuditResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     return _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
@@ -113,7 +100,7 @@ class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
     required List<Object?> serializedList,
-    required JobListResponseBuilder result,
+    required SuppressionAuditResponseBuilder result,
     required List<Object?> unhandled,
   }) {
     for (var i = 0; i < serializedList.length; i += 2) {
@@ -134,27 +121,19 @@ class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse
           ) as String;
           result.requestId = valueDes;
           break;
-        case r'data':
+        case r'entries':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType(BuiltList, [FullType(Job)]),
-          ) as BuiltList<Job>;
-          result.data.replace(valueDes);
+            specifiedType: const FullType(BuiltList, [FullType(SuppressionAuditResponseEntriesInner)]),
+          ) as BuiltList<SuppressionAuditResponseEntriesInner>;
+          result.entries.replace(valueDes);
           break;
-        case r'next_cursor':
+        case r'pagination':
           final valueDes = serializers.deserialize(
             value,
-            specifiedType: const FullType.nullable(String),
-          ) as String?;
-          if (valueDes == null) continue;
-          result.nextCursor = valueDes;
-          break;
-        case r'has_more':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(bool),
-          ) as bool;
-          result.hasMore = valueDes;
+            specifiedType: const FullType(Pagination),
+          ) as Pagination;
+          result.pagination.replace(valueDes);
           break;
         default:
           unhandled.add(key);
@@ -165,12 +144,12 @@ class _$JobListResponseSerializer implements PrimitiveSerializer<JobListResponse
   }
 
   @override
-  JobListResponse deserialize(
+  SuppressionAuditResponse deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = JobListResponseBuilder();
+    final result = SuppressionAuditResponseBuilder();
     final serializedList = (serialized as Iterable<Object?>).toList();
     final unhandled = <Object?>[];
     _deserializeProperties(

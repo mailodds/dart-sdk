@@ -3,7 +3,7 @@
 #
 
 name: 'mailodds'
-version: '1.0.0'
+version: '2.0.0'
 description: 'MailOdds SDK for Dart'
 homepage: 'https://mailodds.com'
 environment:

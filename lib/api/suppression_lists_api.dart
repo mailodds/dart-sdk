@@ -128,6 +128,73 @@ class SuppressionListsApi {
     return null;
   }
 
+  /// Get suppression audit log
+  ///
+  /// Get a chronological log of suppression list changes (additions, removals).
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] limit:
+  Future<Response> getSuppressionAuditLogWithHttpInfo({ int? page, int? limit, }) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/suppression/audit';
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (page != null) {
+      queryParams.addAll(_queryParams('', 'page', page));
+    }
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
+    }
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get suppression audit log
+  ///
+  /// Get a chronological log of suppression list changes (additions, removals).
+  ///
+  /// Parameters:
+  ///
+  /// * [int] page:
+  ///
+  /// * [int] limit:
+  Future<SuppressionAuditResponse?> getSuppressionAuditLog({ int? page, int? limit, }) async {
+    final response = await getSuppressionAuditLogWithHttpInfo( page: page, limit: limit, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'SuppressionAuditResponse',) as SuppressionAuditResponse;
+    
+    }
+    return null;
+  }
+
   /// Get suppression statistics
   ///
   /// Get statistics about the suppression list.
@@ -191,7 +258,10 @@ class SuppressionListsApi {
   /// * [String] type:
   ///
   /// * [String] search:
-  Future<Response> listSuppressionWithHttpInfo({ int? page, int? perPage, String? type, String? search, }) async {
+  ///
+  /// * [String] source_:
+  ///   Filter by entry source (e.g. api, bounce, complaint)
+  Future<Response> listSuppressionWithHttpInfo({ int? page, int? perPage, String? type, String? search, String? source_, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/suppression';
 
@@ -213,6 +283,9 @@ class SuppressionListsApi {
     }
     if (search != null) {
       queryParams.addAll(_queryParams('', 'search', search));
+    }
+    if (source_ != null) {
+      queryParams.addAll(_queryParams('', 'source', source_));
     }
 
     const contentTypes = <String>[];
@@ -242,8 +315,11 @@ class SuppressionListsApi {
   /// * [String] type:
   ///
   /// * [String] search:
-  Future<SuppressionListResponse?> listSuppression({ int? page, int? perPage, String? type, String? search, }) async {
-    final response = await listSuppressionWithHttpInfo( page: page, perPage: perPage, type: type, search: search, );
+  ///
+  /// * [String] source_:
+  ///   Filter by entry source (e.g. api, bounce, complaint)
+  Future<SuppressionListResponse?> listSuppression({ int? page, int? perPage, String? type, String? search, String? source_, }) async {
+    final response = await listSuppressionWithHttpInfo( page: page, perPage: perPage, type: type, search: search, source_: source_, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

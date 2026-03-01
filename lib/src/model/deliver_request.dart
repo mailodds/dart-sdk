@@ -27,6 +27,9 @@ part 'deliver_request.g.dart';
 /// * [tags] - Tags for categorization
 /// * [campaignType] - Campaign type for JSON-LD auto-generation
 /// * [structuredData] 
+/// * [schemaData] - Key-value pairs for campaign_type JSON-LD resolution (e.g., order_number, tracking_url)
+/// * [autoDetectSchema] - Auto-detect JSON-LD structured data type from subject line
+/// * [aiSummary] - Hidden text summary for AI email assistants (max 500 characters)
 /// * [options] 
 @BuiltValue()
 abstract class DeliverRequest implements Built<DeliverRequest, DeliverRequestBuilder> {
@@ -74,6 +77,18 @@ abstract class DeliverRequest implements Built<DeliverRequest, DeliverRequestBui
   @BuiltValueField(wireName: r'structured_data')
   DeliverRequestStructuredData? get structuredData;
 
+  /// Key-value pairs for campaign_type JSON-LD resolution (e.g., order_number, tracking_url)
+  @BuiltValueField(wireName: r'schema_data')
+  BuiltMap<String, String>? get schemaData;
+
+  /// Auto-detect JSON-LD structured data type from subject line
+  @BuiltValueField(wireName: r'auto_detect_schema')
+  bool? get autoDetectSchema;
+
+  /// Hidden text summary for AI email assistants (max 500 characters)
+  @BuiltValueField(wireName: r'ai_summary')
+  String? get aiSummary;
+
   @BuiltValueField(wireName: r'options')
   DeliverRequestOptions? get options;
 
@@ -82,7 +97,8 @@ abstract class DeliverRequest implements Built<DeliverRequest, DeliverRequestBui
   factory DeliverRequest([void updates(DeliverRequestBuilder b)]) = _$DeliverRequest;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(DeliverRequestBuilder b) => b;
+  static void _defaults(DeliverRequestBuilder b) => b
+      ..autoDetectSchema = false;
 
   @BuiltValueSerializer(custom: true)
   static Serializer<DeliverRequest> get serializer => _$DeliverRequestSerializer();
@@ -167,6 +183,27 @@ class _$DeliverRequestSerializer implements PrimitiveSerializer<DeliverRequest> 
       yield serializers.serialize(
         object.structuredData,
         specifiedType: const FullType(DeliverRequestStructuredData),
+      );
+    }
+    if (object.schemaData != null) {
+      yield r'schema_data';
+      yield serializers.serialize(
+        object.schemaData,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+      );
+    }
+    if (object.autoDetectSchema != null) {
+      yield r'auto_detect_schema';
+      yield serializers.serialize(
+        object.autoDetectSchema,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.aiSummary != null) {
+      yield r'ai_summary';
+      yield serializers.serialize(
+        object.aiSummary,
+        specifiedType: const FullType(String),
       );
     }
     if (object.options != null) {
@@ -275,6 +312,27 @@ class _$DeliverRequestSerializer implements PrimitiveSerializer<DeliverRequest> 
             specifiedType: const FullType(DeliverRequestStructuredData),
           ) as DeliverRequestStructuredData;
           result.structuredData.replace(valueDes);
+          break;
+        case r'schema_data':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType(String)]),
+          ) as BuiltMap<String, String>;
+          result.schemaData.replace(valueDes);
+          break;
+        case r'auto_detect_schema':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.autoDetectSchema = valueDes;
+          break;
+        case r'ai_summary':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.aiSummary = valueDes;
           break;
         case r'options':
           final valueDes = serializers.deserialize(

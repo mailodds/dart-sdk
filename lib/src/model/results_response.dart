@@ -6,6 +6,7 @@
 import 'package:mailodds/src/model/validation_result.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:mailodds/src/model/pagination.dart';
+import 'package:mailodds/src/model/job.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -16,7 +17,8 @@ part 'results_response.g.dart';
 /// Properties:
 /// * [schemaVersion] 
 /// * [requestId] - Unique request identifier
-/// * [results] 
+/// * [job] 
+/// * [data] - Validation results for this page
 /// * [pagination] 
 @BuiltValue()
 abstract class ResultsResponse implements Built<ResultsResponse, ResultsResponseBuilder> {
@@ -27,8 +29,12 @@ abstract class ResultsResponse implements Built<ResultsResponse, ResultsResponse
   @BuiltValueField(wireName: r'request_id')
   String? get requestId;
 
-  @BuiltValueField(wireName: r'results')
-  BuiltList<ValidationResult>? get results;
+  @BuiltValueField(wireName: r'job')
+  Job? get job;
+
+  /// Validation results for this page
+  @BuiltValueField(wireName: r'data')
+  BuiltList<ValidationResult>? get data;
 
   @BuiltValueField(wireName: r'pagination')
   Pagination? get pagination;
@@ -70,10 +76,17 @@ class _$ResultsResponseSerializer implements PrimitiveSerializer<ResultsResponse
         specifiedType: const FullType(String),
       );
     }
-    if (object.results != null) {
-      yield r'results';
+    if (object.job != null) {
+      yield r'job';
       yield serializers.serialize(
-        object.results,
+        object.job,
+        specifiedType: const FullType(Job),
+      );
+    }
+    if (object.data != null) {
+      yield r'data';
+      yield serializers.serialize(
+        object.data,
         specifiedType: const FullType(BuiltList, [FullType(ValidationResult)]),
       );
     }
@@ -121,12 +134,19 @@ class _$ResultsResponseSerializer implements PrimitiveSerializer<ResultsResponse
           ) as String;
           result.requestId = valueDes;
           break;
-        case r'results':
+        case r'job':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(Job),
+          ) as Job;
+          result.job.replace(valueDes);
+          break;
+        case r'data':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(BuiltList, [FullType(ValidationResult)]),
           ) as BuiltList<ValidationResult>;
-          result.results.replace(valueDes);
+          result.data.replace(valueDes);
           break;
         case r'pagination':
           final valueDes = serializers.deserialize(

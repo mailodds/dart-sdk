@@ -4,37 +4,59 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:mailodds/src/model/validation_result_suppression.dart';
+import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'validation_result.g.dart';
 
-/// ValidationResult
+/// Individual result from a bulk validation job
 ///
 /// Properties:
 /// * [email] 
 /// * [status] 
-/// * [subStatus] 
+/// * [subStatus] - Detailed reason. Omitted when none.
 /// * [action] 
+/// * [domain] - Email domain
+/// * [mxHost] - Primary MX hostname. Omitted when not resolved.
+/// * [checks] - Detailed check results (JSONB). Omitted when not available.
+/// * [suppression] 
 /// * [processedAt] 
 @BuiltValue()
 abstract class ValidationResult implements Built<ValidationResult, ValidationResultBuilder> {
   @BuiltValueField(wireName: r'email')
-  String? get email;
+  String get email;
 
   @BuiltValueField(wireName: r'status')
-  ValidationResultStatusEnum? get status;
+  ValidationResultStatusEnum get status;
   // enum statusEnum {  valid,  invalid,  catch_all,  do_not_mail,  unknown,  };
 
+  /// Detailed reason. Omitted when none.
   @BuiltValueField(wireName: r'sub_status')
   String? get subStatus;
 
   @BuiltValueField(wireName: r'action')
-  ValidationResultActionEnum? get action;
+  ValidationResultActionEnum get action;
   // enum actionEnum {  accept,  accept_with_caution,  reject,  retry_later,  };
 
+  /// Email domain
+  @BuiltValueField(wireName: r'domain')
+  String get domain;
+
+  /// Primary MX hostname. Omitted when not resolved.
+  @BuiltValueField(wireName: r'mx_host')
+  String? get mxHost;
+
+  /// Detailed check results (JSONB). Omitted when not available.
+  @BuiltValueField(wireName: r'checks')
+  BuiltMap<String, JsonObject?>? get checks;
+
+  @BuiltValueField(wireName: r'suppression')
+  ValidationResultSuppression? get suppression;
+
   @BuiltValueField(wireName: r'processed_at')
-  DateTime? get processedAt;
+  DateTime get processedAt;
 
   ValidationResult._();
 
@@ -59,20 +81,16 @@ class _$ValidationResultSerializer implements PrimitiveSerializer<ValidationResu
     ValidationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.email != null) {
-      yield r'email';
-      yield serializers.serialize(
-        object.email,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(ValidationResultStatusEnum),
-      );
-    }
+    yield r'email';
+    yield serializers.serialize(
+      object.email,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(ValidationResultStatusEnum),
+    );
     if (object.subStatus != null) {
       yield r'sub_status';
       yield serializers.serialize(
@@ -80,20 +98,42 @@ class _$ValidationResultSerializer implements PrimitiveSerializer<ValidationResu
         specifiedType: const FullType(String),
       );
     }
-    if (object.action != null) {
-      yield r'action';
+    yield r'action';
+    yield serializers.serialize(
+      object.action,
+      specifiedType: const FullType(ValidationResultActionEnum),
+    );
+    yield r'domain';
+    yield serializers.serialize(
+      object.domain,
+      specifiedType: const FullType(String),
+    );
+    if (object.mxHost != null) {
+      yield r'mx_host';
       yield serializers.serialize(
-        object.action,
-        specifiedType: const FullType(ValidationResultActionEnum),
+        object.mxHost,
+        specifiedType: const FullType(String),
       );
     }
-    if (object.processedAt != null) {
-      yield r'processed_at';
+    if (object.checks != null) {
+      yield r'checks';
       yield serializers.serialize(
-        object.processedAt,
-        specifiedType: const FullType(DateTime),
+        object.checks,
+        specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
       );
     }
+    if (object.suppression != null) {
+      yield r'suppression';
+      yield serializers.serialize(
+        object.suppression,
+        specifiedType: const FullType(ValidationResultSuppression),
+      );
+    }
+    yield r'processed_at';
+    yield serializers.serialize(
+      object.processedAt,
+      specifiedType: const FullType(DateTime),
+    );
   }
 
   @override
@@ -144,6 +184,34 @@ class _$ValidationResultSerializer implements PrimitiveSerializer<ValidationResu
             specifiedType: const FullType(ValidationResultActionEnum),
           ) as ValidationResultActionEnum;
           result.action = valueDes;
+          break;
+        case r'domain':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.domain = valueDes;
+          break;
+        case r'mx_host':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.mxHost = valueDes;
+          break;
+        case r'checks':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(BuiltMap, [FullType(String), FullType.nullable(JsonObject)]),
+          ) as BuiltMap<String, JsonObject?>;
+          result.checks.replace(valueDes);
+          break;
+        case r'suppression':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(ValidationResultSuppression),
+          ) as ValidationResultSuppression;
+          result.suppression.replace(valueDes);
           break;
         case r'processed_at':
           final valueDes = serializers.deserialize(

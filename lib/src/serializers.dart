@@ -50,7 +50,9 @@ import 'package:mailodds/src/model/get_sending_stats200_response.dart';
 import 'package:mailodds/src/model/get_sending_stats200_response_stats.dart';
 import 'package:mailodds/src/model/get_subscribers200_response.dart';
 import 'package:mailodds/src/model/health_check200_response.dart';
+import 'package:mailodds/src/model/identity_score_check.dart';
 import 'package:mailodds/src/model/job.dart';
+import 'package:mailodds/src/model/job_artifacts.dart';
 import 'package:mailodds/src/model/job_list_response.dart';
 import 'package:mailodds/src/model/job_response.dart';
 import 'package:mailodds/src/model/job_summary.dart';
@@ -74,12 +76,12 @@ import 'package:mailodds/src/model/sending_domain.dart';
 import 'package:mailodds/src/model/sending_domain_dns_records.dart';
 import 'package:mailodds/src/model/sending_domain_dns_records_ns.dart';
 import 'package:mailodds/src/model/sending_domain_identity_score.dart';
-import 'package:mailodds/src/model/sending_domain_identity_score_checks.dart';
-import 'package:mailodds/src/model/sending_domain_identity_score_checks_dkim.dart';
-import 'package:mailodds/src/model/sending_domain_identity_score_checks_dmarc.dart';
+import 'package:mailodds/src/model/sending_domain_identity_score_breakdown.dart';
 import 'package:mailodds/src/model/subscribe_request.dart';
 import 'package:mailodds/src/model/subscriber.dart';
 import 'package:mailodds/src/model/subscriber_list.dart';
+import 'package:mailodds/src/model/suppression_audit_response.dart';
+import 'package:mailodds/src/model/suppression_audit_response_entries_inner.dart';
 import 'package:mailodds/src/model/suppression_check_response.dart';
 import 'package:mailodds/src/model/suppression_entry.dart';
 import 'package:mailodds/src/model/suppression_list_response.dart';
@@ -102,6 +104,8 @@ import 'package:mailodds/src/model/validation_response.dart';
 import 'package:mailodds/src/model/validation_response_policy_applied.dart';
 import 'package:mailodds/src/model/validation_response_suppression_match.dart';
 import 'package:mailodds/src/model/validation_result.dart';
+import 'package:mailodds/src/model/validation_result_suppression.dart';
+import 'package:mailodds/src/model/webhook_event.dart';
 
 part 'serializers.g.dart';
 
@@ -142,7 +146,9 @@ part 'serializers.g.dart';
   GetSendingStats200ResponseStats,
   GetSubscribers200Response,
   HealthCheck200Response,
+  IdentityScoreCheck,
   Job,
+  JobArtifacts,
   JobListResponse,
   JobResponse,
   JobSummary,
@@ -166,12 +172,12 @@ part 'serializers.g.dart';
   SendingDomainDnsRecords,
   SendingDomainDnsRecordsNs,
   SendingDomainIdentityScore,
-  SendingDomainIdentityScoreChecks,
-  SendingDomainIdentityScoreChecksDkim,
-  SendingDomainIdentityScoreChecksDmarc,
+  SendingDomainIdentityScoreBreakdown,
   SubscribeRequest,
   Subscriber,
   SubscriberList,
+  SuppressionAuditResponse,
+  SuppressionAuditResponseEntriesInner,
   SuppressionCheckResponse,
   SuppressionEntry,
   SuppressionListResponse,
@@ -194,6 +200,8 @@ part 'serializers.g.dart';
   ValidationResponsePolicyApplied,
   ValidationResponseSuppressionMatch,
   ValidationResult,
+  ValidationResultSuppression,
+  WebhookEvent,
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..add(const OneOfSerializer())

@@ -30,7 +30,7 @@ part 'validation_response.g.dart';
 /// * [freeProvider] - Whether domain is a known free email provider (e.g., gmail.com)
 /// * [depth] - Validation depth used for this check
 /// * [processedAt] - ISO 8601 timestamp of validation
-/// * [suggestedEmail] - Typo correction suggestion. Omitted when no typo detected.
+/// * [suggestedEmail] - Domain typo correction suggestion based on a static lookup table of common misspellings (e.g. gmial.com -> gmail.com). Not validated via SMTP. Omitted when no match found.
 /// * [retryAfterMs] - Suggested retry delay in milliseconds. Present only for retry_later action.
 /// * [hasSpf] - Whether the domain has an SPF record. Omitted for standard depth.
 /// * [hasDmarc] - Whether the domain has a DMARC record. Omitted for standard depth.
@@ -105,7 +105,7 @@ abstract class ValidationResponse implements Built<ValidationResponse, Validatio
   @BuiltValueField(wireName: r'processed_at')
   DateTime get processedAt;
 
-  /// Typo correction suggestion. Omitted when no typo detected.
+  /// Domain typo correction suggestion based on a static lookup table of common misspellings (e.g. gmial.com -> gmail.com). Not validated via SMTP. Omitted when no match found.
   @BuiltValueField(wireName: r'suggested_email')
   String? get suggestedEmail;
 

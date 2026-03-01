@@ -4,6 +4,7 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
+import 'package:mailodds/src/model/job_artifacts.dart';
 import 'package:mailodds/src/model/job_summary.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -15,43 +16,70 @@ part 'job.g.dart';
 ///
 /// Properties:
 /// * [id] 
+/// * [name] - Job name (from metadata or auto-generated)
 /// * [status] 
 /// * [totalCount] 
 /// * [processedCount] 
-/// * [progressPercent] 
 /// * [summary] 
 /// * [createdAt] 
-/// * [completedAt] 
-/// * [metadata] 
+/// * [startedAt] - When processing began. Omitted if not yet started.
+/// * [completedAt] - Omitted if not yet completed.
+/// * [resultsExpireAt] - When job results will be purged
+/// * [metadata] - Custom metadata attached at creation
+/// * [errorMessage] - Error details. Present only for failed jobs.
+/// * [requestId] - Request ID from the job creation request
+/// * [artifacts] 
 @BuiltValue()
 abstract class Job implements Built<Job, JobBuilder> {
   @BuiltValueField(wireName: r'id')
-  String? get id;
+  String get id;
+
+  /// Job name (from metadata or auto-generated)
+  @BuiltValueField(wireName: r'name')
+  String get name;
 
   @BuiltValueField(wireName: r'status')
-  JobStatusEnum? get status;
+  JobStatusEnum get status;
   // enum statusEnum {  pending,  processing,  completed,  failed,  cancelled,  };
 
   @BuiltValueField(wireName: r'total_count')
-  int? get totalCount;
+  int get totalCount;
 
   @BuiltValueField(wireName: r'processed_count')
-  int? get processedCount;
-
-  @BuiltValueField(wireName: r'progress_percent')
-  int? get progressPercent;
+  int get processedCount;
 
   @BuiltValueField(wireName: r'summary')
   JobSummary? get summary;
 
   @BuiltValueField(wireName: r'created_at')
-  DateTime? get createdAt;
+  DateTime get createdAt;
 
+  /// When processing began. Omitted if not yet started.
+  @BuiltValueField(wireName: r'started_at')
+  DateTime? get startedAt;
+
+  /// Omitted if not yet completed.
   @BuiltValueField(wireName: r'completed_at')
   DateTime? get completedAt;
 
+  /// When job results will be purged
+  @BuiltValueField(wireName: r'results_expire_at')
+  DateTime get resultsExpireAt;
+
+  /// Custom metadata attached at creation
   @BuiltValueField(wireName: r'metadata')
   JsonObject? get metadata;
+
+  /// Error details. Present only for failed jobs.
+  @BuiltValueField(wireName: r'error_message')
+  String? get errorMessage;
+
+  /// Request ID from the job creation request
+  @BuiltValueField(wireName: r'request_id')
+  String? get requestId;
+
+  @BuiltValueField(wireName: r'artifacts')
+  JobArtifacts? get artifacts;
 
   Job._();
 
@@ -76,41 +104,31 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
     Job object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
-    if (object.id != null) {
-      yield r'id';
-      yield serializers.serialize(
-        object.id,
-        specifiedType: const FullType(String),
-      );
-    }
-    if (object.status != null) {
-      yield r'status';
-      yield serializers.serialize(
-        object.status,
-        specifiedType: const FullType(JobStatusEnum),
-      );
-    }
-    if (object.totalCount != null) {
-      yield r'total_count';
-      yield serializers.serialize(
-        object.totalCount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.processedCount != null) {
-      yield r'processed_count';
-      yield serializers.serialize(
-        object.processedCount,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.progressPercent != null) {
-      yield r'progress_percent';
-      yield serializers.serialize(
-        object.progressPercent,
-        specifiedType: const FullType(int),
-      );
-    }
+    yield r'id';
+    yield serializers.serialize(
+      object.id,
+      specifiedType: const FullType(String),
+    );
+    yield r'name';
+    yield serializers.serialize(
+      object.name,
+      specifiedType: const FullType(String),
+    );
+    yield r'status';
+    yield serializers.serialize(
+      object.status,
+      specifiedType: const FullType(JobStatusEnum),
+    );
+    yield r'total_count';
+    yield serializers.serialize(
+      object.totalCount,
+      specifiedType: const FullType(int),
+    );
+    yield r'processed_count';
+    yield serializers.serialize(
+      object.processedCount,
+      specifiedType: const FullType(int),
+    );
     if (object.summary != null) {
       yield r'summary';
       yield serializers.serialize(
@@ -118,10 +136,15 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
         specifiedType: const FullType(JobSummary),
       );
     }
-    if (object.createdAt != null) {
-      yield r'created_at';
+    yield r'created_at';
+    yield serializers.serialize(
+      object.createdAt,
+      specifiedType: const FullType(DateTime),
+    );
+    if (object.startedAt != null) {
+      yield r'started_at';
       yield serializers.serialize(
-        object.createdAt,
+        object.startedAt,
         specifiedType: const FullType(DateTime),
       );
     }
@@ -132,11 +155,37 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
         specifiedType: const FullType(DateTime),
       );
     }
+    yield r'results_expire_at';
+    yield serializers.serialize(
+      object.resultsExpireAt,
+      specifiedType: const FullType(DateTime),
+    );
     if (object.metadata != null) {
       yield r'metadata';
       yield serializers.serialize(
         object.metadata,
         specifiedType: const FullType(JsonObject),
+      );
+    }
+    if (object.errorMessage != null) {
+      yield r'error_message';
+      yield serializers.serialize(
+        object.errorMessage,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.requestId != null) {
+      yield r'request_id';
+      yield serializers.serialize(
+        object.requestId,
+        specifiedType: const FullType(String),
+      );
+    }
+    if (object.artifacts != null) {
+      yield r'artifacts';
+      yield serializers.serialize(
+        object.artifacts,
+        specifiedType: const FullType(JobArtifacts),
       );
     }
   }
@@ -169,6 +218,13 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
           ) as String;
           result.id = valueDes;
           break;
+        case r'name':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.name = valueDes;
+          break;
         case r'status':
           final valueDes = serializers.deserialize(
             value,
@@ -190,13 +246,6 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
           ) as int;
           result.processedCount = valueDes;
           break;
-        case r'progress_percent':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.progressPercent = valueDes;
-          break;
         case r'summary':
           final valueDes = serializers.deserialize(
             value,
@@ -211,6 +260,13 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
           ) as DateTime;
           result.createdAt = valueDes;
           break;
+        case r'started_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.startedAt = valueDes;
+          break;
         case r'completed_at':
           final valueDes = serializers.deserialize(
             value,
@@ -218,12 +274,40 @@ class _$JobSerializer implements PrimitiveSerializer<Job> {
           ) as DateTime;
           result.completedAt = valueDes;
           break;
+        case r'results_expire_at':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime;
+          result.resultsExpireAt = valueDes;
+          break;
         case r'metadata':
           final valueDes = serializers.deserialize(
             value,
             specifiedType: const FullType(JsonObject),
           ) as JsonObject;
           result.metadata = valueDes;
+          break;
+        case r'error_message':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.errorMessage = valueDes;
+          break;
+        case r'request_id':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.requestId = valueDes;
+          break;
+        case r'artifacts':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(JobArtifacts),
+          ) as JobArtifacts;
+          result.artifacts.replace(valueDes);
           break;
         default:
           unhandled.add(key);

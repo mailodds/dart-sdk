@@ -73,7 +73,9 @@ part 'model/get_sending_stats200_response.dart';
 part 'model/get_sending_stats200_response_stats.dart';
 part 'model/get_subscribers200_response.dart';
 part 'model/health_check200_response.dart';
+part 'model/identity_score_check.dart';
 part 'model/job.dart';
+part 'model/job_artifacts.dart';
 part 'model/job_list_response.dart';
 part 'model/job_response.dart';
 part 'model/job_summary.dart';
@@ -97,12 +99,12 @@ part 'model/sending_domain.dart';
 part 'model/sending_domain_dns_records.dart';
 part 'model/sending_domain_dns_records_ns.dart';
 part 'model/sending_domain_identity_score.dart';
-part 'model/sending_domain_identity_score_checks.dart';
-part 'model/sending_domain_identity_score_checks_dkim.dart';
-part 'model/sending_domain_identity_score_checks_dmarc.dart';
+part 'model/sending_domain_identity_score_breakdown.dart';
 part 'model/subscribe_request.dart';
 part 'model/subscriber.dart';
 part 'model/subscriber_list.dart';
+part 'model/suppression_audit_response.dart';
+part 'model/suppression_audit_response_entries_inner.dart';
 part 'model/suppression_check_response.dart';
 part 'model/suppression_entry.dart';
 part 'model/suppression_list_response.dart';
@@ -125,6 +127,8 @@ part 'model/validation_response.dart';
 part 'model/validation_response_policy_applied.dart';
 part 'model/validation_response_suppression_match.dart';
 part 'model/validation_result.dart';
+part 'model/validation_result_suppression.dart';
+part 'model/webhook_event.dart';
 
 
 /// An [ApiClient] instance that uses the default values obtained from

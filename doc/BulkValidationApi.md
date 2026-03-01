@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **listJobs**
-> JobListResponse listJobs(page, perPage, status)
+> JobListResponse listJobs(cursor, limit, status)
 
 List validation jobs
 
@@ -388,12 +388,12 @@ List all validation jobs for the authenticated account.
 import 'package:mailodds/api.dart';
 
 final api = Mailodds().getBulkValidationApi();
-final int page = 56; // int | 
-final int perPage = 56; // int | 
+final String cursor = cursor_example; // String | Pagination cursor (ISO timestamp from previous response)
+final int limit = 56; // int | Results per page
 final String status = status_example; // String | 
 
 try {
-    final response = api.listJobs(page, perPage, status);
+    final response = api.listJobs(cursor, limit, status);
     print(response);
 } on DioException catch (e) {
     print('Exception when calling BulkValidationApi->listJobs: $e\n');
@@ -404,8 +404,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**|  | [optional] [default to 1]
- **perPage** | **int**|  | [optional] [default to 20]
+ **cursor** | **String**| Pagination cursor (ISO timestamp from previous response) | [optional] 
+ **limit** | **int**| Results per page | [optional] [default to 50]
  **status** | **String**|  | [optional] 
 
 ### Return type

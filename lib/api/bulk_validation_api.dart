@@ -537,12 +537,14 @@ class BulkValidationApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page:
+  /// * [String] cursor:
+  ///   Pagination cursor (ISO timestamp from previous response)
   ///
-  /// * [int] perPage:
+  /// * [int] limit:
+  ///   Results per page
   ///
   /// * [String] status:
-  Future<Response> listJobsWithHttpInfo({ int? page, int? perPage, String? status, }) async {
+  Future<Response> listJobsWithHttpInfo({ String? cursor, int? limit, String? status, }) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/jobs';
 
@@ -553,11 +555,11 @@ class BulkValidationApi {
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    if (page != null) {
-      queryParams.addAll(_queryParams('', 'page', page));
+    if (cursor != null) {
+      queryParams.addAll(_queryParams('', 'cursor', cursor));
     }
-    if (perPage != null) {
-      queryParams.addAll(_queryParams('', 'per_page', perPage));
+    if (limit != null) {
+      queryParams.addAll(_queryParams('', 'limit', limit));
     }
     if (status != null) {
       queryParams.addAll(_queryParams('', 'status', status));
@@ -583,13 +585,15 @@ class BulkValidationApi {
   ///
   /// Parameters:
   ///
-  /// * [int] page:
+  /// * [String] cursor:
+  ///   Pagination cursor (ISO timestamp from previous response)
   ///
-  /// * [int] perPage:
+  /// * [int] limit:
+  ///   Results per page
   ///
   /// * [String] status:
-  Future<JobListResponse?> listJobs({ int? page, int? perPage, String? status, }) async {
-    final response = await listJobsWithHttpInfo( page: page, perPage: perPage, status: status, );
+  Future<JobListResponse?> listJobs({ String? cursor, int? limit, String? status, }) async {
+    final response = await listJobsWithHttpInfo( cursor: cursor, limit: limit, status: status, );
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

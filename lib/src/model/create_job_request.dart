@@ -16,7 +16,7 @@ part 'create_job_request.g.dart';
 /// * [emails] - List of emails to validate
 /// * [dedup] - Remove duplicate emails
 /// * [metadata] - Custom metadata for the job
-/// * [webhookUrl] - URL for completion webhook
+/// * [webhookUrl] - URL for completion webhook. Payloads are signed with HMAC-SHA256 if a webhook secret is configured (see Webhooks section).
 /// * [idempotencyKey] - Unique key for idempotent requests
 @BuiltValue()
 abstract class CreateJobRequest implements Built<CreateJobRequest, CreateJobRequestBuilder> {
@@ -32,7 +32,7 @@ abstract class CreateJobRequest implements Built<CreateJobRequest, CreateJobRequ
   @BuiltValueField(wireName: r'metadata')
   JsonObject? get metadata;
 
-  /// URL for completion webhook
+  /// URL for completion webhook. Payloads are signed with HMAC-SHA256 if a webhook secret is configured (see Webhooks section).
   @BuiltValueField(wireName: r'webhook_url')
   String? get webhookUrl;
 

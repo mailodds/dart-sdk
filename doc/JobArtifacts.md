@@ -1,4 +1,4 @@
-# mailodds.model.JobSummary
+# mailodds.model.JobArtifacts
 
 ## Load the model package
 ```dart
@@ -8,11 +8,9 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**valid** | **int** |  | [optional] 
-**invalid** | **int** |  | [optional] 
-**catchAll** | **int** |  | [optional] 
-**doNotMail** | **int** |  | [optional] 
-**unknown** | **int** |  | [optional] 
+**csvAll** | **String** | CSV with all results | [optional] 
+**csvValid** | **String** | CSV with valid emails only | [optional] 
+**csvInvalid** | **String** | CSV with invalid emails only | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

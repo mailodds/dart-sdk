@@ -782,8 +782,8 @@ class BulkValidationApi {
   /// List all validation jobs for the authenticated account.
   ///
   /// Parameters:
-  /// * [page] 
-  /// * [perPage] 
+  /// * [cursor] - Pagination cursor (ISO timestamp from previous response)
+  /// * [limit] - Results per page
   /// * [status] 
   /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
   /// * [headers] - Can be used to add additional headers to the request
@@ -795,8 +795,8 @@ class BulkValidationApi {
   /// Returns a [Future] containing a [Response] with a [JobListResponse] as data
   /// Throws [DioException] if API call or serialization fails
   Future<Response<JobListResponse>> listJobs({ 
-    int? page = 1,
-    int? perPage = 20,
+    String? cursor,
+    int? limit = 50,
     String? status,
     CancelToken? cancelToken,
     Map<String, dynamic>? headers,
@@ -825,8 +825,8 @@ class BulkValidationApi {
     );
 
     final _queryParameters = <String, dynamic>{
-      if (page != null) r'page': encodeQueryParameter(_serializers, page, const FullType(int)),
-      if (perPage != null) r'per_page': encodeQueryParameter(_serializers, perPage, const FullType(int)),
+      if (cursor != null) r'cursor': encodeQueryParameter(_serializers, cursor, const FullType(String)),
+      if (limit != null) r'limit': encodeQueryParameter(_serializers, limit, const FullType(int)),
       if (status != null) r'status': encodeQueryParameter(_serializers, status, const FullType(String)),
     };
 

@@ -8,7 +8,7 @@ import 'package:built_value/serializer.dart';
 
 part 'job_summary.g.dart';
 
-/// JobSummary
+/// Status breakdown. Present when processing has started.
 ///
 /// Properties:
 /// * [valid] 
@@ -16,7 +16,6 @@ part 'job_summary.g.dart';
 /// * [catchAll] 
 /// * [doNotMail] 
 /// * [unknown] 
-/// * [cancelledPending] 
 @BuiltValue()
 abstract class JobSummary implements Built<JobSummary, JobSummaryBuilder> {
   @BuiltValueField(wireName: r'valid')
@@ -33,9 +32,6 @@ abstract class JobSummary implements Built<JobSummary, JobSummaryBuilder> {
 
   @BuiltValueField(wireName: r'unknown')
   int? get unknown;
-
-  @BuiltValueField(wireName: r'cancelled_pending')
-  int? get cancelledPending;
 
   JobSummary._();
 
@@ -92,13 +88,6 @@ class _$JobSummarySerializer implements PrimitiveSerializer<JobSummary> {
       yield r'unknown';
       yield serializers.serialize(
         object.unknown,
-        specifiedType: const FullType(int),
-      );
-    }
-    if (object.cancelledPending != null) {
-      yield r'cancelled_pending';
-      yield serializers.serialize(
-        object.cancelledPending,
         specifiedType: const FullType(int),
       );
     }
@@ -159,13 +148,6 @@ class _$JobSummarySerializer implements PrimitiveSerializer<JobSummary> {
             specifiedType: const FullType(int),
           ) as int;
           result.unknown = valueDes;
-          break;
-        case r'cancelled_pending':
-          final valueDes = serializers.deserialize(
-            value,
-            specifiedType: const FullType(int),
-          ) as int;
-          result.cancelledPending = valueDes;
           break;
         default:
           unhandled.add(key);

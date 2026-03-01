@@ -19,6 +19,9 @@ Name | Type | Description | Notes
 **tags** | **BuiltList&lt;String&gt;** | Tags for categorization | [optional] 
 **campaignType** | **String** | Campaign type for JSON-LD auto-generation | [optional] 
 **structuredData** | [**DeliverRequestStructuredData**](DeliverRequestStructuredData.md) |  | [optional] 
+**schemaData** | **BuiltMap&lt;String, String&gt;** | Key-value pairs for campaign_type JSON-LD resolution (e.g., order_number, tracking_url) | [optional] 
+**autoDetectSchema** | **bool** | Auto-detect JSON-LD structured data type from subject line | [optional] [default to false]
+**aiSummary** | **String** | Hidden text summary for AI email assistants (max 500 characters) | [optional] 
 **options** | [**DeliverRequestOptions**](DeliverRequestOptions.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
