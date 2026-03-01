@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **startedAt** | [**DateTime**](DateTime.md) | When processing began. Omitted if not yet started. | [optional] 
 **completedAt** | [**DateTime**](DateTime.md) | Omitted if not yet completed. | [optional] 
 **resultsExpireAt** | [**DateTime**](DateTime.md) | When job results will be purged | 
-**metadata** | [**JsonObject**](.md) | Custom metadata attached at creation | [optional] 
+**metadata** | [**Object**](.md) | Custom metadata attached at creation | [optional] 
 **errorMessage** | **String** | Error details. Present only for failed jobs. | [optional] 
 **requestId** | **String** | Request ID from the job creation request | [optional] 
 **artifacts** | [**JobArtifacts**](JobArtifacts.md) |  | [optional] 

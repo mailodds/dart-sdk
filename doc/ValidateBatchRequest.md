@@ -8,7 +8,7 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | **BuiltList&lt;String&gt;** | List of emails to validate | 
+**emails** | **List<String>** | List of emails to validate | [default to const []]
 **depth** | **String** |  | [optional] [default to 'enhanced']
 **policyId** | **int** | Optional policy ID | [optional] 
 

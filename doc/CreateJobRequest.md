@@ -8,9 +8,9 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emails** | **BuiltList&lt;String&gt;** | List of emails to validate | 
+**emails** | **List<String>** | List of emails to validate | [default to const []]
 **dedup** | **bool** | Remove duplicate emails | [optional] [default to false]
-**metadata** | [**JsonObject**](.md) | Custom metadata for the job | [optional] 
+**metadata** | [**Object**](.md) | Custom metadata for the job | [optional] 
 **webhookUrl** | **String** | URL for completion webhook. Payloads are signed with HMAC-SHA256 if a webhook secret is configured (see Webhooks section). | [optional] 
 **idempotencyKey** | **String** | Unique key for idempotent requests | [optional] 
 

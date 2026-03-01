@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **messageId** | **String** | Unique message identifier | [optional] 
 **status** | **String** | Delivery status | [optional] 
 **delivery** | [**DeliverResponseDelivery**](DeliverResponseDelivery.md) |  | [optional] 
-**validation** | [**JsonObject**](.md) | Pre-send validation results (when validate_first is true) | [optional] 
-**contentScan** | [**JsonObject**](.md) | Content scan results | [optional] 
+**validation** | [**Object**](.md) | Pre-send validation results (when validate_first is true) | [optional] 
+**contentScan** | [**Object**](.md) | Content scan results | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

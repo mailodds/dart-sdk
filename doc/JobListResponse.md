@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | [optional] 
 **requestId** | **String** | Unique request identifier | [optional] 
-**data** | [**BuiltList&lt;Job&gt;**](Job.md) | List of jobs | [optional] 
+**data** | [**List<Job>**](Job.md) | List of jobs | [optional] [default to const []]
 **nextCursor** | **String** | Cursor for next page. Null when no more results. | [optional] 
 **hasMore** | **bool** | Whether more results exist beyond this page | [optional] 
 

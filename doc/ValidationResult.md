@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **action** | **String** |  | 
 **domain** | **String** | Email domain | 
 **mxHost** | **String** | Primary MX hostname. Omitted when not resolved. | [optional] 
-**checks** | [**BuiltMap&lt;String, JsonObject&gt;**](JsonObject.md) | Detailed check results (JSONB). Omitted when not available. | [optional] 
+**checks** | [**Map<String, Object>**](Object.md) | Detailed check results (JSONB). Omitted when not available. | [optional] [default to const {}]
 **suppression** | [**ValidationResultSuppression**](ValidationResultSuppression.md) |  | [optional] 
 **processedAt** | [**DateTime**](DateTime.md) |  | 
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Record type (NS) | [optional] 
 **host** | **String** | NS record host (mo.yourdomain.com) | [optional] 
-**targets** | **BuiltList&lt;String&gt;** | NS target servers | [optional] 
+**targets** | **List<String>** | NS target servers | [optional] [default to const []]
 **status** | **String** | Verification status | [optional] 
 **verifiedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 

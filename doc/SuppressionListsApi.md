@@ -27,14 +27,20 @@ Add emails or domains to the suppression list.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
-final AddSuppressionRequest addSuppressionRequest = ; // AddSuppressionRequest | 
+final api_instance = SuppressionListsApi();
+final addSuppressionRequest = AddSuppressionRequest(); // AddSuppressionRequest | 
 
 try {
-    final response = api.addSuppression(addSuppressionRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.addSuppression(addSuppressionRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->addSuppression: $e\n');
 }
 ```
@@ -70,14 +76,20 @@ Check if an email is suppressed.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
-final CheckSuppressionRequest checkSuppressionRequest = ; // CheckSuppressionRequest | 
+final api_instance = SuppressionListsApi();
+final checkSuppressionRequest = CheckSuppressionRequest(); // CheckSuppressionRequest | 
 
 try {
-    final response = api.checkSuppression(checkSuppressionRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.checkSuppression(checkSuppressionRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->checkSuppression: $e\n');
 }
 ```
@@ -113,15 +125,21 @@ Get a chronological log of suppression list changes (additions, removals).
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
-final int page = 56; // int | 
-final int limit = 56; // int | 
+final api_instance = SuppressionListsApi();
+final page = 56; // int | 
+final limit = 56; // int | 
 
 try {
-    final response = api.getSuppressionAuditLog(page, limit);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSuppressionAuditLog(page, limit);
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->getSuppressionAuditLog: $e\n');
 }
 ```
@@ -158,13 +176,19 @@ Get statistics about the suppression list.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
+final api_instance = SuppressionListsApi();
 
 try {
-    final response = api.getSuppressionStats();
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSuppressionStats();
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->getSuppressionStats: $e\n');
 }
 ```
@@ -197,18 +221,24 @@ List all suppression entries for the account.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
-final int page = 56; // int | 
-final int perPage = 56; // int | 
-final String type = type_example; // String | 
-final String search = search_example; // String | 
-final String source_ = source__example; // String | Filter by entry source (e.g. api, bounce, complaint)
+final api_instance = SuppressionListsApi();
+final page = 56; // int | 
+final perPage = 56; // int | 
+final type = type_example; // String | 
+final search = search_example; // String | 
+final source_ = source__example; // String | Filter by entry source (e.g. api, bounce, complaint)
 
 try {
-    final response = api.listSuppression(page, perPage, type, search, source_);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.listSuppression(page, perPage, type, search, source_);
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->listSuppression: $e\n');
 }
 ```
@@ -248,14 +278,20 @@ Remove emails or domains from the suppression list.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSuppressionListsApi();
-final RemoveSuppressionRequest removeSuppressionRequest = ; // RemoveSuppressionRequest | 
+final api_instance = SuppressionListsApi();
+final removeSuppressionRequest = RemoveSuppressionRequest(); // RemoveSuppressionRequest | 
 
 try {
-    final response = api.removeSuppression(removeSuppressionRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.removeSuppression(removeSuppressionRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SuppressionListsApi->removeSuppression: $e\n');
 }
 ```

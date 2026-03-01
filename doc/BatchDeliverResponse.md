@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **requestId** | **String** | Unique request identifier | [optional] 
 **total** | **int** | Total recipients submitted | [optional] 
 **accepted** | **int** | Number of recipients accepted for delivery | [optional] 
-**rejected** | [**BuiltList&lt;BatchDeliverResponseRejectedInner&gt;**](BatchDeliverResponseRejectedInner.md) | Recipients that were rejected (suppressed or failed validation) | [optional] 
+**rejected** | [**List<BatchDeliverResponseRejectedInner>**](BatchDeliverResponseRejectedInner.md) | Recipients that were rejected (suppressed or failed validation) | [optional] [default to const []]
 **status** | **String** | Batch status | [optional] 
 **delivery** | [**BatchDeliverResponseDelivery**](BatchDeliverResponseDelivery.md) |  | [optional] 
 

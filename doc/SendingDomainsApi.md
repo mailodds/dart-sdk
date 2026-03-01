@@ -28,14 +28,20 @@ Register a new sending domain with NS delegation. After adding, configure DNS re
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final CreateSendingDomainRequest createSendingDomainRequest = ; // CreateSendingDomainRequest | 
+final api_instance = SendingDomainsApi();
+final createSendingDomainRequest = CreateSendingDomainRequest(); // CreateSendingDomainRequest | 
 
 try {
-    final response = api.createSendingDomain(createSendingDomainRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.createSendingDomain(createSendingDomainRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->createSendingDomain: $e\n');
 }
 ```
@@ -71,14 +77,20 @@ Permanently remove a sending domain from the account.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final String domainId = domainId_example; // String | 
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | 
 
 try {
-    final response = api.deleteSendingDomain(domainId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.deleteSendingDomain(domainId);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->deleteSendingDomain: $e\n');
 }
 ```
@@ -114,14 +126,20 @@ Get details of a specific sending domain including DNS verification status.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final String domainId = domainId_example; // String | 
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | 
 
 try {
-    final response = api.getSendingDomain(domainId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSendingDomain(domainId);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->getSendingDomain: $e\n');
 }
 ```
@@ -157,14 +175,20 @@ Get a composite DNS health score for the sending domain, checking DKIM, SPF, DMA
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final String domainId = domainId_example; // String | 
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | 
 
 try {
-    final response = api.getSendingDomainIdentityScore(domainId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSendingDomainIdentityScore(domainId);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->getSendingDomainIdentityScore: $e\n');
 }
 ```
@@ -200,15 +224,21 @@ Get aggregate sending statistics across all domains for the account, including d
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final String period = period_example; // String | Time period
-final String domainId = domainId_example; // String | Filter by domain
+final api_instance = SendingDomainsApi();
+final period = period_example; // String | Time period
+final domainId = domainId_example; // String | Filter by domain
 
 try {
-    final response = api.getSendingStats(period, domainId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSendingStats(period, domainId);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->getSendingStats: $e\n');
 }
 ```
@@ -245,13 +275,19 @@ List all sending domains for the authenticated account.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
+final api_instance = SendingDomainsApi();
 
 try {
-    final response = api.listSendingDomains();
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.listSendingDomains();
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->listSendingDomains: $e\n');
 }
 ```
@@ -284,14 +320,20 @@ Check and verify all DNS records (DKIM, SPF, DMARC, MX, return path) for the sen
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSendingDomainsApi();
-final String domainId = domainId_example; // String | 
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | 
 
 try {
-    final response = api.verifySendingDomain(domainId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.verifySendingDomain(domainId);
+    print(result);
+} catch (e) {
     print('Exception when calling SendingDomainsApi->verifySendingDomain: $e\n');
 }
 ```

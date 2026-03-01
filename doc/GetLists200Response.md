@@ -8,7 +8,7 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lists** | [**BuiltList&lt;SubscriberList&gt;**](SubscriberList.md) |  | [optional] 
+**lists** | [**List<SubscriberList>**](SubscriberList.md) |  | [optional] [default to const []]
 **total** | **int** |  | [optional] 
 **page** | **int** |  | [optional] 
 **perPage** | **int** |  | [optional] 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schemaVersion** | **String** |  | [optional] 
 **requestId** | **String** | Unique request identifier | [optional] 
-**entries** | [**BuiltList&lt;SuppressionAuditResponseEntriesInner&gt;**](SuppressionAuditResponseEntriesInner.md) |  | [optional] 
+**entries** | [**List<SuppressionAuditResponseEntriesInner>**](SuppressionAuditResponseEntriesInner.md) |  | [optional] [default to const []]
 **pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

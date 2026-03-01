@@ -9,7 +9,7 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **url** | **String** |  | [optional] 
-**fields** | [**JsonObject**](.md) |  | [optional] 
+**fields** | [**Object**](.md) |  | [optional] 
 **s3Key** | **String** |  | [optional] 
 **expiresIn** | **int** |  | [optional] 
 

@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **consentTimestamp** | [**DateTime**](DateTime.md) |  | [optional] 
 **confirmedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **unsubscribedAt** | [**DateTime**](DateTime.md) |  | [optional] 
-**validationResult** | [**JsonObject**](.md) | Email validation result | [optional] 
-**metadata** | [**JsonObject**](.md) | Custom metadata | [optional] 
+**validationResult** | [**Object**](.md) | Email validation result | [optional] 
+**metadata** | [**Object**](.md) | Custom metadata | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,14 +23,20 @@ Send a single message to up to 100 recipients. Shares the same message body acro
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getEmailSendingApi();
-final BatchDeliverRequest batchDeliverRequest = ; // BatchDeliverRequest | 
+final api_instance = EmailSendingApi();
+final batchDeliverRequest = BatchDeliverRequest(); // BatchDeliverRequest | 
 
 try {
-    final response = api.deliverBatch(batchDeliverRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.deliverBatch(batchDeliverRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling EmailSendingApi->deliverBatch: $e\n');
 }
 ```
@@ -66,14 +72,20 @@ Send a transactional email through the safety pipeline. Validates recipients, ch
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getEmailSendingApi();
-final DeliverRequest deliverRequest = ; // DeliverRequest | 
+final api_instance = EmailSendingApi();
+final deliverRequest = DeliverRequest(); // DeliverRequest | 
 
 try {
-    final response = api.deliverEmail(deliverRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.deliverEmail(deliverRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling EmailSendingApi->deliverEmail: $e\n');
 }
 ```

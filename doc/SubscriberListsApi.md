@@ -30,13 +30,13 @@ Confirm a pending subscription via the token sent in the confirmation email. No 
 ```dart
 import 'package:mailodds/api.dart';
 
-final api = Mailodds().getSubscriberListsApi();
-final String token = token_example; // String | Confirmation token from email
+final api_instance = SubscriberListsApi();
+final token = token_example; // String | Confirmation token from email
 
 try {
-    final response = api.confirmSubscription(token);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.confirmSubscription(token);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->confirmSubscription: $e\n');
 }
 ```
@@ -72,14 +72,20 @@ Create a new subscriber list. Use lists to organize subscribers and manage doubl
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final CreateListRequest createListRequest = ; // CreateListRequest | 
+final api_instance = SubscriberListsApi();
+final createListRequest = CreateListRequest(); // CreateListRequest | 
 
 try {
-    final response = api.createList(createListRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.createList(createListRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->createList: $e\n');
 }
 ```
@@ -115,14 +121,20 @@ Soft-delete a subscriber list. Existing subscribers are retained but the list is
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final String listId = listId_example; // String | List UUID
+final api_instance = SubscriberListsApi();
+final listId = listId_example; // String | List UUID
 
 try {
-    final response = api.deleteList(listId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.deleteList(listId);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->deleteList: $e\n');
 }
 ```
@@ -158,14 +170,20 @@ Get details of a specific subscriber list including subscriber and confirmed cou
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final String listId = listId_example; // String | List UUID
+final api_instance = SubscriberListsApi();
+final listId = listId_example; // String | List UUID
 
 try {
-    final response = api.getList(listId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getList(listId);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->getList: $e\n');
 }
 ```
@@ -201,15 +219,21 @@ List all subscriber lists for the authenticated account with pagination.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final int page = 56; // int | Page number
-final int perPage = 56; // int | Items per page
+final api_instance = SubscriberListsApi();
+final page = 56; // int | Page number
+final perPage = 56; // int | Items per page
 
 try {
-    final response = api.getLists(page, perPage);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getLists(page, perPage);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->getLists: $e\n');
 }
 ```
@@ -246,17 +270,23 @@ List paginated subscribers for a specific list. Optionally filter by status.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final String listId = listId_example; // String | List UUID
-final int page = 56; // int | Page number
-final int perPage = 56; // int | Items per page
-final String status = status_example; // String | Filter by subscriber status
+final api_instance = SubscriberListsApi();
+final listId = listId_example; // String | List UUID
+final page = 56; // int | Page number
+final perPage = 56; // int | Items per page
+final status = status_example; // String | Filter by subscriber status
 
 try {
-    final response = api.getSubscribers(listId, page, perPage, status);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getSubscribers(listId, page, perPage, status);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->getSubscribers: $e\n');
 }
 ```
@@ -295,15 +325,21 @@ Add a subscriber to a list and initiate the double opt-in confirmation flow. The
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final String listId = listId_example; // String | List UUID
-final SubscribeRequest subscribeRequest = ; // SubscribeRequest | 
+final api_instance = SubscriberListsApi();
+final listId = listId_example; // String | List UUID
+final subscribeRequest = SubscribeRequest(); // SubscribeRequest | 
 
 try {
-    final response = api.subscribe(listId, subscribeRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.subscribe(listId, subscribeRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->subscribe: $e\n');
 }
 ```
@@ -340,15 +376,21 @@ Set a subscriber's status to unsubscribed. The consent record is retained for co
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getSubscriberListsApi();
-final String listId = listId_example; // String | List UUID
-final String subscriberId = subscriberId_example; // String | Subscriber UUID
+final api_instance = SubscriberListsApi();
+final listId = listId_example; // String | List UUID
+final subscriberId = subscriberId_example; // String | Subscriber UUID
 
 try {
-    final response = api.unsubscribeSubscriber(listId, subscriberId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.unsubscribeSubscriber(listId, subscriberId);
+    print(result);
+} catch (e) {
     print('Exception when calling SubscriberListsApi->unsubscribeSubscriber: $e\n');
 }
 ```

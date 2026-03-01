@@ -28,3 +28,6 @@ ci/**
 .github/**
 # Preserve package name fix (openapi -> mailodds)
 pubspec.yaml
+# Preserve fix for broken oneOf StructuredData models
+lib/model/batch_deliver_request_structured_data.dart
+lib/model/deliver_request_structured_data.dart

@@ -30,14 +30,20 @@ Cancel a pending or processing job. Partial results are preserved.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final String jobId = jobId_example; // String | 
+final api_instance = BulkValidationApi();
+final jobId = jobId_example; // String | 
 
 try {
-    final response = api.cancelJob(jobId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.cancelJob(jobId);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->cancelJob: $e\n');
 }
 ```
@@ -73,14 +79,20 @@ Create a new bulk validation job by submitting a JSON array of emails.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final CreateJobRequest createJobRequest = ; // CreateJobRequest | 
+final api_instance = BulkValidationApi();
+final createJobRequest = CreateJobRequest(); // CreateJobRequest | 
 
 try {
-    final response = api.createJob(createJobRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.createJob(createJobRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->createJob: $e\n');
 }
 ```
@@ -116,14 +128,20 @@ Create a validation job from a file previously uploaded to S3.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final CreateJobFromS3Request createJobFromS3Request = ; // CreateJobFromS3Request | 
+final api_instance = BulkValidationApi();
+final createJobFromS3Request = CreateJobFromS3Request(); // CreateJobFromS3Request | 
 
 try {
-    final response = api.createJobFromS3(createJobFromS3Request);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.createJobFromS3(createJobFromS3Request);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->createJobFromS3: $e\n');
 }
 ```
@@ -159,16 +177,22 @@ Create a new bulk validation job by uploading a CSV, Excel, or TXT file.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | CSV, Excel (.xlsx, .xls), ODS, or TXT file
-final bool dedup = true; // bool | Remove duplicate emails
-final String metadata = metadata_example; // String | JSON metadata for the job
+final api_instance = BulkValidationApi();
+final file = BINARY_DATA_HERE; // MultipartFile | CSV, Excel (.xlsx, .xls), ODS, or TXT file
+final dedup = true; // bool | Remove duplicate emails
+final metadata = metadata_example; // String | JSON metadata for the job
 
 try {
-    final response = api.createJobUpload(file, dedup, metadata);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.createJobUpload(file, dedup, metadata);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->createJobUpload: $e\n');
 }
 ```
@@ -206,14 +230,20 @@ Permanently delete a completed or cancelled job and its results.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final String jobId = jobId_example; // String | 
+final api_instance = BulkValidationApi();
+final jobId = jobId_example; // String | 
 
 try {
-    final response = api.deleteJob(jobId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.deleteJob(jobId);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->deleteJob: $e\n');
 }
 ```
@@ -249,14 +279,20 @@ Get the status and details of a specific validation job.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final String jobId = jobId_example; // String | 
+final api_instance = BulkValidationApi();
+final jobId = jobId_example; // String | 
 
 try {
-    final response = api.getJob(jobId);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getJob(jobId);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->getJob: $e\n');
 }
 ```
@@ -292,18 +328,24 @@ Download validation results in JSON, CSV, or NDJSON format.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final String jobId = jobId_example; // String | 
-final String format = format_example; // String | 
-final String filter = filter_example; // String | 
-final int page = 56; // int | 
-final int perPage = 56; // int | 
+final api_instance = BulkValidationApi();
+final jobId = jobId_example; // String | 
+final format = format_example; // String | 
+final filter = filter_example; // String | 
+final page = 56; // int | 
+final perPage = 56; // int | 
 
 try {
-    final response = api.getJobResults(jobId, format, filter, page, perPage);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getJobResults(jobId, format, filter, page, perPage);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->getJobResults: $e\n');
 }
 ```
@@ -343,14 +385,20 @@ Get a presigned URL for uploading large files (>10MB) directly to S3.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final GetPresignedUploadRequest getPresignedUploadRequest = ; // GetPresignedUploadRequest | 
+final api_instance = BulkValidationApi();
+final getPresignedUploadRequest = GetPresignedUploadRequest(); // GetPresignedUploadRequest | 
 
 try {
-    final response = api.getPresignedUpload(getPresignedUploadRequest);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.getPresignedUpload(getPresignedUploadRequest);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->getPresignedUpload: $e\n');
 }
 ```
@@ -386,16 +434,22 @@ List all validation jobs for the authenticated account.
 ### Example
 ```dart
 import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
-final api = Mailodds().getBulkValidationApi();
-final String cursor = cursor_example; // String | Pagination cursor (ISO timestamp from previous response)
-final int limit = 56; // int | Results per page
-final String status = status_example; // String | 
+final api_instance = BulkValidationApi();
+final cursor = cursor_example; // String | Pagination cursor (ISO timestamp from previous response)
+final limit = 56; // int | Results per page
+final status = status_example; // String | 
 
 try {
-    final response = api.listJobs(cursor, limit, status);
-    print(response);
-} on DioException catch (e) {
+    final result = api_instance.listJobs(cursor, limit, status);
+    print(result);
+} catch (e) {
     print('Exception when calling BulkValidationApi->listJobs: $e\n');
 }
 ```
