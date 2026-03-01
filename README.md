@@ -93,6 +93,53 @@ try {
 
 ```
 
+## Sending Email
+
+### Send a Single Email
+
+```dart
+import 'package:mailodds/mailodds.dart';
+
+final mailodds = Mailodds(
+  interceptors: [BearerAuthInterceptor()..accessToken = 'YOUR_API_KEY'],
+);
+
+final sendingApi = mailodds.getEmailSendingApi();
+
+final request = DeliverRequest((b) => b
+  ..to.add(DeliverRequestToInner((t) => t
+    ..email = 'recipient@example.com'
+    ..name = 'Jane'))
+  ..from_ = 'you@yourdomain.com'
+  ..subject = 'Hello from MailOdds'
+  ..html = '<h1>Welcome!</h1><p>Your order has been confirmed.</p>'
+  ..domainId = 'your-domain-uuid');
+
+final response = await sendingApi.deliverEmail(deliverRequest: request);
+print(response.data?.delivery?.messageId);
+```
+
+### Managing Sending Domains
+
+```dart
+final domainsApi = mailodds.getSendingDomainsApi();
+
+// List sending domains
+final domains = await domainsApi.listSendingDomains();
+for (final domain in domains.data?.domains ?? []) {
+  print('${domain.domain}: ${domain.status}');
+}
+
+// Add a new sending domain
+final newDomain = await domainsApi.createSendingDomain(
+  createSendingDomainRequest: CreateSendingDomainRequest((b) => b
+    ..domain = 'yourdomain.com'),
+);
+print(newDomain.data?.dnsRecords); // DKIM records to add
+```
+
+For batch sending, scheduled delivery, and campaign management, see the [API documentation](https://mailodds.com/docs).
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.mailodds.com/v1*
