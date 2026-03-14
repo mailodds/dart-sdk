@@ -1,0 +1,18 @@
+# mailodds.model.GetSenderHealthTrend200Response
+
+## Load the model package
+```dart
+import 'package:mailodds/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**schemaVersion** | **String** |  | [optional] 
+**requestId** | **String** | Unique request identifier | [optional] 
+**period** | **String** |  | [optional] 
+**dataPoints** | [**List<GetSenderHealthTrend200ResponseDataPointsInner>**](GetSenderHealthTrend200ResponseDataPointsInner.md) |  | [optional] [default to const []]
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
