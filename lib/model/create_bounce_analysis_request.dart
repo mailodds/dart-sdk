@@ -64,7 +64,7 @@ class CreateBounceAnalysisRequest {
 
       return CreateBounceAnalysisRequest(
         domainId: mapValueOfType<String>(json, r'domain_id')!,
-        period: CreateBounceAnalysisRequestPeriodEnum.fromJson(json[r'period']) ?? '30d',
+        period: CreateBounceAnalysisRequestPeriodEnum.fromJson(json[r'period']) ?? const CreateBounceAnalysisRequestPeriodEnum._('30d'),
       );
     }
     return null;

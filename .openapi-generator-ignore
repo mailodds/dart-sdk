@@ -31,3 +31,7 @@ pubspec.yaml
 # Preserve fix for broken oneOf StructuredData models
 lib/model/batch_deliver_request_structured_data.dart
 lib/model/deliver_request_structured_data.dart
+# Preserve fix for enum default value type mismatch (generator bug)
+lib/model/validate_request.dart
+lib/model/validate_batch_request.dart
+lib/model/create_bounce_analysis_request.dart

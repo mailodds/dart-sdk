@@ -81,7 +81,7 @@ class ValidateRequest {
 
       return ValidateRequest(
         email: mapValueOfType<String>(json, r'email')!,
-        depth: ValidateRequestDepthEnum.fromJson(json[r'depth']) ?? 'enhanced',
+        depth: ValidateRequestDepthEnum.fromJson(json[r'depth']) ?? const ValidateRequestDepthEnum._('enhanced'),
         policyId: mapValueOfType<int>(json, r'policy_id'),
       );
     }

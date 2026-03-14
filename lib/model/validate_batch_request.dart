@@ -82,7 +82,7 @@ class ValidateBatchRequest {
         emails: json[r'emails'] is Iterable
             ? (json[r'emails'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        depth: ValidateBatchRequestDepthEnum.fromJson(json[r'depth']) ?? 'enhanced',
+        depth: ValidateBatchRequestDepthEnum.fromJson(json[r'depth']) ?? const ValidateBatchRequestDepthEnum._('enhanced'),
         policyId: mapValueOfType<int>(json, r'policy_id'),
       );
     }
