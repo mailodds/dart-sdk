@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-library openapi.api;
+library mailodds;
 
 import 'dart:async';
 import 'dart:convert';
@@ -196,6 +196,8 @@ part 'model/get_product200_response.dart';
 part 'model/get_reply_forwarding200_response.dart';
 part 'model/get_reputation200_response.dart';
 part 'model/get_reputation_timeline200_response.dart';
+part 'model/get_reputation_timeline200_response_timeline.dart';
+part 'model/get_reputation_timeline200_response_timeline_timeline_inner.dart';
 part 'model/get_sender_health200_response.dart';
 part 'model/get_sender_health200_response_components.dart';
 part 'model/get_sender_health200_response_components_delivery_rate.dart';

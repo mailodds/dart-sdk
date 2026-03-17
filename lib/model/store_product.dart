@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class StoreProduct {
   /// Returns a new [StoreProduct] instance.
@@ -346,7 +346,7 @@ class StoreProduct {
             ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
         productUrl: mapValueOfType<String>(json, r'product_url'),
-        variants: Object.listFromJson(json[r'variants']),
+        variants: json[r'variants'] is List ? (json[r'variants'] as List).cast<Object>().toList(growable: false) : const [],
         isActive: mapValueOfType<bool>(json, r'is_active'),
         createdAt: mapDateTime(json, r'created_at', r''),
         updatedAt: mapDateTime(json, r'updated_at', r''),

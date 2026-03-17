@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetSyncJobErrors200Response {
   /// Returns a new [GetSyncJobErrors200Response] instance.
@@ -137,7 +137,7 @@ class GetSyncJobErrors200Response {
       return GetSyncJobErrors200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        errors: Object.listFromJson(json[r'errors']),
+        errors: json[r'errors'] is List ? (json[r'errors'] as List).cast<Object>().toList(growable: false) : const [],
         total: mapValueOfType<int>(json, r'total'),
         page: mapValueOfType<int>(json, r'page'),
         perPage: mapValueOfType<int>(json, r'per_page'),

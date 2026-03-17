@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class BatchProductsRequestProductsInner {
   /// Returns a new [BatchProductsRequestProductsInner] instance.
@@ -233,7 +233,7 @@ class BatchProductsRequestProductsInner {
         tags: json[r'tags'] is Iterable
             ? (json[r'tags'] as Iterable).cast<String>().toList(growable: false)
             : const [],
-        variants: Object.listFromJson(json[r'variants']),
+        variants: json[r'variants'] is List ? (json[r'variants'] as List).cast<Object>().toList(growable: false) : const [],
       );
     }
     return null;

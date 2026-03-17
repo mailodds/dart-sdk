@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetDisengagedContacts200Response {
   /// Returns a new [GetDisengagedContacts200Response] instance.
@@ -105,7 +105,7 @@ class GetDisengagedContacts200Response {
       return GetDisengagedContacts200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        data: Object.listFromJson(json[r'data']),
+        data: json[r'data'] is List ? (json[r'data'] as List).cast<Object>().toList(growable: false) : const [],
         pagination: GetDisengagedContacts200ResponsePagination.fromJson(json[r'pagination']),
       );
     }

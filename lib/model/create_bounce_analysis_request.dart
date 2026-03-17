@@ -8,39 +8,41 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class CreateBounceAnalysisRequest {
   /// Returns a new [CreateBounceAnalysisRequest] instance.
   CreateBounceAnalysisRequest({
-    required this.domainId,
-    this.period = const CreateBounceAnalysisRequestPeriodEnum._('30d'),
+    required this.text,
+    this.name,
   });
 
-  /// Sending domain UUID to analyze bounces for
-  String domainId;
+  /// Bounce log text to analyze. Identifies patterns, categorizes bounce types, and provides remediation recommendations.
+  String text;
 
-  /// Time period to analyze
-  CreateBounceAnalysisRequestPeriodEnum period;
+  /// Optional name for this bounce analysis
+  String? name;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CreateBounceAnalysisRequest &&
-    other.domainId == domainId &&
-    other.period == period;
+    other.text == text &&
+    other.name == name;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (domainId.hashCode) +
-    (period.hashCode);
+    (text.hashCode) +
+    (name == null ? 0 : name!.hashCode);
 
   @override
-  String toString() => 'CreateBounceAnalysisRequest[domainId=$domainId, period=$period]';
+  String toString() => 'CreateBounceAnalysisRequest[text=$text, name=$name]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-      json[r'domain_id'] = this.domainId;
-      json[r'period'] = this.period;
+      json[r'text'] = this.text;
+    if (this.name != null) {
+      json[r'name'] = this.name;
+    }
     return json;
   }
 
@@ -63,8 +65,8 @@ class CreateBounceAnalysisRequest {
       }());
 
       return CreateBounceAnalysisRequest(
-        domainId: mapValueOfType<String>(json, r'domain_id')!,
-        period: CreateBounceAnalysisRequestPeriodEnum.fromJson(json[r'period']) ?? const CreateBounceAnalysisRequestPeriodEnum._('30d'),
+        text: mapValueOfType<String>(json, r'text')!,
+        name: mapValueOfType<String>(json, r'name'),
       );
     }
     return null;
@@ -112,84 +114,6 @@ class CreateBounceAnalysisRequest {
 
   /// The list of required keys that must be present in a JSON.
   static const requiredKeys = <String>{
-    'domain_id',
+    'text',
   };
 }
-
-/// Time period to analyze
-class CreateBounceAnalysisRequestPeriodEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateBounceAnalysisRequestPeriodEnum._(this.value);
-
-  /// The underlying value of this enum member.
-  final String value;
-
-  @override
-  String toString() => value;
-
-  String toJson() => value;
-
-  static const n7d = CreateBounceAnalysisRequestPeriodEnum._(r'7d');
-  static const n30d = CreateBounceAnalysisRequestPeriodEnum._(r'30d');
-  static const n90d = CreateBounceAnalysisRequestPeriodEnum._(r'90d');
-
-  /// List of all possible values in this [enum][CreateBounceAnalysisRequestPeriodEnum].
-  static const values = <CreateBounceAnalysisRequestPeriodEnum>[
-    n7d,
-    n30d,
-    n90d,
-  ];
-
-  static CreateBounceAnalysisRequestPeriodEnum? fromJson(dynamic value) => CreateBounceAnalysisRequestPeriodEnumTypeTransformer().decode(value);
-
-  static List<CreateBounceAnalysisRequestPeriodEnum> listFromJson(dynamic json, {bool growable = false,}) {
-    final result = <CreateBounceAnalysisRequestPeriodEnum>[];
-    if (json is List && json.isNotEmpty) {
-      for (final row in json) {
-        final value = CreateBounceAnalysisRequestPeriodEnum.fromJson(row);
-        if (value != null) {
-          result.add(value);
-        }
-      }
-    }
-    return result.toList(growable: growable);
-  }
-}
-
-/// Transformation class that can [encode] an instance of [CreateBounceAnalysisRequestPeriodEnum] to String,
-/// and [decode] dynamic data back to [CreateBounceAnalysisRequestPeriodEnum].
-class CreateBounceAnalysisRequestPeriodEnumTypeTransformer {
-  factory CreateBounceAnalysisRequestPeriodEnumTypeTransformer() => _instance ??= const CreateBounceAnalysisRequestPeriodEnumTypeTransformer._();
-
-  const CreateBounceAnalysisRequestPeriodEnumTypeTransformer._();
-
-  String encode(CreateBounceAnalysisRequestPeriodEnum data) => data.value;
-
-  /// Decodes a [dynamic value][data] to a CreateBounceAnalysisRequestPeriodEnum.
-  ///
-  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
-  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
-  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
-  ///
-  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
-  /// and users are still using an old app with the old code.
-  CreateBounceAnalysisRequestPeriodEnum? decode(dynamic data, {bool allowNull = true}) {
-    if (data != null) {
-      switch (data) {
-        case r'7d': return CreateBounceAnalysisRequestPeriodEnum.n7d;
-        case r'30d': return CreateBounceAnalysisRequestPeriodEnum.n30d;
-        case r'90d': return CreateBounceAnalysisRequestPeriodEnum.n90d;
-        default:
-          if (!allowNull) {
-            throw ArgumentError('Unknown enum value to decode: $data');
-          }
-      }
-    }
-    return null;
-  }
-
-  /// Singleton [CreateBounceAnalysisRequestPeriodEnumTypeTransformer] instance.
-  static CreateBounceAnalysisRequestPeriodEnumTypeTransformer? _instance;
-}
-
-

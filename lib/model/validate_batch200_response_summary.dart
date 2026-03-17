@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class ValidateBatch200ResponseSummary {
   /// Returns a new [ValidateBatch200ResponseSummary] instance.

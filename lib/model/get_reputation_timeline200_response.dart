@@ -8,14 +8,14 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetReputationTimeline200Response {
   /// Returns a new [GetReputationTimeline200Response] instance.
   GetReputationTimeline200Response({
     this.schemaVersion,
     this.requestId,
-    this.timeline = const [],
+    this.timeline,
   });
 
   ///
@@ -34,20 +34,26 @@ class GetReputationTimeline200Response {
   ///
   String? requestId;
 
-  List<Object> timeline;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GetReputationTimeline200ResponseTimeline? timeline;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetReputationTimeline200Response &&
     other.schemaVersion == schemaVersion &&
     other.requestId == requestId &&
-    _deepEquality.equals(other.timeline, timeline);
+    other.timeline == timeline;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (schemaVersion == null ? 0 : schemaVersion!.hashCode) +
     (requestId == null ? 0 : requestId!.hashCode) +
-    (timeline.hashCode);
+    (timeline == null ? 0 : timeline!.hashCode);
 
   @override
   String toString() => 'GetReputationTimeline200Response[schemaVersion=$schemaVersion, requestId=$requestId, timeline=$timeline]';
@@ -64,7 +70,11 @@ class GetReputationTimeline200Response {
     } else {
       json[r'request_id'] = null;
     }
+    if (this.timeline != null) {
       json[r'timeline'] = this.timeline;
+    } else {
+      json[r'timeline'] = null;
+    }
     return json;
   }
 
@@ -89,7 +99,7 @@ class GetReputationTimeline200Response {
       return GetReputationTimeline200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        timeline: Object.listFromJson(json[r'timeline']),
+        timeline: GetReputationTimeline200ResponseTimeline.fromJson(json[r'timeline']),
       );
     }
     return null;

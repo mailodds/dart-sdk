@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class ApiClient {
   ApiClient({this.basePath = 'https://api.mailodds.com/v1', this.authentication,});
@@ -452,6 +452,10 @@ class ApiClient {
           return GetReputation200Response.fromJson(value);
         case 'GetReputationTimeline200Response':
           return GetReputationTimeline200Response.fromJson(value);
+        case 'GetReputationTimeline200ResponseTimeline':
+          return GetReputationTimeline200ResponseTimeline.fromJson(value);
+        case 'GetReputationTimeline200ResponseTimelineTimelineInner':
+          return GetReputationTimeline200ResponseTimelineTimelineInner.fromJson(value);
         case 'GetSenderHealth200Response':
           return GetSenderHealth200Response.fromJson(value);
         case 'GetSenderHealth200ResponseComponents':

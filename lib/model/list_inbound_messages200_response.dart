@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class ListInboundMessages200Response {
   /// Returns a new [ListInboundMessages200Response] instance.
@@ -153,7 +153,7 @@ class ListInboundMessages200Response {
       return ListInboundMessages200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        messages: Object.listFromJson(json[r'messages']),
+        messages: json[r'messages'] is List ? (json[r'messages'] as List).cast<Object>().toList(growable: false) : const [],
         total: mapValueOfType<int>(json, r'total'),
         page: mapValueOfType<int>(json, r'page'),
         perPage: mapValueOfType<int>(json, r'per_page'),

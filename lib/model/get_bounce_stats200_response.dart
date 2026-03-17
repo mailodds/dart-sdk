@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetBounceStats200Response {
   /// Returns a new [GetBounceStats200Response] instance.
@@ -89,7 +89,7 @@ class GetBounceStats200Response {
       return GetBounceStats200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        stats: Object.listFromJson(json[r'stats']),
+        stats: json[r'stats'] is List ? (json[r'stats'] as List).cast<Object>().toList(growable: false) : const [],
       );
     }
     return null;

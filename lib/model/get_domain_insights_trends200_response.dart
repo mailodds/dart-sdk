@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetDomainInsightsTrends200Response {
   /// Returns a new [GetDomainInsightsTrends200Response] instance.
@@ -89,7 +89,7 @@ class GetDomainInsightsTrends200Response {
       return GetDomainInsightsTrends200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        trends: Object.listFromJson(json[r'trends']),
+        trends: json[r'trends'] is List ? (json[r'trends'] as List).cast<Object>().toList(growable: false) : const [],
       );
     }
     return null;

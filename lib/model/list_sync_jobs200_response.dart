@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class ListSyncJobs200Response {
   /// Returns a new [ListSyncJobs200Response] instance.
@@ -137,7 +137,7 @@ class ListSyncJobs200Response {
       return ListSyncJobs200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        syncJobs: Object.listFromJson(json[r'sync_jobs']),
+        syncJobs: json[r'sync_jobs'] is List ? (json[r'sync_jobs'] as List).cast<Object>().toList(growable: false) : const [],
         total: mapValueOfType<int>(json, r'total'),
         page: mapValueOfType<int>(json, r'page'),
         perPage: mapValueOfType<int>(json, r'per_page'),

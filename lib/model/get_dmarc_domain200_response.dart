@@ -8,7 +8,7 @@
 // ignore_for_file: constant_identifier_names
 // ignore_for_file: lines_longer_than_80_chars
 
-part of openapi.api;
+part of mailodds;
 
 class GetDmarcDomain200Response {
   /// Returns a new [GetDmarcDomain200Response] instance.
