@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**getJobResults**](BulkValidationApi.md#getjobresults) | **GET** /v1/jobs/{job_id}/results | Get job results
 [**getPresignedUpload**](BulkValidationApi.md#getpresignedupload) | **POST** /v1/jobs/upload/presigned | Get S3 presigned upload URL
 [**listJobs**](BulkValidationApi.md#listjobs) | **GET** /v1/jobs | List validation jobs
+[**retryJob**](BulkValidationApi.md#retryjob) | **POST** /v1/jobs/{job_id}/retry | Retry failed job
 
 
 # **cancelJob**
@@ -465,6 +466,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JobListResponse**](JobListResponse.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retryJob**
+> RetryJob200Response retryJob(jobId)
+
+Retry failed job
+
+Retry processing for a failed or cancelled validation job. Re-queues unprocessed emails.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = BulkValidationApi();
+final jobId = jobId_example; // String | Job ID
+
+try {
+    final result = api_instance.retryJob(jobId);
+    print(result);
+} catch (e) {
+    print('Exception when calling BulkValidationApi->retryJob: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **jobId** | **String**| Job ID | 
+
+### Return type
+
+[**RetryJob200Response**](RetryJob200Response.md)
 
 ### Authorization
 

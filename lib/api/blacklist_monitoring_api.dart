@@ -72,6 +72,65 @@ class BlacklistMonitoringApi {
     return null;
   }
 
+  /// Delete a blacklist monitor
+  ///
+  /// Permanently remove a blacklist monitor and its check history.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] monitorId (required):
+  ///   Monitor UUID
+  Future<Response> deleteBlacklistMonitorWithHttpInfo(String monitorId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/blacklist-monitors/{monitor_id}'
+      .replaceAll('{monitor_id}', monitorId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete a blacklist monitor
+  ///
+  /// Permanently remove a blacklist monitor and its check history.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] monitorId (required):
+  ///   Monitor UUID
+  Future<DeletePolicyRule200Response?> deleteBlacklistMonitor(String monitorId,) async {
+    final response = await deleteBlacklistMonitorWithHttpInfo(monitorId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePolicyRule200Response',) as DeletePolicyRule200Response;
+    
+    }
+    return null;
+  }
+
   /// Get blacklist check history
   ///
   /// Get the listing and delisting timeline for a monitored IP or domain.

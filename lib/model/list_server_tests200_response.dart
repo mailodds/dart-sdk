@@ -15,7 +15,7 @@ class ListServerTests200Response {
   ListServerTests200Response({
     this.schemaVersion,
     this.requestId,
-    this.tests = const [],
+    this.data = const [],
     this.pagination,
   });
 
@@ -35,7 +35,7 @@ class ListServerTests200Response {
   ///
   String? requestId;
 
-  List<ServerTest> tests;
+  List<ServerTest> data;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -49,7 +49,7 @@ class ListServerTests200Response {
   bool operator ==(Object other) => identical(this, other) || other is ListServerTests200Response &&
     other.schemaVersion == schemaVersion &&
     other.requestId == requestId &&
-    _deepEquality.equals(other.tests, tests) &&
+    _deepEquality.equals(other.data, data) &&
     other.pagination == pagination;
 
   @override
@@ -57,11 +57,11 @@ class ListServerTests200Response {
     // ignore: unnecessary_parenthesis
     (schemaVersion == null ? 0 : schemaVersion!.hashCode) +
     (requestId == null ? 0 : requestId!.hashCode) +
-    (tests.hashCode) +
+    (data.hashCode) +
     (pagination == null ? 0 : pagination!.hashCode);
 
   @override
-  String toString() => 'ListServerTests200Response[schemaVersion=$schemaVersion, requestId=$requestId, tests=$tests, pagination=$pagination]';
+  String toString() => 'ListServerTests200Response[schemaVersion=$schemaVersion, requestId=$requestId, data=$data, pagination=$pagination]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -75,7 +75,7 @@ class ListServerTests200Response {
     } else {
       json[r'request_id'] = null;
     }
-      json[r'tests'] = this.tests;
+      json[r'data'] = this.data;
     if (this.pagination != null) {
       json[r'pagination'] = this.pagination;
     } else {
@@ -105,7 +105,7 @@ class ListServerTests200Response {
       return ListServerTests200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        tests: ServerTest.listFromJson(json[r'tests']),
+        data: ServerTest.listFromJson(json[r'data']),
         pagination: Pagination.fromJson(json[r'pagination']),
       );
     }

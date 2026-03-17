@@ -13,12 +13,13 @@ part of openapi.api;
 class GetDmarcDomain200ResponseDomainAllOfSummary {
   /// Returns a new [GetDmarcDomain200ResponseDomainAllOfSummary] instance.
   GetDmarcDomain200ResponseDomainAllOfSummary({
-    this.totalReports,
-    this.totalRecords,
+    this.days,
+    this.reportCount,
+    this.sourceCount,
+    this.totalMessages,
+    this.totalPass,
+    this.totalFail,
     this.passRate,
-    this.failRate,
-    this.dkimAligned,
-    this.spfAligned,
   });
 
   ///
@@ -27,7 +28,7 @@ class GetDmarcDomain200ResponseDomainAllOfSummary {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalReports;
+  int? days;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -35,7 +36,39 @@ class GetDmarcDomain200ResponseDomainAllOfSummary {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? totalRecords;
+  int? reportCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? sourceCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalMessages;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalPass;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? totalFail;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -45,83 +78,66 @@ class GetDmarcDomain200ResponseDomainAllOfSummary {
   ///
   num? passRate;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? failRate;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? dkimAligned;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? spfAligned;
-
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetDmarcDomain200ResponseDomainAllOfSummary &&
-    other.totalReports == totalReports &&
-    other.totalRecords == totalRecords &&
-    other.passRate == passRate &&
-    other.failRate == failRate &&
-    other.dkimAligned == dkimAligned &&
-    other.spfAligned == spfAligned;
+    other.days == days &&
+    other.reportCount == reportCount &&
+    other.sourceCount == sourceCount &&
+    other.totalMessages == totalMessages &&
+    other.totalPass == totalPass &&
+    other.totalFail == totalFail &&
+    other.passRate == passRate;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (totalReports == null ? 0 : totalReports!.hashCode) +
-    (totalRecords == null ? 0 : totalRecords!.hashCode) +
-    (passRate == null ? 0 : passRate!.hashCode) +
-    (failRate == null ? 0 : failRate!.hashCode) +
-    (dkimAligned == null ? 0 : dkimAligned!.hashCode) +
-    (spfAligned == null ? 0 : spfAligned!.hashCode);
+    (days == null ? 0 : days!.hashCode) +
+    (reportCount == null ? 0 : reportCount!.hashCode) +
+    (sourceCount == null ? 0 : sourceCount!.hashCode) +
+    (totalMessages == null ? 0 : totalMessages!.hashCode) +
+    (totalPass == null ? 0 : totalPass!.hashCode) +
+    (totalFail == null ? 0 : totalFail!.hashCode) +
+    (passRate == null ? 0 : passRate!.hashCode);
 
   @override
-  String toString() => 'GetDmarcDomain200ResponseDomainAllOfSummary[totalReports=$totalReports, totalRecords=$totalRecords, passRate=$passRate, failRate=$failRate, dkimAligned=$dkimAligned, spfAligned=$spfAligned]';
+  String toString() => 'GetDmarcDomain200ResponseDomainAllOfSummary[days=$days, reportCount=$reportCount, sourceCount=$sourceCount, totalMessages=$totalMessages, totalPass=$totalPass, totalFail=$totalFail, passRate=$passRate]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.totalReports != null) {
-      json[r'total_reports'] = this.totalReports;
+    if (this.days != null) {
+      json[r'days'] = this.days;
     } else {
-      json[r'total_reports'] = null;
+      json[r'days'] = null;
     }
-    if (this.totalRecords != null) {
-      json[r'total_records'] = this.totalRecords;
+    if (this.reportCount != null) {
+      json[r'report_count'] = this.reportCount;
     } else {
-      json[r'total_records'] = null;
+      json[r'report_count'] = null;
+    }
+    if (this.sourceCount != null) {
+      json[r'source_count'] = this.sourceCount;
+    } else {
+      json[r'source_count'] = null;
+    }
+    if (this.totalMessages != null) {
+      json[r'total_messages'] = this.totalMessages;
+    } else {
+      json[r'total_messages'] = null;
+    }
+    if (this.totalPass != null) {
+      json[r'total_pass'] = this.totalPass;
+    } else {
+      json[r'total_pass'] = null;
+    }
+    if (this.totalFail != null) {
+      json[r'total_fail'] = this.totalFail;
+    } else {
+      json[r'total_fail'] = null;
     }
     if (this.passRate != null) {
       json[r'pass_rate'] = this.passRate;
     } else {
       json[r'pass_rate'] = null;
-    }
-    if (this.failRate != null) {
-      json[r'fail_rate'] = this.failRate;
-    } else {
-      json[r'fail_rate'] = null;
-    }
-    if (this.dkimAligned != null) {
-      json[r'dkim_aligned'] = this.dkimAligned;
-    } else {
-      json[r'dkim_aligned'] = null;
-    }
-    if (this.spfAligned != null) {
-      json[r'spf_aligned'] = this.spfAligned;
-    } else {
-      json[r'spf_aligned'] = null;
     }
     return json;
   }
@@ -145,12 +161,13 @@ class GetDmarcDomain200ResponseDomainAllOfSummary {
       }());
 
       return GetDmarcDomain200ResponseDomainAllOfSummary(
-        totalReports: mapValueOfType<int>(json, r'total_reports'),
-        totalRecords: mapValueOfType<int>(json, r'total_records'),
+        days: mapValueOfType<int>(json, r'days'),
+        reportCount: mapValueOfType<int>(json, r'report_count'),
+        sourceCount: mapValueOfType<int>(json, r'source_count'),
+        totalMessages: mapValueOfType<int>(json, r'total_messages'),
+        totalPass: mapValueOfType<int>(json, r'total_pass'),
+        totalFail: mapValueOfType<int>(json, r'total_fail'),
         passRate: num.parse('${json[r'pass_rate']}'),
-        failRate: num.parse('${json[r'fail_rate']}'),
-        dkimAligned: num.parse('${json[r'dkim_aligned']}'),
-        spfAligned: num.parse('${json[r'spf_aligned']}'),
       );
     }
     return null;

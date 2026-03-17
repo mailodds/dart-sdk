@@ -16,9 +16,68 @@ class SpamChecksApi {
 
   final ApiClient apiClient;
 
+  /// Delete spam check
+  ///
+  /// Delete a spam check result.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] checkId (required):
+  ///   Spam check ID
+  Future<Response> deleteSpamCheckWithHttpInfo(String checkId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/spam-checks/{check_id}'
+      .replaceAll('{check_id}', checkId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete spam check
+  ///
+  /// Delete a spam check result.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] checkId (required):
+  ///   Spam check ID
+  Future<DeletePolicyRule200Response?> deleteSpamCheck(String checkId,) async {
+    final response = await deleteSpamCheckWithHttpInfo(checkId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePolicyRule200Response',) as DeletePolicyRule200Response;
+    
+    }
+    return null;
+  }
+
   /// Get spam check
   ///
-  /// Get the detailed result of a specific spam check. Currently available to beta accounts only.
+  /// Get the detailed result of a specific spam check.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -54,7 +113,7 @@ class SpamChecksApi {
 
   /// Get spam check
   ///
-  /// Get the detailed result of a specific spam check. Currently available to beta accounts only.
+  /// Get the detailed result of a specific spam check.
   ///
   /// Parameters:
   ///
@@ -77,7 +136,7 @@ class SpamChecksApi {
 
   /// List spam checks
   ///
-  /// List past spam check results with pagination. Currently available to beta accounts only.
+  /// List past spam check results with pagination.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -120,7 +179,7 @@ class SpamChecksApi {
 
   /// List spam checks
   ///
-  /// List past spam check results with pagination. Currently available to beta accounts only.
+  /// List past spam check results with pagination.
   ///
   /// Parameters:
   ///
@@ -144,7 +203,7 @@ class SpamChecksApi {
 
   /// Run spam check
   ///
-  /// Run backend spam checks on email sending parameters. Checks domain reputation, link safety, and subject line quality. Currently available to beta accounts only.
+  /// Run backend spam checks on email sending parameters. Checks domain reputation, link safety, and subject line quality.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -178,7 +237,7 @@ class SpamChecksApi {
 
   /// Run spam check
   ///
-  /// Run backend spam checks on email sending parameters. Checks domain reputation, link safety, and subject line quality. Currently available to beta accounts only.
+  /// Run backend spam checks on email sending parameters. Checks domain reputation, link safety, and subject line quality.
   ///
   /// Parameters:
   ///

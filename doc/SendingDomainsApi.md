@@ -11,10 +11,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createSendingDomain**](SendingDomainsApi.md#createsendingdomain) | **POST** /v1/sending-domains | Add a sending domain
 [**deleteSendingDomain**](SendingDomainsApi.md#deletesendingdomain) | **DELETE** /v1/sending-domains/{domain_id} | Delete a sending domain
+[**getReplyForwarding**](SendingDomainsApi.md#getreplyforwarding) | **GET** /v1/sending-domains/{domain_id}/reply-forwarding | Get reply forwarding config
 [**getSendingDomain**](SendingDomainsApi.md#getsendingdomain) | **GET** /v1/sending-domains/{domain_id} | Get a sending domain
 [**getSendingDomainIdentityScore**](SendingDomainsApi.md#getsendingdomainidentityscore) | **GET** /v1/sending-domains/{domain_id}/identity-score | Get domain identity score
 [**getSendingStats**](SendingDomainsApi.md#getsendingstats) | **GET** /v1/sending-stats | Get sending statistics
 [**listSendingDomains**](SendingDomainsApi.md#listsendingdomains) | **GET** /v1/sending-domains | List sending domains
+[**updateReplyForwarding**](SendingDomainsApi.md#updatereplyforwarding) | **PATCH** /v1/sending-domains/{domain_id}/reply-forwarding | Update reply forwarding config
 [**verifySendingDomain**](SendingDomainsApi.md#verifysendingdomain) | **POST** /v1/sending-domains/{domain_id}/verify | Verify domain DNS records
 
 
@@ -104,6 +106,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeletePolicyRule200Response**](DeletePolicyRule200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getReplyForwarding**
+> GetReplyForwarding200Response getReplyForwarding(domainId)
+
+Get reply forwarding config
+
+Get the reply forwarding configuration for a sending domain. Requires Growth+ plan.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | Sending domain ID
+
+try {
+    final result = api_instance.getReplyForwarding(domainId);
+    print(result);
+} catch (e) {
+    print('Exception when calling SendingDomainsApi->getReplyForwarding: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainId** | **String**| Sending domain ID | 
+
+### Return type
+
+[**GetReplyForwarding200Response**](GetReplyForwarding200Response.md)
 
 ### Authorization
 
@@ -306,6 +357,57 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **updateReplyForwarding**
+> GetReplyForwarding200Response updateReplyForwarding(domainId, updateReplyForwardingRequest)
+
+Update reply forwarding config
+
+Configure reply forwarding for a sending domain. Set forward_replies_to to null to disable. Requires Growth+ plan.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | Sending domain ID
+final updateReplyForwardingRequest = UpdateReplyForwardingRequest(); // UpdateReplyForwardingRequest | 
+
+try {
+    final result = api_instance.updateReplyForwarding(domainId, updateReplyForwardingRequest);
+    print(result);
+} catch (e) {
+    print('Exception when calling SendingDomainsApi->updateReplyForwarding: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainId** | **String**| Sending domain ID | 
+ **updateReplyForwardingRequest** | [**UpdateReplyForwardingRequest**](UpdateReplyForwardingRequest.md)|  | 
+
+### Return type
+
+[**GetReplyForwarding200Response**](GetReplyForwarding200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

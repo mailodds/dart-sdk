@@ -129,6 +129,65 @@ class SendingDomainsApi {
     return null;
   }
 
+  /// Get reply forwarding config
+  ///
+  /// Get the reply forwarding configuration for a sending domain. Requires Growth+ plan.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  ///   Sending domain ID
+  Future<Response> getReplyForwardingWithHttpInfo(String domainId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/sending-domains/{domain_id}/reply-forwarding'
+      .replaceAll('{domain_id}', domainId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Get reply forwarding config
+  ///
+  /// Get the reply forwarding configuration for a sending domain. Requires Growth+ plan.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  ///   Sending domain ID
+  Future<GetReplyForwarding200Response?> getReplyForwarding(String domainId,) async {
+    final response = await getReplyForwardingWithHttpInfo(domainId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetReplyForwarding200Response',) as GetReplyForwarding200Response;
+    
+    }
+    return null;
+  }
+
   /// Get a sending domain
   ///
   /// Get details of a specific sending domain including DNS verification status.
@@ -357,6 +416,69 @@ class SendingDomainsApi {
     // FormatException when trying to decode an empty string.
     if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
       return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'ListSendingDomains200Response',) as ListSendingDomains200Response;
+    
+    }
+    return null;
+  }
+
+  /// Update reply forwarding config
+  ///
+  /// Configure reply forwarding for a sending domain. Set forward_replies_to to null to disable. Requires Growth+ plan.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  ///   Sending domain ID
+  ///
+  /// * [UpdateReplyForwardingRequest] updateReplyForwardingRequest (required):
+  Future<Response> updateReplyForwardingWithHttpInfo(String domainId, UpdateReplyForwardingRequest updateReplyForwardingRequest,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/sending-domains/{domain_id}/reply-forwarding'
+      .replaceAll('{domain_id}', domainId);
+
+    // ignore: prefer_final_locals
+    Object? postBody = updateReplyForwardingRequest;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>['application/json'];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'PATCH',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Update reply forwarding config
+  ///
+  /// Configure reply forwarding for a sending domain. Set forward_replies_to to null to disable. Requires Growth+ plan.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  ///   Sending domain ID
+  ///
+  /// * [UpdateReplyForwardingRequest] updateReplyForwardingRequest (required):
+  Future<GetReplyForwarding200Response?> updateReplyForwarding(String domainId, UpdateReplyForwardingRequest updateReplyForwardingRequest,) async {
+    final response = await updateReplyForwardingWithHttpInfo(domainId, updateReplyForwardingRequest,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'GetReplyForwarding200Response',) as GetReplyForwarding200Response;
     
     }
     return null;

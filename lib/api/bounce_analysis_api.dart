@@ -131,6 +131,65 @@ class BounceAnalysisApi {
     return null;
   }
 
+  /// Delete bounce analysis
+  ///
+  /// Delete a bounce analysis and all associated records.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] analysisId (required):
+  ///   Bounce analysis ID
+  Future<Response> deleteBounceAnalysisWithHttpInfo(String analysisId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/bounce-analyses/{analysis_id}'
+      .replaceAll('{analysis_id}', analysisId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'DELETE',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Delete bounce analysis
+  ///
+  /// Delete a bounce analysis and all associated records.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] analysisId (required):
+  ///   Bounce analysis ID
+  Future<DeletePolicyRule200Response?> deleteBounceAnalysis(String analysisId,) async {
+    final response = await deleteBounceAnalysisWithHttpInfo(analysisId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'DeletePolicyRule200Response',) as DeletePolicyRule200Response;
+    
+    }
+    return null;
+  }
+
   /// Get bounce analysis
   ///
   /// Get the results of a bounce analysis including category breakdown, top offenders, and recommendations.

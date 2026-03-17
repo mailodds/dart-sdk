@@ -8,10 +8,12 @@ import 'package:mailodds/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**score** | **num** | Overall content quality score (0-100) | [optional] 
-**verdict** | **String** | Overall verdict | [optional] 
-**categories** | [**List<ClassifyContent200ResponseContentCheckCategoriesInner>**](ClassifyContent200ResponseContentCheckCategoriesInner.md) |  | [optional] [default to const []]
+**status** | **String** | Overall content status | [optional] 
+**flag** | **bool** | Whether the content is flagged | [optional] 
+**reason** | **String** | Human-readable reason for the status | [optional] 
+**priority** | **int** | Priority level (1=lowest, 5=highest) | [optional] 
 **suggestions** | **List<String>** | Improvement suggestions | [optional] [default to const []]
+**durationMs** | **int** | Classification duration in milliseconds | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

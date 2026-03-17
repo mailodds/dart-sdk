@@ -11,6 +11,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createBounceAnalysis**](BounceAnalysisApi.md#createbounceanalysis) | **POST** /v1/bounce-analyses | Analyze bounce logs
 [**crossReferenceBounces**](BounceAnalysisApi.md#crossreferencebounces) | **GET** /v1/bounce-analyses/{analysis_id}/cross-reference | Cross-reference bounces with validation logs
+[**deleteBounceAnalysis**](BounceAnalysisApi.md#deletebounceanalysis) | **DELETE** /v1/bounce-analyses/{analysis_id} | Delete bounce analysis
 [**getBounceAnalysis**](BounceAnalysisApi.md#getbounceanalysis) | **GET** /v1/bounce-analyses/{analysis_id} | Get bounce analysis
 [**getBounceRecords**](BounceAnalysisApi.md#getbouncerecords) | **GET** /v1/bounce-analyses/{analysis_id}/records | Get bounce records
 
@@ -101,6 +102,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CrossReferenceBounces200Response**](CrossReferenceBounces200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteBounceAnalysis**
+> DeletePolicyRule200Response deleteBounceAnalysis(analysisId)
+
+Delete bounce analysis
+
+Delete a bounce analysis and all associated records.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = BounceAnalysisApi();
+final analysisId = analysisId_example; // String | Bounce analysis ID
+
+try {
+    final result = api_instance.deleteBounceAnalysis(analysisId);
+    print(result);
+} catch (e) {
+    print('Exception when calling BounceAnalysisApi->deleteBounceAnalysis: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | **String**| Bounce analysis ID | 
+
+### Return type
+
+[**DeletePolicyRule200Response**](DeletePolicyRule200Response.md)
 
 ### Authorization
 

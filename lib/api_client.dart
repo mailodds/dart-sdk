@@ -186,6 +186,10 @@ class ApiClient {
           return AddBlacklistMonitor201Response.fromJson(value);
         case 'AddBlacklistMonitorRequest':
           return AddBlacklistMonitorRequest.fromJson(value);
+        case 'AddContact201Response':
+          return AddContact201Response.fromJson(value);
+        case 'AddContactRequest':
+          return AddContactRequest.fromJson(value);
         case 'AddDmarcDomain201Response':
           return AddDmarcDomain201Response.fromJson(value);
         case 'AddDmarcDomainRequest':
@@ -198,10 +202,18 @@ class ApiClient {
           return AddSuppressionRequestEntriesInner.fromJson(value);
         case 'AddSuppressionResponse':
           return AddSuppressionResponse.fromJson(value);
+        case 'AlertRule':
+          return AlertRule.fromJson(value);
         case 'AppendToContactList200Response':
           return AppendToContactList200Response.fromJson(value);
         case 'AppendToContactListRequest':
           return AppendToContactListRequest.fromJson(value);
+        case 'BatchCheckOoo200Response':
+          return BatchCheckOoo200Response.fromJson(value);
+        case 'BatchCheckOoo200ResponseResultsInner':
+          return BatchCheckOoo200ResponseResultsInner.fromJson(value);
+        case 'BatchCheckOooRequest':
+          return BatchCheckOooRequest.fromJson(value);
         case 'BatchDeliverRequest':
           return BatchDeliverRequest.fromJson(value);
         case 'BatchDeliverRequestStructuredData':
@@ -212,6 +224,14 @@ class ApiClient {
           return BatchDeliverResponseDelivery.fromJson(value);
         case 'BatchDeliverResponseRejectedInner':
           return BatchDeliverResponseRejectedInner.fromJson(value);
+        case 'BatchProductsRequest':
+          return BatchProductsRequest.fromJson(value);
+        case 'BatchProductsRequestProductsInner':
+          return BatchProductsRequestProductsInner.fromJson(value);
+        case 'BatchProductsResponse':
+          return BatchProductsResponse.fromJson(value);
+        case 'BatchProductsResponseErrorsInner':
+          return BatchProductsResponseErrorsInner.fromJson(value);
         case 'BlacklistMonitor':
           return BlacklistMonitor.fromJson(value);
         case 'BlacklistMonitorLatestCheck':
@@ -224,6 +244,10 @@ class ApiClient {
           return BounceAnalysisResponseAnalysisCategories.fromJson(value);
         case 'BounceAnalysisResponseAnalysisTopDomainsInner':
           return BounceAnalysisResponseAnalysisTopDomainsInner.fromJson(value);
+        case 'BulkUpdateProducts200Response':
+          return BulkUpdateProducts200Response.fromJson(value);
+        case 'BulkUpdateProductsRequest':
+          return BulkUpdateProductsRequest.fromJson(value);
         case 'Campaign':
           return Campaign.fromJson(value);
         case 'CampaignResponse':
@@ -238,14 +262,18 @@ class ApiClient {
           return ClassifyContent200Response.fromJson(value);
         case 'ClassifyContent200ResponseContentCheck':
           return ClassifyContent200ResponseContentCheck.fromJson(value);
-        case 'ClassifyContent200ResponseContentCheckCategoriesInner':
-          return ClassifyContent200ResponseContentCheckCategoriesInner.fromJson(value);
         case 'ClassifyContentRequest':
           return ClassifyContentRequest.fromJson(value);
         case 'ConfirmSubscription200Response':
           return ConfirmSubscription200Response.fromJson(value);
         case 'ContactList':
           return ContactList.fromJson(value);
+        case 'CorrectInboundMessageRequest':
+          return CorrectInboundMessageRequest.fromJson(value);
+        case 'CreateAlertRule201Response':
+          return CreateAlertRule201Response.fromJson(value);
+        case 'CreateAlertRuleRequest':
+          return CreateAlertRuleRequest.fromJson(value);
         case 'CreateBounceAnalysisRequest':
           return CreateBounceAnalysisRequest.fromJson(value);
         case 'CreateCampaignRequest':
@@ -272,8 +300,18 @@ class ApiClient {
           return CreateSendingDomain201Response.fromJson(value);
         case 'CreateSendingDomainRequest':
           return CreateSendingDomainRequest.fromJson(value);
+        case 'CreateStore201Response':
+          return CreateStore201Response.fromJson(value);
+        case 'CreateStoreRequest':
+          return CreateStoreRequest.fromJson(value);
+        case 'CreateToken200Response':
+          return CreateToken200Response.fromJson(value);
         case 'CreateVariantRequest':
           return CreateVariantRequest.fromJson(value);
+        case 'CreateWebhookCliSession201Response':
+          return CreateWebhookCliSession201Response.fromJson(value);
+        case 'CreateWebhookCliSessionRequest':
+          return CreateWebhookCliSessionRequest.fromJson(value);
         case 'CrossReferenceBounces200Response':
           return CrossReferenceBounces200Response.fromJson(value);
         case 'CrossReferenceBounces200ResponseCrossReference':
@@ -282,10 +320,14 @@ class ApiClient {
           return CrossReferenceBounces200ResponseCrossReferenceEntriesInner.fromJson(value);
         case 'DeleteJob200Response':
           return DeleteJob200Response.fromJson(value);
+        case 'DeleteOooContact200Response':
+          return DeleteOooContact200Response.fromJson(value);
         case 'DeletePolicy200Response':
           return DeletePolicy200Response.fromJson(value);
         case 'DeletePolicyRule200Response':
           return DeletePolicyRule200Response.fromJson(value);
+        case 'DeleteWebhookCliSession200Response':
+          return DeleteWebhookCliSession200Response.fromJson(value);
         case 'DeliverRequest':
           return DeliverRequest.fromJson(value);
         case 'DeliverRequestOptions':
@@ -298,6 +340,8 @@ class ApiClient {
           return DeliverResponse.fromJson(value);
         case 'DeliverResponseDelivery':
           return DeliverResponseDelivery.fromJson(value);
+        case 'DisconnectStore200Response':
+          return DisconnectStore200Response.fromJson(value);
         case 'DmarcDomain':
           return DmarcDomain.fromJson(value);
         case 'ErrorResponse':
@@ -310,6 +354,10 @@ class ApiClient {
           return GetBounceRecords200Response.fromJson(value);
         case 'GetBounceRecords200ResponseRecordsInner':
           return GetBounceRecords200ResponseRecordsInner.fromJson(value);
+        case 'GetBounceStats200Response':
+          return GetBounceStats200Response.fromJson(value);
+        case 'GetBounceStatsSummary200Response':
+          return GetBounceStatsSummary200Response.fromJson(value);
         case 'GetCampaignABResults200Response':
           return GetCampaignABResults200Response.fromJson(value);
         case 'GetCampaignABResults200ResponseVariantsInner':
@@ -342,6 +390,12 @@ class ApiClient {
           return GetCampaignProviderIntelligence200Response.fromJson(value);
         case 'GetCampaignProviderIntelligence200ResponseProvidersInner':
           return GetCampaignProviderIntelligence200ResponseProvidersInner.fromJson(value);
+        case 'GetComplaintAssessment200Response':
+          return GetComplaintAssessment200Response.fromJson(value);
+        case 'GetDisengagedContacts200Response':
+          return GetDisengagedContacts200Response.fromJson(value);
+        case 'GetDisengagedContacts200ResponsePagination':
+          return GetDisengagedContacts200ResponsePagination.fromJson(value);
         case 'GetDmarcDomain200Response':
           return GetDmarcDomain200Response.fromJson(value);
         case 'GetDmarcDomain200ResponseDomain':
@@ -360,10 +414,20 @@ class ApiClient {
           return GetDmarcTrend200Response.fromJson(value);
         case 'GetDmarcTrend200ResponseTrendInner':
           return GetDmarcTrend200ResponseTrendInner.fromJson(value);
+        case 'GetDomainHookEffectiveness200Response':
+          return GetDomainHookEffectiveness200Response.fromJson(value);
+        case 'GetDomainInsightsFunnel200Response':
+          return GetDomainInsightsFunnel200Response.fromJson(value);
+        case 'GetDomainInsightsTrends200Response':
+          return GetDomainInsightsTrends200Response.fromJson(value);
+        case 'GetEngagementScore200Response':
+          return GetEngagementScore200Response.fromJson(value);
         case 'GetInactiveContactsReport200Response':
           return GetInactiveContactsReport200Response.fromJson(value);
         case 'GetInactiveContactsReport200ResponseByListInner':
           return GetInactiveContactsReport200ResponseByListInner.fromJson(value);
+        case 'GetInboundMessage200Response':
+          return GetInboundMessage200Response.fromJson(value);
         case 'GetLists200Response':
           return GetLists200Response.fromJson(value);
         case 'GetMessageEvents200Response':
@@ -374,8 +438,20 @@ class ApiClient {
           return GetMessageEvents200ResponseEventsInner.fromJson(value);
         case 'GetMessageEvents200ResponseSummary':
           return GetMessageEvents200ResponseSummary.fromJson(value);
+        case 'GetOooStatus200Response':
+          return GetOooStatus200Response.fromJson(value);
+        case 'GetPixelSettings200Response':
+          return GetPixelSettings200Response.fromJson(value);
         case 'GetPresignedUploadRequest':
           return GetPresignedUploadRequest.fromJson(value);
+        case 'GetProduct200Response':
+          return GetProduct200Response.fromJson(value);
+        case 'GetReplyForwarding200Response':
+          return GetReplyForwarding200Response.fromJson(value);
+        case 'GetReputation200Response':
+          return GetReputation200Response.fromJson(value);
+        case 'GetReputationTimeline200Response':
+          return GetReputationTimeline200Response.fromJson(value);
         case 'GetSenderHealth200Response':
           return GetSenderHealth200Response.fromJson(value);
         case 'GetSenderHealth200ResponseComponents':
@@ -396,10 +472,16 @@ class ApiClient {
           return GetSendingStats200ResponseStats.fromJson(value);
         case 'GetSubscribers200Response':
           return GetSubscribers200Response.fromJson(value);
+        case 'GetSyncJobErrors200Response':
+          return GetSyncJobErrors200Response.fromJson(value);
         case 'HealthCheck200Response':
           return HealthCheck200Response.fromJson(value);
         case 'IdentityScoreCheck':
           return IdentityScoreCheck.fromJson(value);
+        case 'ImportContactList200Response':
+          return ImportContactList200Response.fromJson(value);
+        case 'IntrospectToken200Response':
+          return IntrospectToken200Response.fromJson(value);
         case 'Job':
           return Job.fromJson(value);
         case 'JobArtifacts':
@@ -410,6 +492,12 @@ class ApiClient {
           return JobResponse.fromJson(value);
         case 'JobSummary':
           return JobSummary.fromJson(value);
+        case 'JwksResponse':
+          return JwksResponse.fromJson(value);
+        case 'JwksResponseKeysInner':
+          return JwksResponseKeysInner.fromJson(value);
+        case 'ListAlertRules200Response':
+          return ListAlertRules200Response.fromJson(value);
         case 'ListBlacklistMonitors200Response':
           return ListBlacklistMonitors200Response.fromJson(value);
         case 'ListCampaigns200Response':
@@ -418,12 +506,32 @@ class ApiClient {
           return ListContactLists200Response.fromJson(value);
         case 'ListDmarcDomains200Response':
           return ListDmarcDomains200Response.fromJson(value);
+        case 'ListInboundMessages200Response':
+          return ListInboundMessages200Response.fromJson(value);
+        case 'ListOooContacts200Response':
+          return ListOooContacts200Response.fromJson(value);
         case 'ListSendingDomains200Response':
           return ListSendingDomains200Response.fromJson(value);
         case 'ListServerTests200Response':
           return ListServerTests200Response.fromJson(value);
         case 'ListSpamChecks200Response':
           return ListSpamChecks200Response.fromJson(value);
+        case 'ListStores200Response':
+          return ListStores200Response.fromJson(value);
+        case 'ListSyncJobs200Response':
+          return ListSyncJobs200Response.fromJson(value);
+        case 'ListWebhookDeliveries200Response':
+          return ListWebhookDeliveries200Response.fromJson(value);
+        case 'ListWebhookDeliveries200ResponseDeliveriesInner':
+          return ListWebhookDeliveries200ResponseDeliveriesInner.fromJson(value);
+        case 'McpCapabilities':
+          return McpCapabilities.fromJson(value);
+        case 'McpCapabilitiesPillarsInner':
+          return McpCapabilitiesPillarsInner.fromJson(value);
+        case 'McpCapabilitiesPillarsInnerToolsInner':
+          return McpCapabilitiesPillarsInnerToolsInner.fromJson(value);
+        case 'OAuthServerMetadata':
+          return OAuthServerMetadata.fromJson(value);
         case 'Pagination':
           return Pagination.fromJson(value);
         case 'Policy':
@@ -448,6 +556,14 @@ class ApiClient {
           return PresignedUploadResponse.fromJson(value);
         case 'PresignedUploadResponseUpload':
           return PresignedUploadResponseUpload.fromJson(value);
+        case 'ProductFacets':
+          return ProductFacets.fromJson(value);
+        case 'ProductFacetsCategoriesInner':
+          return ProductFacetsCategoriesInner.fromJson(value);
+        case 'ProductFacetsPriceRangesInner':
+          return ProductFacetsPriceRangesInner.fromJson(value);
+        case 'ProductFacetsStoresInner':
+          return ProductFacetsStoresInner.fromJson(value);
         case 'QueryContactList200Response':
           return QueryContactList200Response.fromJson(value);
         case 'QueryContactList200ResponseEmailsInner':
@@ -456,12 +572,18 @@ class ApiClient {
           return QueryContactListRequest.fromJson(value);
         case 'QueryContactListRequestFiltersInner':
           return QueryContactListRequestFiltersInner.fromJson(value);
+        case 'QueryProducts200Response':
+          return QueryProducts200Response.fromJson(value);
         case 'RemoveSuppression200Response':
           return RemoveSuppression200Response.fromJson(value);
         case 'RemoveSuppressionRequest':
           return RemoveSuppressionRequest.fromJson(value);
+        case 'ReplayWebhookDelivery200Response':
+          return ReplayWebhookDelivery200Response.fromJson(value);
         case 'ResultsResponse':
           return ResultsResponse.fromJson(value);
+        case 'RetryJob200Response':
+          return RetryJob200Response.fromJson(value);
         case 'RunBlacklistCheck200Response':
           return RunBlacklistCheck200Response.fromJson(value);
         case 'RunBlacklistCheck200ResponseCheck':
@@ -498,12 +620,20 @@ class ApiClient {
           return SpamCheck.fromJson(value);
         case 'SpamCheckChecks':
           return SpamCheckChecks.fromJson(value);
+        case 'StoreConnection':
+          return StoreConnection.fromJson(value);
+        case 'StoreProduct':
+          return StoreProduct.fromJson(value);
         case 'SubscribeRequest':
           return SubscribeRequest.fromJson(value);
         case 'Subscriber':
           return Subscriber.fromJson(value);
         case 'SubscriberList':
           return SubscriberList.fromJson(value);
+        case 'SuppressDisengaged200Response':
+          return SuppressDisengaged200Response.fromJson(value);
+        case 'SuppressDisengagedRequest':
+          return SuppressDisengagedRequest.fromJson(value);
         case 'SuppressionAuditResponse':
           return SuppressionAuditResponse.fromJson(value);
         case 'SuppressionAuditResponseEntriesInner':
@@ -518,6 +648,8 @@ class ApiClient {
           return SuppressionStatsResponse.fromJson(value);
         case 'SuppressionStatsResponseByType':
           return SuppressionStatsResponseByType.fromJson(value);
+        case 'SyncResponse':
+          return SyncResponse.fromJson(value);
         case 'TelemetrySummary':
           return TelemetrySummary.fromJson(value);
         case 'TelemetrySummaryRates':
@@ -532,10 +664,26 @@ class ApiClient {
           return TestPolicyRequest.fromJson(value);
         case 'TestPolicyRequestTestResult':
           return TestPolicyRequestTestResult.fromJson(value);
+        case 'TrackEventRequest':
+          return TrackEventRequest.fromJson(value);
+        case 'TrackEventResponse':
+          return TrackEventResponse.fromJson(value);
         case 'UnsubscribeSubscriber200Response':
           return UnsubscribeSubscriber200Response.fromJson(value);
+        case 'UpdateAlertRuleRequest':
+          return UpdateAlertRuleRequest.fromJson(value);
+        case 'UpdateContactRequest':
+          return UpdateContactRequest.fromJson(value);
+        case 'UpdateOooContactRequest':
+          return UpdateOooContactRequest.fromJson(value);
+        case 'UpdatePixelSettingsRequest':
+          return UpdatePixelSettingsRequest.fromJson(value);
         case 'UpdatePolicyRequest':
           return UpdatePolicyRequest.fromJson(value);
+        case 'UpdateReplyForwardingRequest':
+          return UpdateReplyForwardingRequest.fromJson(value);
+        case 'UpdateStoreRequest':
+          return UpdateStoreRequest.fromJson(value);
         case 'ValidateBatch200Response':
           return ValidateBatch200Response.fromJson(value);
         case 'ValidateBatch200ResponseSummary':
