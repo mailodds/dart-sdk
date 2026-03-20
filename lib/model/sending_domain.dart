@@ -23,6 +23,7 @@ class SendingDomain {
     this.bimiVmcUrl,
     this.bimiEnabled,
     this.forwardRepliesTo,
+    this.isPrimary,
     this.createdAt,
     this.updatedAt,
   });
@@ -92,6 +93,15 @@ class SendingDomain {
   /// Reply forwarding address
   String? forwardRepliesTo;
 
+  /// Whether this is the account primary/default sending domain
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isPrimary;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -120,6 +130,7 @@ class SendingDomain {
     other.bimiVmcUrl == bimiVmcUrl &&
     other.bimiEnabled == bimiEnabled &&
     other.forwardRepliesTo == forwardRepliesTo &&
+    other.isPrimary == isPrimary &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -136,11 +147,12 @@ class SendingDomain {
     (bimiVmcUrl == null ? 0 : bimiVmcUrl!.hashCode) +
     (bimiEnabled == null ? 0 : bimiEnabled!.hashCode) +
     (forwardRepliesTo == null ? 0 : forwardRepliesTo!.hashCode) +
+    (isPrimary == null ? 0 : isPrimary!.hashCode) +
     (createdAt == null ? 0 : createdAt!.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'SendingDomain[id=$id, domain=$domain, domainType=$domainType, status=$status, dkimSelector=$dkimSelector, dnsRecords=$dnsRecords, bimiSvgUrl=$bimiSvgUrl, bimiVmcUrl=$bimiVmcUrl, bimiEnabled=$bimiEnabled, forwardRepliesTo=$forwardRepliesTo, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'SendingDomain[id=$id, domain=$domain, domainType=$domainType, status=$status, dkimSelector=$dkimSelector, dnsRecords=$dnsRecords, bimiSvgUrl=$bimiSvgUrl, bimiVmcUrl=$bimiVmcUrl, bimiEnabled=$bimiEnabled, forwardRepliesTo=$forwardRepliesTo, isPrimary=$isPrimary, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -194,6 +206,11 @@ class SendingDomain {
     } else {
       json[r'forward_replies_to'] = null;
     }
+    if (this.isPrimary != null) {
+      json[r'is_primary'] = this.isPrimary;
+    } else {
+      json[r'is_primary'] = null;
+    }
     if (this.createdAt != null) {
       json[r'created_at'] = this.createdAt!.toUtc().toIso8601String();
     } else {
@@ -236,6 +253,7 @@ class SendingDomain {
         bimiVmcUrl: mapValueOfType<String>(json, r'bimi_vmc_url'),
         bimiEnabled: mapValueOfType<bool>(json, r'bimi_enabled'),
         forwardRepliesTo: mapValueOfType<String>(json, r'forward_replies_to'),
+        isPrimary: mapValueOfType<bool>(json, r'is_primary'),
         createdAt: mapDateTime(json, r'created_at', r''),
         updatedAt: mapDateTime(json, r'updated_at', r''),
       );

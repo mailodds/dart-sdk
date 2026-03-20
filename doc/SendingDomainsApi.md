@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**getSendingDomainIdentityScore**](SendingDomainsApi.md#getsendingdomainidentityscore) | **GET** /v1/sending-domains/{domain_id}/identity-score | Get domain identity score
 [**getSendingStats**](SendingDomainsApi.md#getsendingstats) | **GET** /v1/sending-stats | Get sending statistics
 [**listSendingDomains**](SendingDomainsApi.md#listsendingdomains) | **GET** /v1/sending-domains | List sending domains
+[**setPrimarySendingDomain**](SendingDomainsApi.md#setprimarysendingdomain) | **POST** /v1/sending-domains/{domain_id}/set-primary | Set primary sending domain
 [**updateReplyForwarding**](SendingDomainsApi.md#updatereplyforwarding) | **PATCH** /v1/sending-domains/{domain_id}/reply-forwarding | Update reply forwarding config
 [**verifySendingDomain**](SendingDomainsApi.md#verifysendingdomain) | **POST** /v1/sending-domains/{domain_id}/verify | Verify domain DNS records
 
@@ -349,6 +350,55 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**ListSendingDomains200Response**](ListSendingDomains200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **setPrimarySendingDomain**
+> CreateSendingDomain201Response setPrimarySendingDomain(domainId)
+
+Set primary sending domain
+
+Designate a domain as the primary/default sending domain. When domain_id is omitted from deliver calls, the primary domain is used automatically.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = SendingDomainsApi();
+final domainId = domainId_example; // String | 
+
+try {
+    final result = api_instance.setPrimarySendingDomain(domainId);
+    print(result);
+} catch (e) {
+    print('Exception when calling SendingDomainsApi->setPrimarySendingDomain: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainId** | **String**|  | 
+
+### Return type
+
+[**CreateSendingDomain201Response**](CreateSendingDomain201Response.md)
 
 ### Authorization
 

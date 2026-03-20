@@ -49,6 +49,7 @@ doc/CheckSuppressionRequest.md
 doc/ClassifyContent200Response.md
 doc/ClassifyContent200ResponseContentCheck.md
 doc/ClassifyContentRequest.md
+doc/ConfigurationSetsApi.md
 doc/ConfirmSubscription200Response.md
 doc/ContactList.md
 doc/ContactListsApi.md
@@ -78,6 +79,7 @@ doc/CreateWebhookCliSessionRequest.md
 doc/CrossReferenceBounces200Response.md
 doc/CrossReferenceBounces200ResponseCrossReference.md
 doc/CrossReferenceBounces200ResponseCrossReferenceEntriesInner.md
+doc/DKIMManagementApi.md
 doc/DMARCMonitoringApi.md
 doc/DeleteJob200Response.md
 doc/DeleteOooContact200Response.md
@@ -90,6 +92,7 @@ doc/DeliverRequestStructuredData.md
 doc/DeliverRequestToInner.md
 doc/DeliverResponse.md
 doc/DeliverResponseDelivery.md
+doc/DeliverabilityAdvisorApi.md
 doc/DisconnectStore200Response.md
 doc/DmarcDomain.md
 doc/DomainInsightsApi.md
@@ -97,6 +100,7 @@ doc/EmailSendingApi.md
 doc/EmailValidationApi.md
 doc/EngagementApi.md
 doc/ErrorResponse.md
+doc/EventDestinationsApi.md
 doc/EventsApi.md
 doc/GetBlacklistHistory200Response.md
 doc/GetBlacklistHistory200ResponseChecksInner.md
@@ -165,10 +169,13 @@ doc/GetSendingStats200Response.md
 doc/GetSendingStats200ResponseStats.md
 doc/GetSubscribers200Response.md
 doc/GetSyncJobErrors200Response.md
+doc/GlobalSuppressionsApi.md
 doc/HealthCheck200Response.md
+doc/ISPFBLGuidesApi.md
 doc/IdentityScoreCheck.md
 doc/ImportContactList200Response.md
 doc/InboundProcessingApi.md
+doc/InboundRulesApi.md
 doc/IntrospectToken200Response.md
 doc/Job.md
 doc/JobArtifacts.md
@@ -191,6 +198,7 @@ doc/ListStores200Response.md
 doc/ListSyncJobs200Response.md
 doc/ListWebhookDeliveries200Response.md
 doc/ListWebhookDeliveries200ResponseDeliveriesInner.md
+doc/ManagedSPFApi.md
 doc/McpCapabilities.md
 doc/McpCapabilitiesPillarsInner.md
 doc/McpCapabilitiesPillarsInnerToolsInner.md
@@ -199,6 +207,7 @@ doc/OAuth20Api.md
 doc/OAuthServerMetadata.md
 doc/OutOfOfficeApi.md
 doc/Pagination.md
+doc/PipelineSimulationApi.md
 doc/PixelSettingsApi.md
 doc/Policy.md
 doc/PolicyListResponse.md
@@ -225,6 +234,7 @@ doc/RemoveSuppression200Response.md
 doc/RemoveSuppressionRequest.md
 doc/ReplayWebhookDelivery200Response.md
 doc/ReputationApi.md
+doc/ReputationPoliciesApi.md
 doc/ResultsResponse.md
 doc/RetryJob200Response.md
 doc/RunBlacklistCheck200Response.md
@@ -235,6 +245,7 @@ doc/RunSpamCheck201Response.md
 doc/RunSpamCheckRequest.md
 doc/ScheduleCampaignRequest.md
 doc/SenderHealthApi.md
+doc/SendingDelegationsApi.md
 doc/SendingDomain.md
 doc/SendingDomainDnsRecords.md
 doc/SendingDomainDnsRecordsNs.md
@@ -273,6 +284,7 @@ doc/TelemetrySummaryRates.md
 doc/TelemetrySummaryTopDomainsInner.md
 doc/TelemetrySummaryTopReasonsInner.md
 doc/TelemetrySummaryTotals.md
+doc/TemplateVersionsApi.md
 doc/TestPolicyRequest.md
 doc/TestPolicyRequestTestResult.md
 doc/TrackEventRequest.md
@@ -306,22 +318,33 @@ lib/api/bounce_analysis_api.dart
 lib/api/bulk_validation_api.dart
 lib/api/campaign_analytics_api.dart
 lib/api/campaigns_api.dart
+lib/api/configuration_sets_api.dart
 lib/api/contact_lists_api.dart
 lib/api/content_classification_api.dart
+lib/api/deliverability_advisor_api.dart
+lib/api/dkim_management_api.dart
 lib/api/dmarc_monitoring_api.dart
 lib/api/domain_insights_api.dart
 lib/api/email_sending_api.dart
 lib/api/email_validation_api.dart
 lib/api/engagement_api.dart
+lib/api/event_destinations_api.dart
 lib/api/events_api.dart
+lib/api/global_suppressions_api.dart
 lib/api/inbound_processing_api.dart
+lib/api/inbound_rules_api.dart
+lib/api/ispfbl_guides_api.dart
+lib/api/managed_spf_api.dart
 lib/api/message_events_api.dart
 lib/api/o_auth20_api.dart
 lib/api/out_of_office_api.dart
+lib/api/pipeline_simulation_api.dart
 lib/api/pixel_settings_api.dart
 lib/api/products_api.dart
 lib/api/reputation_api.dart
+lib/api/reputation_policies_api.dart
 lib/api/sender_health_api.dart
+lib/api/sending_delegations_api.dart
 lib/api/sending_domains_api.dart
 lib/api/server_tests_api.dart
 lib/api/spam_checks_api.dart
@@ -329,6 +352,7 @@ lib/api/store_connections_api.dart
 lib/api/subscriber_lists_api.dart
 lib/api/suppression_lists_api.dart
 lib/api/system_api.dart
+lib/api/template_versions_api.dart
 lib/api/validation_policies_api.dart
 lib/api/webhook_cli_api.dart
 lib/api_client.dart

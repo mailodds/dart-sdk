@@ -18,7 +18,7 @@ class DeliverRequest {
     required this.subject,
     this.html,
     this.text,
-    required this.domainId,
+    this.domainId,
     this.replyTo,
     this.headers,
     this.tags = const [],
@@ -57,8 +57,14 @@ class DeliverRequest {
   ///
   String? text;
 
-  /// Sending domain UUID
-  String domainId;
+  /// Sending domain UUID. Optional -- auto-resolved from the from address, or falls back to primary domain.
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? domainId;
 
   /// Reply-to address
   ///
@@ -141,7 +147,7 @@ class DeliverRequest {
     (subject.hashCode) +
     (html == null ? 0 : html!.hashCode) +
     (text == null ? 0 : text!.hashCode) +
-    (domainId.hashCode) +
+    (domainId == null ? 0 : domainId!.hashCode) +
     (replyTo == null ? 0 : replyTo!.hashCode) +
     (headers == null ? 0 : headers!.hashCode) +
     (tags.hashCode) +
@@ -170,7 +176,11 @@ class DeliverRequest {
     } else {
       json[r'text'] = null;
     }
+    if (this.domainId != null) {
       json[r'domain_id'] = this.domainId;
+    } else {
+      json[r'domain_id'] = null;
+    }
     if (this.replyTo != null) {
       json[r'reply_to'] = this.replyTo;
     } else {
@@ -231,7 +241,7 @@ class DeliverRequest {
         subject: mapValueOfType<String>(json, r'subject')!,
         html: mapValueOfType<String>(json, r'html'),
         text: mapValueOfType<String>(json, r'text'),
-        domainId: mapValueOfType<String>(json, r'domain_id')!,
+        domainId: mapValueOfType<String>(json, r'domain_id'),
         replyTo: mapValueOfType<String>(json, r'reply_to'),
         headers: mapValueOfType<Object>(json, r'headers'),
         tags: json[r'tags'] is Iterable
@@ -293,7 +303,6 @@ class DeliverRequest {
     'to',
     'from',
     'subject',
-    'domain_id',
   };
 }
 

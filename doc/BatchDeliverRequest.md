@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **subject** | **String** |  | 
 **html** | **String** |  | [optional] 
 **text** | **String** |  | [optional] 
-**domainId** | **String** |  | 
+**domainId** | **String** | Sending domain UUID. Optional -- auto-resolved from the from address, or falls back to primary domain. | [optional] 
 **replyTo** | **String** |  | [optional] 
 **headers** | [**Object**](.md) |  | [optional] 
 **tags** | **List<String>** |  | [optional] [default to const []]

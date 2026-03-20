@@ -421,6 +421,63 @@ class SendingDomainsApi {
     return null;
   }
 
+  /// Set primary sending domain
+  ///
+  /// Designate a domain as the primary/default sending domain. When domain_id is omitted from deliver calls, the primary domain is used automatically.
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  Future<Response> setPrimarySendingDomainWithHttpInfo(String domainId,) async {
+    // ignore: prefer_const_declarations
+    final path = r'/v1/sending-domains/{domain_id}/set-primary'
+      .replaceAll('{domain_id}', domainId);
+
+    // ignore: prefer_final_locals
+    Object? postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes.first,
+    );
+  }
+
+  /// Set primary sending domain
+  ///
+  /// Designate a domain as the primary/default sending domain. When domain_id is omitted from deliver calls, the primary domain is used automatically.
+  ///
+  /// Parameters:
+  ///
+  /// * [String] domainId (required):
+  Future<CreateSendingDomain201Response?> setPrimarySendingDomain(String domainId,) async {
+    final response = await setPrimarySendingDomainWithHttpInfo(domainId,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body.isNotEmpty && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'CreateSendingDomain201Response',) as CreateSendingDomain201Response;
+    
+    }
+    return null;
+  }
+
   /// Update reply forwarding config
   ///
   /// Configure reply forwarding for a sending domain. Set forward_replies_to to null to disable. Requires Growth+ plan.
