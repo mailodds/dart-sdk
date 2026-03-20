@@ -320,6 +320,7 @@ class StoreConnectionPlatformEnum {
   static const prestashop = StoreConnectionPlatformEnum._(r'prestashop');
   static const shopify = StoreConnectionPlatformEnum._(r'shopify');
   static const feed = StoreConnectionPlatformEnum._(r'feed');
+  static const custom = StoreConnectionPlatformEnum._(r'custom');
 
   /// List of all possible values in this [enum][StoreConnectionPlatformEnum].
   static const values = <StoreConnectionPlatformEnum>[
@@ -327,6 +328,7 @@ class StoreConnectionPlatformEnum {
     prestashop,
     shopify,
     feed,
+    custom,
   ];
 
   static StoreConnectionPlatformEnum? fromJson(dynamic value) => StoreConnectionPlatformEnumTypeTransformer().decode(value);
@@ -369,6 +371,7 @@ class StoreConnectionPlatformEnumTypeTransformer {
         case r'prestashop': return StoreConnectionPlatformEnum.prestashop;
         case r'shopify': return StoreConnectionPlatformEnum.shopify;
         case r'feed': return StoreConnectionPlatformEnum.feed;
+        case r'custom': return StoreConnectionPlatformEnum.custom;
         default:
           if (!allowNull) {
             throw ArgumentError('Unknown enum value to decode: $data');

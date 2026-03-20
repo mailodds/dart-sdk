@@ -14,18 +14,32 @@ class Campaign {
   /// Returns a new [Campaign] instance.
   Campaign({
     required this.id,
+    this.accountId,
     required this.name,
     required this.status,
-    required this.listId,
     required this.domainId,
-    required this.fromEmail,
-    this.fromName,
+    this.subject,
+    required this.fromAddress,
     this.replyTo,
+    this.htmlBody,
+    this.textBody,
+    this.htmlBodyDark,
+    this.textBodyDark,
+    this.campaignType,
+    this.autoDetectSchema,
+    this.promoAnnotations,
+    this.throwawayPolicy,
     this.scheduledAt,
-    this.sentAt,
-    this.cancelledAt,
-    this.variantCount,
+    this.startedAt,
+    this.completedAt,
+    this.recipientCount,
+    this.isAbTest,
+    this.winningVariantId,
+    this.abTestConfig,
+    this.errorMessage,
     this.stats,
+    this.openRate,
+    this.clickRate,
     required this.createdAt,
     this.updatedAt,
   });
@@ -33,43 +47,90 @@ class Campaign {
   /// Campaign UUID
   String id;
 
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? accountId;
+
   /// Campaign name
   String name;
 
   CampaignStatusEnum status;
 
-  /// Target subscriber list UUID
-  String listId;
-
   /// Sending domain UUID
   String domainId;
 
-  String fromEmail;
-
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? fromName;
+  String? subject;
+
+  /// Sender email address
+  String fromAddress;
 
   String? replyTo;
 
-  DateTime? scheduledAt;
+  String? htmlBody;
 
-  DateTime? sentAt;
+  String? textBody;
 
-  DateTime? cancelledAt;
+  String? htmlBodyDark;
 
-  /// Number of A/B variants
+  String? textBodyDark;
+
+  String? campaignType;
+
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? variantCount;
+  bool? autoDetectSchema;
+
+  Object? promoAnnotations;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  String? throwawayPolicy;
+
+  DateTime? scheduledAt;
+
+  DateTime? startedAt;
+
+  DateTime? completedAt;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  int? recipientCount;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? isAbTest;
+
+  String? winningVariantId;
+
+  Object? abTestConfig;
+
+  String? errorMessage;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -78,6 +139,22 @@ class Campaign {
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
   CampaignStats? stats;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? openRate;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  num? clickRate;
 
   DateTime createdAt;
 
@@ -92,18 +169,32 @@ class Campaign {
   @override
   bool operator ==(Object other) => identical(this, other) || other is Campaign &&
     other.id == id &&
+    other.accountId == accountId &&
     other.name == name &&
     other.status == status &&
-    other.listId == listId &&
     other.domainId == domainId &&
-    other.fromEmail == fromEmail &&
-    other.fromName == fromName &&
+    other.subject == subject &&
+    other.fromAddress == fromAddress &&
     other.replyTo == replyTo &&
+    other.htmlBody == htmlBody &&
+    other.textBody == textBody &&
+    other.htmlBodyDark == htmlBodyDark &&
+    other.textBodyDark == textBodyDark &&
+    other.campaignType == campaignType &&
+    other.autoDetectSchema == autoDetectSchema &&
+    other.promoAnnotations == promoAnnotations &&
+    other.throwawayPolicy == throwawayPolicy &&
     other.scheduledAt == scheduledAt &&
-    other.sentAt == sentAt &&
-    other.cancelledAt == cancelledAt &&
-    other.variantCount == variantCount &&
+    other.startedAt == startedAt &&
+    other.completedAt == completedAt &&
+    other.recipientCount == recipientCount &&
+    other.isAbTest == isAbTest &&
+    other.winningVariantId == winningVariantId &&
+    other.abTestConfig == abTestConfig &&
+    other.errorMessage == errorMessage &&
     other.stats == stats &&
+    other.openRate == openRate &&
+    other.clickRate == clickRate &&
     other.createdAt == createdAt &&
     other.updatedAt == updatedAt;
 
@@ -111,66 +202,154 @@ class Campaign {
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (id.hashCode) +
+    (accountId == null ? 0 : accountId!.hashCode) +
     (name.hashCode) +
     (status.hashCode) +
-    (listId.hashCode) +
     (domainId.hashCode) +
-    (fromEmail.hashCode) +
-    (fromName == null ? 0 : fromName!.hashCode) +
+    (subject == null ? 0 : subject!.hashCode) +
+    (fromAddress.hashCode) +
     (replyTo == null ? 0 : replyTo!.hashCode) +
+    (htmlBody == null ? 0 : htmlBody!.hashCode) +
+    (textBody == null ? 0 : textBody!.hashCode) +
+    (htmlBodyDark == null ? 0 : htmlBodyDark!.hashCode) +
+    (textBodyDark == null ? 0 : textBodyDark!.hashCode) +
+    (campaignType == null ? 0 : campaignType!.hashCode) +
+    (autoDetectSchema == null ? 0 : autoDetectSchema!.hashCode) +
+    (promoAnnotations == null ? 0 : promoAnnotations!.hashCode) +
+    (throwawayPolicy == null ? 0 : throwawayPolicy!.hashCode) +
     (scheduledAt == null ? 0 : scheduledAt!.hashCode) +
-    (sentAt == null ? 0 : sentAt!.hashCode) +
-    (cancelledAt == null ? 0 : cancelledAt!.hashCode) +
-    (variantCount == null ? 0 : variantCount!.hashCode) +
+    (startedAt == null ? 0 : startedAt!.hashCode) +
+    (completedAt == null ? 0 : completedAt!.hashCode) +
+    (recipientCount == null ? 0 : recipientCount!.hashCode) +
+    (isAbTest == null ? 0 : isAbTest!.hashCode) +
+    (winningVariantId == null ? 0 : winningVariantId!.hashCode) +
+    (abTestConfig == null ? 0 : abTestConfig!.hashCode) +
+    (errorMessage == null ? 0 : errorMessage!.hashCode) +
     (stats == null ? 0 : stats!.hashCode) +
+    (openRate == null ? 0 : openRate!.hashCode) +
+    (clickRate == null ? 0 : clickRate!.hashCode) +
     (createdAt.hashCode) +
     (updatedAt == null ? 0 : updatedAt!.hashCode);
 
   @override
-  String toString() => 'Campaign[id=$id, name=$name, status=$status, listId=$listId, domainId=$domainId, fromEmail=$fromEmail, fromName=$fromName, replyTo=$replyTo, scheduledAt=$scheduledAt, sentAt=$sentAt, cancelledAt=$cancelledAt, variantCount=$variantCount, stats=$stats, createdAt=$createdAt, updatedAt=$updatedAt]';
+  String toString() => 'Campaign[id=$id, accountId=$accountId, name=$name, status=$status, domainId=$domainId, subject=$subject, fromAddress=$fromAddress, replyTo=$replyTo, htmlBody=$htmlBody, textBody=$textBody, htmlBodyDark=$htmlBodyDark, textBodyDark=$textBodyDark, campaignType=$campaignType, autoDetectSchema=$autoDetectSchema, promoAnnotations=$promoAnnotations, throwawayPolicy=$throwawayPolicy, scheduledAt=$scheduledAt, startedAt=$startedAt, completedAt=$completedAt, recipientCount=$recipientCount, isAbTest=$isAbTest, winningVariantId=$winningVariantId, abTestConfig=$abTestConfig, errorMessage=$errorMessage, stats=$stats, openRate=$openRate, clickRate=$clickRate, createdAt=$createdAt, updatedAt=$updatedAt]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
       json[r'id'] = this.id;
+    if (this.accountId != null) {
+      json[r'account_id'] = this.accountId;
+    } else {
+      json[r'account_id'] = null;
+    }
       json[r'name'] = this.name;
       json[r'status'] = this.status;
-      json[r'list_id'] = this.listId;
       json[r'domain_id'] = this.domainId;
-      json[r'from_email'] = this.fromEmail;
-    if (this.fromName != null) {
-      json[r'from_name'] = this.fromName;
+    if (this.subject != null) {
+      json[r'subject'] = this.subject;
     } else {
-      json[r'from_name'] = null;
+      json[r'subject'] = null;
     }
+      json[r'from_address'] = this.fromAddress;
     if (this.replyTo != null) {
       json[r'reply_to'] = this.replyTo;
     } else {
       json[r'reply_to'] = null;
+    }
+    if (this.htmlBody != null) {
+      json[r'html_body'] = this.htmlBody;
+    } else {
+      json[r'html_body'] = null;
+    }
+    if (this.textBody != null) {
+      json[r'text_body'] = this.textBody;
+    } else {
+      json[r'text_body'] = null;
+    }
+    if (this.htmlBodyDark != null) {
+      json[r'html_body_dark'] = this.htmlBodyDark;
+    } else {
+      json[r'html_body_dark'] = null;
+    }
+    if (this.textBodyDark != null) {
+      json[r'text_body_dark'] = this.textBodyDark;
+    } else {
+      json[r'text_body_dark'] = null;
+    }
+    if (this.campaignType != null) {
+      json[r'campaign_type'] = this.campaignType;
+    } else {
+      json[r'campaign_type'] = null;
+    }
+    if (this.autoDetectSchema != null) {
+      json[r'auto_detect_schema'] = this.autoDetectSchema;
+    } else {
+      json[r'auto_detect_schema'] = null;
+    }
+    if (this.promoAnnotations != null) {
+      json[r'promo_annotations'] = this.promoAnnotations;
+    } else {
+      json[r'promo_annotations'] = null;
+    }
+    if (this.throwawayPolicy != null) {
+      json[r'throwaway_policy'] = this.throwawayPolicy;
+    } else {
+      json[r'throwaway_policy'] = null;
     }
     if (this.scheduledAt != null) {
       json[r'scheduled_at'] = this.scheduledAt!.toUtc().toIso8601String();
     } else {
       json[r'scheduled_at'] = null;
     }
-    if (this.sentAt != null) {
-      json[r'sent_at'] = this.sentAt!.toUtc().toIso8601String();
+    if (this.startedAt != null) {
+      json[r'started_at'] = this.startedAt!.toUtc().toIso8601String();
     } else {
-      json[r'sent_at'] = null;
+      json[r'started_at'] = null;
     }
-    if (this.cancelledAt != null) {
-      json[r'cancelled_at'] = this.cancelledAt!.toUtc().toIso8601String();
+    if (this.completedAt != null) {
+      json[r'completed_at'] = this.completedAt!.toUtc().toIso8601String();
     } else {
-      json[r'cancelled_at'] = null;
+      json[r'completed_at'] = null;
     }
-    if (this.variantCount != null) {
-      json[r'variant_count'] = this.variantCount;
+    if (this.recipientCount != null) {
+      json[r'recipient_count'] = this.recipientCount;
     } else {
-      json[r'variant_count'] = null;
+      json[r'recipient_count'] = null;
+    }
+    if (this.isAbTest != null) {
+      json[r'is_ab_test'] = this.isAbTest;
+    } else {
+      json[r'is_ab_test'] = null;
+    }
+    if (this.winningVariantId != null) {
+      json[r'winning_variant_id'] = this.winningVariantId;
+    } else {
+      json[r'winning_variant_id'] = null;
+    }
+    if (this.abTestConfig != null) {
+      json[r'ab_test_config'] = this.abTestConfig;
+    } else {
+      json[r'ab_test_config'] = null;
+    }
+    if (this.errorMessage != null) {
+      json[r'error_message'] = this.errorMessage;
+    } else {
+      json[r'error_message'] = null;
     }
     if (this.stats != null) {
       json[r'stats'] = this.stats;
     } else {
       json[r'stats'] = null;
+    }
+    if (this.openRate != null) {
+      json[r'open_rate'] = this.openRate;
+    } else {
+      json[r'open_rate'] = null;
+    }
+    if (this.clickRate != null) {
+      json[r'click_rate'] = this.clickRate;
+    } else {
+      json[r'click_rate'] = null;
     }
       json[r'created_at'] = this.createdAt.toUtc().toIso8601String();
     if (this.updatedAt != null) {
@@ -201,18 +380,32 @@ class Campaign {
 
       return Campaign(
         id: mapValueOfType<String>(json, r'id')!,
+        accountId: mapValueOfType<int>(json, r'account_id'),
         name: mapValueOfType<String>(json, r'name')!,
         status: CampaignStatusEnum.fromJson(json[r'status'])!,
-        listId: mapValueOfType<String>(json, r'list_id')!,
         domainId: mapValueOfType<String>(json, r'domain_id')!,
-        fromEmail: mapValueOfType<String>(json, r'from_email')!,
-        fromName: mapValueOfType<String>(json, r'from_name'),
+        subject: mapValueOfType<String>(json, r'subject'),
+        fromAddress: mapValueOfType<String>(json, r'from_address')!,
         replyTo: mapValueOfType<String>(json, r'reply_to'),
+        htmlBody: mapValueOfType<String>(json, r'html_body'),
+        textBody: mapValueOfType<String>(json, r'text_body'),
+        htmlBodyDark: mapValueOfType<String>(json, r'html_body_dark'),
+        textBodyDark: mapValueOfType<String>(json, r'text_body_dark'),
+        campaignType: mapValueOfType<String>(json, r'campaign_type'),
+        autoDetectSchema: mapValueOfType<bool>(json, r'auto_detect_schema'),
+        promoAnnotations: mapValueOfType<Object>(json, r'promo_annotations'),
+        throwawayPolicy: mapValueOfType<String>(json, r'throwaway_policy'),
         scheduledAt: mapDateTime(json, r'scheduled_at', r''),
-        sentAt: mapDateTime(json, r'sent_at', r''),
-        cancelledAt: mapDateTime(json, r'cancelled_at', r''),
-        variantCount: mapValueOfType<int>(json, r'variant_count'),
+        startedAt: mapDateTime(json, r'started_at', r''),
+        completedAt: mapDateTime(json, r'completed_at', r''),
+        recipientCount: mapValueOfType<int>(json, r'recipient_count'),
+        isAbTest: mapValueOfType<bool>(json, r'is_ab_test'),
+        winningVariantId: mapValueOfType<String>(json, r'winning_variant_id'),
+        abTestConfig: mapValueOfType<Object>(json, r'ab_test_config'),
+        errorMessage: mapValueOfType<String>(json, r'error_message'),
         stats: CampaignStats.fromJson(json[r'stats']),
+        openRate: num.parse('${json[r'open_rate']}'),
+        clickRate: num.parse('${json[r'click_rate']}'),
         createdAt: mapDateTime(json, r'created_at', r'')!,
         updatedAt: mapDateTime(json, r'updated_at', r''),
       );
@@ -265,9 +458,8 @@ class Campaign {
     'id',
     'name',
     'status',
-    'list_id',
     'domain_id',
-    'from_email',
+    'from_address',
     'created_at',
   };
 }

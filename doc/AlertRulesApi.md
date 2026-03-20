@@ -83,7 +83,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = AlertRulesApi();
-final ruleId = ruleId_example; // String | Alert rule ID
+final ruleId = ruleId_example; // String | 
 
 try {
     final result = api_instance.deleteAlertRule(ruleId);
@@ -97,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**| Alert rule ID | 
+ **ruleId** | **String**|  | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = AlertRulesApi();
-final ruleId = ruleId_example; // String | Alert rule ID
+final ruleId = ruleId_example; // String | 
 
 try {
     final result = api_instance.getAlertRule(ruleId);
@@ -146,7 +146,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**| Alert rule ID | 
+ **ruleId** | **String**|  | 
 
 ### Return type
 
@@ -226,7 +226,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = AlertRulesApi();
-final ruleId = ruleId_example; // String | Alert rule ID
+final ruleId = ruleId_example; // String | 
 final updateAlertRuleRequest = UpdateAlertRuleRequest(); // UpdateAlertRuleRequest | 
 
 try {
@@ -241,7 +241,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ruleId** | **String**| Alert rule ID | 
+ **ruleId** | **String**|  | 
  **updateAlertRuleRequest** | [**UpdateAlertRuleRequest**](UpdateAlertRuleRequest.md)|  | 
 
 ### Return type

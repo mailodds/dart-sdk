@@ -33,7 +33,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ProductsApi();
-final storeId = storeId_example; // String | Store connection UUID
+final storeId = storeId_example; // String | 
 final batchProductsRequest = BatchProductsRequest(); // BatchProductsRequest | 
 
 try {
@@ -48,7 +48,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store connection UUID | 
+ **storeId** | **String**|  | 
  **batchProductsRequest** | [**BatchProductsRequest**](BatchProductsRequest.md)|  | 
 
 ### Return type
@@ -133,7 +133,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ProductsApi();
-final productId = productId_example; // String | Product UUID
+final productId = productId_example; // String | 
 
 try {
     final result = api_instance.getProduct(productId);
@@ -147,7 +147,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **productId** | **String**| Product UUID | 
+ **productId** | **String**|  | 
 
 ### Return type
 

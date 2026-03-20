@@ -82,7 +82,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = WebhookCLIApi();
-final sessionId = sessionId_example; // String | Session ID
+final sessionId = sessionId_example; // String | 
 
 try {
     final result = api_instance.deleteWebhookCliSession(sessionId);
@@ -96,7 +96,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sessionId** | **String**| Session ID | 
+ **sessionId** | **String**|  | 
 
 ### Return type
 
@@ -180,7 +180,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = WebhookCLIApi();
-final deliveryId = 56; // int | Delivery ID
+final deliveryId = 56; // int | 
 
 try {
     final result = api_instance.replayWebhookDelivery(deliveryId);
@@ -194,7 +194,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **deliveryId** | **int**| Delivery ID | 
+ **deliveryId** | **int**|  | 
 
 ### Return type
 

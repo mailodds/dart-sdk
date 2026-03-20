@@ -90,7 +90,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = EngagementApi();
-final email = email_example; // String | Email address
+final email = email_example; // String | 
 
 try {
     final result = api_instance.getEngagementScore(email);
@@ -104,7 +104,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| Email address | 
+ **email** | **String**|  | 
 
 ### Return type
 

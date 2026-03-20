@@ -25,7 +25,6 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [BatchProductsRequest] batchProductsRequest (required):
   Future<Response> batchProductsWithHttpInfo(String storeId, BatchProductsRequest batchProductsRequest,) async {
@@ -61,7 +60,6 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [BatchProductsRequest] batchProductsRequest (required):
   Future<BatchProductsResponse?> batchProducts(String storeId, BatchProductsRequest batchProductsRequest,) async {
@@ -144,7 +142,6 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [String] productId (required):
-  ///   Product UUID
   Future<Response> getProductWithHttpInfo(String productId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/store-products/{product_id}'
@@ -178,7 +175,6 @@ class ProductsApi {
   /// Parameters:
   ///
   /// * [String] productId (required):
-  ///   Product UUID
   Future<GetProduct200Response?> getProduct(String productId,) async {
     final response = await getProductWithHttpInfo(productId,);
     if (response.statusCode >= HttpStatus.badRequest) {

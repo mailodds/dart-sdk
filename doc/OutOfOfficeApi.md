@@ -83,7 +83,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = OutOfOfficeApi();
-final email = email_example; // String | Email address
+final email = email_example; // String | 
 
 try {
     final result = api_instance.deleteOooContact(email);
@@ -97,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| Email address | 
+ **email** | **String**|  | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = OutOfOfficeApi();
-final email = email_example; // String | Email address to check
+final email = email_example; // String | 
 
 try {
     final result = api_instance.getOooStatus(email);
@@ -146,7 +146,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| Email address to check | 
+ **email** | **String**|  | 
 
 ### Return type
 
@@ -234,7 +234,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = OutOfOfficeApi();
-final email = email_example; // String | Email address
+final email = email_example; // String | 
 final updateOooContactRequest = UpdateOooContactRequest(); // UpdateOooContactRequest | 
 
 try {
@@ -249,7 +249,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **email** | **String**| Email address | 
+ **email** | **String**|  | 
  **updateOooContactRequest** | [**UpdateOooContactRequest**](UpdateOooContactRequest.md)|  | 
 
 ### Return type

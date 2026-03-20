@@ -356,6 +356,8 @@ class ApiClient {
           return GetBounceRecords200ResponseRecordsInner.fromJson(value);
         case 'GetBounceStats200Response':
           return GetBounceStats200Response.fromJson(value);
+        case 'GetBounceStats200ResponseStats':
+          return GetBounceStats200ResponseStats.fromJson(value);
         case 'GetBounceStatsSummary200Response':
           return GetBounceStatsSummary200Response.fromJson(value);
         case 'GetCampaignABResults200Response':

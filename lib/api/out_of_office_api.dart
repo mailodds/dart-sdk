@@ -81,7 +81,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   Future<Response> deleteOooContactWithHttpInfo(String email,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/out-of-office/{email}'
@@ -115,7 +114,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   Future<DeleteOooContact200Response?> deleteOooContact(String email,) async {
     final response = await deleteOooContactWithHttpInfo(email,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -140,7 +138,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address to check
   Future<Response> getOooStatusWithHttpInfo(String email,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/out-of-office/{email}/status'
@@ -174,7 +171,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address to check
   Future<GetOooStatus200Response?> getOooStatus(String email,) async {
     final response = await getOooStatusWithHttpInfo(email,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -275,7 +271,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   ///
   /// * [UpdateOooContactRequest] updateOooContactRequest (required):
   Future<Response> updateOooContactWithHttpInfo(String email, UpdateOooContactRequest updateOooContactRequest,) async {
@@ -311,7 +306,6 @@ class OutOfOfficeApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   ///
   /// * [UpdateOooContactRequest] updateOooContactRequest (required):
   Future<Object?> updateOooContact(String email, UpdateOooContactRequest updateOooContactRequest,) async {

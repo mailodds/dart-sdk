@@ -19,10 +19,9 @@ class CampaignStats {
     this.clicked,
     this.bounced,
     this.unsubscribed,
-    this.complained,
-    this.deliveryRate,
-    this.openRate,
-    this.clickRate,
+    this.suppressed,
+    this.failed,
+    this.conversions,
   });
 
   ///
@@ -79,7 +78,7 @@ class CampaignStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? complained;
+  int? suppressed;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -87,7 +86,7 @@ class CampaignStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? deliveryRate;
+  int? failed;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -95,15 +94,7 @@ class CampaignStats {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  num? openRate;
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  num? clickRate;
+  int? conversions;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is CampaignStats &&
@@ -113,10 +104,9 @@ class CampaignStats {
     other.clicked == clicked &&
     other.bounced == bounced &&
     other.unsubscribed == unsubscribed &&
-    other.complained == complained &&
-    other.deliveryRate == deliveryRate &&
-    other.openRate == openRate &&
-    other.clickRate == clickRate;
+    other.suppressed == suppressed &&
+    other.failed == failed &&
+    other.conversions == conversions;
 
   @override
   int get hashCode =>
@@ -127,13 +117,12 @@ class CampaignStats {
     (clicked == null ? 0 : clicked!.hashCode) +
     (bounced == null ? 0 : bounced!.hashCode) +
     (unsubscribed == null ? 0 : unsubscribed!.hashCode) +
-    (complained == null ? 0 : complained!.hashCode) +
-    (deliveryRate == null ? 0 : deliveryRate!.hashCode) +
-    (openRate == null ? 0 : openRate!.hashCode) +
-    (clickRate == null ? 0 : clickRate!.hashCode);
+    (suppressed == null ? 0 : suppressed!.hashCode) +
+    (failed == null ? 0 : failed!.hashCode) +
+    (conversions == null ? 0 : conversions!.hashCode);
 
   @override
-  String toString() => 'CampaignStats[sent=$sent, delivered=$delivered, opened=$opened, clicked=$clicked, bounced=$bounced, unsubscribed=$unsubscribed, complained=$complained, deliveryRate=$deliveryRate, openRate=$openRate, clickRate=$clickRate]';
+  String toString() => 'CampaignStats[sent=$sent, delivered=$delivered, opened=$opened, clicked=$clicked, bounced=$bounced, unsubscribed=$unsubscribed, suppressed=$suppressed, failed=$failed, conversions=$conversions]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -167,25 +156,20 @@ class CampaignStats {
     } else {
       json[r'unsubscribed'] = null;
     }
-    if (this.complained != null) {
-      json[r'complained'] = this.complained;
+    if (this.suppressed != null) {
+      json[r'suppressed'] = this.suppressed;
     } else {
-      json[r'complained'] = null;
+      json[r'suppressed'] = null;
     }
-    if (this.deliveryRate != null) {
-      json[r'delivery_rate'] = this.deliveryRate;
+    if (this.failed != null) {
+      json[r'failed'] = this.failed;
     } else {
-      json[r'delivery_rate'] = null;
+      json[r'failed'] = null;
     }
-    if (this.openRate != null) {
-      json[r'open_rate'] = this.openRate;
+    if (this.conversions != null) {
+      json[r'conversions'] = this.conversions;
     } else {
-      json[r'open_rate'] = null;
-    }
-    if (this.clickRate != null) {
-      json[r'click_rate'] = this.clickRate;
-    } else {
-      json[r'click_rate'] = null;
+      json[r'conversions'] = null;
     }
     return json;
   }
@@ -215,10 +199,9 @@ class CampaignStats {
         clicked: mapValueOfType<int>(json, r'clicked'),
         bounced: mapValueOfType<int>(json, r'bounced'),
         unsubscribed: mapValueOfType<int>(json, r'unsubscribed'),
-        complained: mapValueOfType<int>(json, r'complained'),
-        deliveryRate: num.parse('${json[r'delivery_rate']}'),
-        openRate: num.parse('${json[r'open_rate']}'),
-        clickRate: num.parse('${json[r'click_rate']}'),
+        suppressed: mapValueOfType<int>(json, r'suppressed'),
+        failed: mapValueOfType<int>(json, r'failed'),
+        conversions: mapValueOfType<int>(json, r'conversions'),
       );
     }
     return null;

@@ -32,7 +32,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ServerTestsApi();
-final testId = testId_example; // String | Server test UUID
+final testId = testId_example; // String | 
 
 try {
     final result = api_instance.getServerTest(testId);
@@ -46,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **testId** | **String**| Server test UUID | 
+ **testId** | **String**|  | 
 
 ### Return type
 

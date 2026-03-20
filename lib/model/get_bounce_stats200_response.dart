@@ -15,7 +15,7 @@ class GetBounceStats200Response {
   GetBounceStats200Response({
     this.schemaVersion,
     this.requestId,
-    this.stats = const [],
+    this.stats,
   });
 
   ///
@@ -34,20 +34,26 @@ class GetBounceStats200Response {
   ///
   String? requestId;
 
-  List<Object> stats;
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  GetBounceStats200ResponseStats? stats;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is GetBounceStats200Response &&
     other.schemaVersion == schemaVersion &&
     other.requestId == requestId &&
-    _deepEquality.equals(other.stats, stats);
+    other.stats == stats;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
     (schemaVersion == null ? 0 : schemaVersion!.hashCode) +
     (requestId == null ? 0 : requestId!.hashCode) +
-    (stats.hashCode);
+    (stats == null ? 0 : stats!.hashCode);
 
   @override
   String toString() => 'GetBounceStats200Response[schemaVersion=$schemaVersion, requestId=$requestId, stats=$stats]';
@@ -64,7 +70,11 @@ class GetBounceStats200Response {
     } else {
       json[r'request_id'] = null;
     }
+    if (this.stats != null) {
       json[r'stats'] = this.stats;
+    } else {
+      json[r'stats'] = null;
+    }
     return json;
   }
 
@@ -89,7 +99,7 @@ class GetBounceStats200Response {
       return GetBounceStats200Response(
         schemaVersion: mapValueOfType<String>(json, r'schema_version'),
         requestId: mapValueOfType<String>(json, r'request_id'),
-        stats: json[r'stats'] is List ? (json[r'stats'] as List).cast<Object>().toList(growable: false) : const [],
+        stats: GetBounceStats200ResponseStats.fromJson(json[r'stats']),
       );
     }
     return null;

@@ -119,7 +119,6 @@ class EngagementApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   Future<Response> getEngagementScoreWithHttpInfo(String email,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/engagement/score/{email}'
@@ -153,7 +152,6 @@ class EngagementApi {
   /// Parameters:
   ///
   /// * [String] email (required):
-  ///   Email address
   Future<GetEngagementScore200Response?> getEngagementScore(String email,) async {
     final response = await getEngagementScoreWithHttpInfo(email,);
     if (response.statusCode >= HttpStatus.badRequest) {

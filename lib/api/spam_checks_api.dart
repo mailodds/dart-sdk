@@ -25,7 +25,6 @@ class SpamChecksApi {
   /// Parameters:
   ///
   /// * [String] checkId (required):
-  ///   Spam check ID
   Future<Response> deleteSpamCheckWithHttpInfo(String checkId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/spam-checks/{check_id}'
@@ -59,7 +58,6 @@ class SpamChecksApi {
   /// Parameters:
   ///
   /// * [String] checkId (required):
-  ///   Spam check ID
   Future<DeletePolicyRule200Response?> deleteSpamCheck(String checkId,) async {
     final response = await deleteSpamCheckWithHttpInfo(checkId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -84,7 +82,6 @@ class SpamChecksApi {
   /// Parameters:
   ///
   /// * [String] checkId (required):
-  ///   Spam check UUID
   Future<Response> getSpamCheckWithHttpInfo(String checkId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/spam-checks/{check_id}'
@@ -118,7 +115,6 @@ class SpamChecksApi {
   /// Parameters:
   ///
   /// * [String] checkId (required):
-  ///   Spam check UUID
   Future<RunSpamCheck201Response?> getSpamCheck(String checkId,) async {
     final response = await getSpamCheckWithHttpInfo(checkId,);
     if (response.statusCode >= HttpStatus.badRequest) {

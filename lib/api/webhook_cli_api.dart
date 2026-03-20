@@ -81,7 +81,6 @@ class WebhookCLIApi {
   /// Parameters:
   ///
   /// * [String] sessionId (required):
-  ///   Session ID
   Future<Response> deleteWebhookCliSessionWithHttpInfo(String sessionId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/webhook-cli/sessions/{session_id}'
@@ -115,7 +114,6 @@ class WebhookCLIApi {
   /// Parameters:
   ///
   /// * [String] sessionId (required):
-  ///   Session ID
   Future<DeleteWebhookCliSession200Response?> deleteWebhookCliSession(String sessionId,) async {
     final response = await deleteWebhookCliSessionWithHttpInfo(sessionId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -202,7 +200,6 @@ class WebhookCLIApi {
   /// Parameters:
   ///
   /// * [int] deliveryId (required):
-  ///   Delivery ID
   Future<Response> replayWebhookDeliveryWithHttpInfo(int deliveryId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/webhook-cli/deliveries/{delivery_id}/replay'
@@ -236,7 +233,6 @@ class WebhookCLIApi {
   /// Parameters:
   ///
   /// * [int] deliveryId (required):
-  ///   Delivery ID
   Future<ReplayWebhookDelivery200Response?> replayWebhookDelivery(int deliveryId,) async {
     final response = await replayWebhookDeliveryWithHttpInfo(deliveryId,);
     if (response.statusCode >= HttpStatus.badRequest) {

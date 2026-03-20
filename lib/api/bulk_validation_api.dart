@@ -616,7 +616,6 @@ class BulkValidationApi {
   /// Parameters:
   ///
   /// * [String] jobId (required):
-  ///   Job ID
   Future<Response> retryJobWithHttpInfo(String jobId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/jobs/{job_id}/retry'
@@ -650,7 +649,6 @@ class BulkValidationApi {
   /// Parameters:
   ///
   /// * [String] jobId (required):
-  ///   Job ID
   Future<RetryJob200Response?> retryJob(String jobId,) async {
     final response = await retryJobWithHttpInfo(jobId,);
     if (response.statusCode >= HttpStatus.badRequest) {

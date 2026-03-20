@@ -496,7 +496,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = BulkValidationApi();
-final jobId = jobId_example; // String | Job ID
+final jobId = jobId_example; // String | 
 
 try {
     final result = api_instance.retryJob(jobId);
@@ -510,7 +510,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **jobId** | **String**| Job ID | 
+ **jobId** | **String**|  | 
 
 ### Return type
 

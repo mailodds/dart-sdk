@@ -35,7 +35,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = InboundProcessingApi();
-final messageId = messageId_example; // String | Message ID
+final messageId = messageId_example; // String | 
 final correctInboundMessageRequest = CorrectInboundMessageRequest(); // CorrectInboundMessageRequest | 
 
 try {
@@ -50,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **messageId** | **String**| Message ID | 
+ **messageId** | **String**|  | 
  **correctInboundMessageRequest** | [**CorrectInboundMessageRequest**](CorrectInboundMessageRequest.md)|  | 
 
 ### Return type
@@ -241,7 +241,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = InboundProcessingApi();
-final messageId = messageId_example; // String | Message ID
+final messageId = messageId_example; // String | 
 
 try {
     final result = api_instance.getInboundMessage(messageId);
@@ -255,7 +255,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **messageId** | **String**| Message ID | 
+ **messageId** | **String**|  | 
 
 ### Return type
 

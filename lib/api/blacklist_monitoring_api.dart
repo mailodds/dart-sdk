@@ -81,7 +81,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   Future<Response> deleteBlacklistMonitorWithHttpInfo(String monitorId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/blacklist-monitors/{monitor_id}'
@@ -115,7 +114,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   Future<DeletePolicyRule200Response?> deleteBlacklistMonitor(String monitorId,) async {
     final response = await deleteBlacklistMonitorWithHttpInfo(monitorId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -140,7 +138,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   ///
   /// * [int] page:
   ///
@@ -185,7 +182,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   ///
   /// * [int] page:
   ///
@@ -262,7 +258,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   Future<Response> runBlacklistCheckWithHttpInfo(String monitorId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/blacklist-monitors/{monitor_id}/check'
@@ -296,7 +291,6 @@ class BlacklistMonitoringApi {
   /// Parameters:
   ///
   /// * [String] monitorId (required):
-  ///   Monitor UUID
   Future<RunBlacklistCheck200Response?> runBlacklistCheck(String monitorId,) async {
     final response = await runBlacklistCheckWithHttpInfo(monitorId,);
     if (response.statusCode >= HttpStatus.badRequest) {

@@ -25,7 +25,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [AddContactRequest] addContactRequest (required):
   Future<Response> addContactWithHttpInfo(String listId, AddContactRequest addContactRequest,) async {
@@ -61,7 +60,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [AddContactRequest] addContactRequest (required):
   Future<AddContact201Response?> addContact(String listId, AddContactRequest addContactRequest,) async {
@@ -88,7 +86,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   ///
   /// * [AppendToContactListRequest] appendToContactListRequest (required):
   Future<Response> appendToContactListWithHttpInfo(String listId, AppendToContactListRequest appendToContactListRequest,) async {
@@ -124,7 +121,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   ///
   /// * [AppendToContactListRequest] appendToContactListRequest (required):
   Future<AppendToContactList200Response?> appendToContactList(String listId, AppendToContactListRequest appendToContactListRequest,) async {
@@ -207,10 +203,8 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [String] contactId (required):
-  ///   Contact ID
   Future<Response> deleteContactWithHttpInfo(String listId, String contactId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/contact-lists/{list_id}/contacts/{contact_id}'
@@ -245,10 +239,8 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [String] contactId (required):
-  ///   Contact ID
   Future<DeletePolicyRule200Response?> deleteContact(String listId, String contactId,) async {
     final response = await deleteContactWithHttpInfo(listId, contactId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -273,7 +265,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   Future<Response> deleteContactListWithHttpInfo(String listId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/contact-lists/{list_id}'
@@ -307,7 +298,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   Future<DeletePolicyRule200Response?> deleteContactList(String listId,) async {
     final response = await deleteContactListWithHttpInfo(listId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -332,7 +322,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   Future<Response> exportContactListWithHttpInfo(String listId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/contact-lists/{list_id}/export'
@@ -366,7 +355,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   Future<String?> exportContactList(String listId,) async {
     final response = await exportContactListWithHttpInfo(listId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -453,7 +441,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [MultipartFile] file (required):
   ///   CSV file (max 10MB)
@@ -521,7 +508,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [MultipartFile] file (required):
   ///   CSV file (max 10MB)
@@ -625,7 +611,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   ///
   /// * [QueryContactListRequest] queryContactListRequest (required):
   Future<Response> queryContactListWithHttpInfo(String listId, QueryContactListRequest queryContactListRequest,) async {
@@ -661,7 +646,6 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list UUID
   ///
   /// * [QueryContactListRequest] queryContactListRequest (required):
   Future<QueryContactList200Response?> queryContactList(String listId, QueryContactListRequest queryContactListRequest,) async {
@@ -688,10 +672,8 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [String] contactId (required):
-  ///   Contact ID
   ///
   /// * [UpdateContactRequest] updateContactRequest (required):
   Future<Response> updateContactWithHttpInfo(String listId, String contactId, UpdateContactRequest updateContactRequest,) async {
@@ -728,10 +710,8 @@ class ContactListsApi {
   /// Parameters:
   ///
   /// * [String] listId (required):
-  ///   Contact list ID
   ///
   /// * [String] contactId (required):
-  ///   Contact ID
   ///
   /// * [UpdateContactRequest] updateContactRequest (required):
   Future<AddContact201Response?> updateContact(String listId, String contactId, UpdateContactRequest updateContactRequest,) async {

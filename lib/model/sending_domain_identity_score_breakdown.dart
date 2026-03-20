@@ -13,21 +13,13 @@ part of mailodds;
 class SendingDomainIdentityScoreBreakdown {
   /// Returns a new [SendingDomainIdentityScoreBreakdown] instance.
   SendingDomainIdentityScoreBreakdown({
-    this.dkim,
     this.spf,
+    this.dkim,
     this.dmarc,
-    this.mx,
-    this.returnPath,
+    this.bounce,
+    this.tracking,
     this.bimi,
   });
-
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  IdentityScoreCheck? dkim;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -43,6 +35,14 @@ class SendingDomainIdentityScoreBreakdown {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
+  IdentityScoreCheck? dkim;
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
   IdentityScoreCheck? dmarc;
 
   ///
@@ -51,7 +51,7 @@ class SendingDomainIdentityScoreBreakdown {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  IdentityScoreCheck? mx;
+  IdentityScoreCheck? bounce;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -59,7 +59,7 @@ class SendingDomainIdentityScoreBreakdown {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  IdentityScoreCheck? returnPath;
+  IdentityScoreCheck? tracking;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -71,52 +71,52 @@ class SendingDomainIdentityScoreBreakdown {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is SendingDomainIdentityScoreBreakdown &&
-    other.dkim == dkim &&
     other.spf == spf &&
+    other.dkim == dkim &&
     other.dmarc == dmarc &&
-    other.mx == mx &&
-    other.returnPath == returnPath &&
+    other.bounce == bounce &&
+    other.tracking == tracking &&
     other.bimi == bimi;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
-    (dkim == null ? 0 : dkim!.hashCode) +
     (spf == null ? 0 : spf!.hashCode) +
+    (dkim == null ? 0 : dkim!.hashCode) +
     (dmarc == null ? 0 : dmarc!.hashCode) +
-    (mx == null ? 0 : mx!.hashCode) +
-    (returnPath == null ? 0 : returnPath!.hashCode) +
+    (bounce == null ? 0 : bounce!.hashCode) +
+    (tracking == null ? 0 : tracking!.hashCode) +
     (bimi == null ? 0 : bimi!.hashCode);
 
   @override
-  String toString() => 'SendingDomainIdentityScoreBreakdown[dkim=$dkim, spf=$spf, dmarc=$dmarc, mx=$mx, returnPath=$returnPath, bimi=$bimi]';
+  String toString() => 'SendingDomainIdentityScoreBreakdown[spf=$spf, dkim=$dkim, dmarc=$dmarc, bounce=$bounce, tracking=$tracking, bimi=$bimi]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
-    if (this.dkim != null) {
-      json[r'dkim'] = this.dkim;
-    } else {
-      json[r'dkim'] = null;
-    }
     if (this.spf != null) {
       json[r'spf'] = this.spf;
     } else {
       json[r'spf'] = null;
+    }
+    if (this.dkim != null) {
+      json[r'dkim'] = this.dkim;
+    } else {
+      json[r'dkim'] = null;
     }
     if (this.dmarc != null) {
       json[r'dmarc'] = this.dmarc;
     } else {
       json[r'dmarc'] = null;
     }
-    if (this.mx != null) {
-      json[r'mx'] = this.mx;
+    if (this.bounce != null) {
+      json[r'bounce'] = this.bounce;
     } else {
-      json[r'mx'] = null;
+      json[r'bounce'] = null;
     }
-    if (this.returnPath != null) {
-      json[r'return_path'] = this.returnPath;
+    if (this.tracking != null) {
+      json[r'tracking'] = this.tracking;
     } else {
-      json[r'return_path'] = null;
+      json[r'tracking'] = null;
     }
     if (this.bimi != null) {
       json[r'bimi'] = this.bimi;
@@ -145,11 +145,11 @@ class SendingDomainIdentityScoreBreakdown {
       }());
 
       return SendingDomainIdentityScoreBreakdown(
-        dkim: IdentityScoreCheck.fromJson(json[r'dkim']),
         spf: IdentityScoreCheck.fromJson(json[r'spf']),
+        dkim: IdentityScoreCheck.fromJson(json[r'dkim']),
         dmarc: IdentityScoreCheck.fromJson(json[r'dmarc']),
-        mx: IdentityScoreCheck.fromJson(json[r'mx']),
-        returnPath: IdentityScoreCheck.fromJson(json[r'return_path']),
+        bounce: IdentityScoreCheck.fromJson(json[r'bounce']),
+        tracking: IdentityScoreCheck.fromJson(json[r'tracking']),
         bimi: IdentityScoreCheck.fromJson(json[r'bimi']),
       );
     }

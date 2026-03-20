@@ -81,7 +81,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   Future<Response> disconnectStoreWithHttpInfo(String storeId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/stores/{store_id}'
@@ -115,7 +114,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   Future<DisconnectStore200Response?> disconnectStore(String storeId,) async {
     final response = await disconnectStoreWithHttpInfo(storeId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -140,7 +138,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   Future<Response> getStoreWithHttpInfo(String storeId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/stores/{store_id}'
@@ -174,7 +171,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   Future<CreateStore201Response?> getStore(String storeId,) async {
     final response = await getStoreWithHttpInfo(storeId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -199,10 +195,8 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store ID
   ///
   /// * [String] jobId (required):
-  ///   Sync job ID
   ///
   /// * [int] page:
   ///
@@ -248,10 +242,8 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store ID
   ///
   /// * [String] jobId (required):
-  ///   Sync job ID
   ///
   /// * [int] page:
   ///
@@ -342,7 +334,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store ID
   ///
   /// * [int] page:
   ///
@@ -387,7 +378,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store ID
   ///
   /// * [int] page:
   ///
@@ -416,7 +406,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [String] idempotencyKey:
   ///   Idempotency key to prevent duplicate syncs (5 min TTL)
@@ -457,7 +446,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [String] idempotencyKey:
   ///   Idempotency key to prevent duplicate syncs (5 min TTL)
@@ -485,7 +473,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [UpdateStoreRequest] updateStoreRequest (required):
   Future<Response> updateStoreWithHttpInfo(String storeId, UpdateStoreRequest updateStoreRequest,) async {
@@ -521,7 +508,6 @@ class StoreConnectionsApi {
   /// Parameters:
   ///
   /// * [String] storeId (required):
-  ///   Store connection UUID
   ///
   /// * [UpdateStoreRequest] updateStoreRequest (required):
   Future<CreateStore201Response?> updateStore(String storeId, UpdateStoreRequest updateStoreRequest,) async {

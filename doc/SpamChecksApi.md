@@ -33,7 +33,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SpamChecksApi();
-final checkId = checkId_example; // String | Spam check ID
+final checkId = checkId_example; // String | 
 
 try {
     final result = api_instance.deleteSpamCheck(checkId);
@@ -47,7 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **checkId** | **String**| Spam check ID | 
+ **checkId** | **String**|  | 
 
 ### Return type
 
@@ -82,7 +82,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = SpamChecksApi();
-final checkId = checkId_example; // String | Spam check UUID
+final checkId = checkId_example; // String | 
 
 try {
     final result = api_instance.getSpamCheck(checkId);
@@ -96,7 +96,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **checkId** | **String**| Spam check UUID | 
+ **checkId** | **String**|  | 
 
 ### Return type
 

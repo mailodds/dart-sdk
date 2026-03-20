@@ -40,7 +40,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list ID
+final listId = listId_example; // String | 
 final addContactRequest = AddContactRequest(); // AddContactRequest | 
 
 try {
@@ -55,7 +55,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list ID | 
+ **listId** | **String**|  | 
  **addContactRequest** | [**AddContactRequest**](AddContactRequest.md)|  | 
 
 ### Return type
@@ -91,7 +91,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list UUID
+final listId = listId_example; // String | 
 final appendToContactListRequest = AppendToContactListRequest(); // AppendToContactListRequest | 
 
 try {
@@ -106,7 +106,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list UUID | 
+ **listId** | **String**|  | 
  **appendToContactListRequest** | [**AppendToContactListRequest**](AppendToContactListRequest.md)|  | 
 
 ### Return type
@@ -191,8 +191,8 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list ID
-final contactId = contactId_example; // String | Contact ID
+final listId = listId_example; // String | 
+final contactId = contactId_example; // String | 
 
 try {
     final result = api_instance.deleteContact(listId, contactId);
@@ -206,8 +206,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list ID | 
- **contactId** | **String**| Contact ID | 
+ **listId** | **String**|  | 
+ **contactId** | **String**|  | 
 
 ### Return type
 
@@ -242,7 +242,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list UUID
+final listId = listId_example; // String | 
 
 try {
     final result = api_instance.deleteContactList(listId);
@@ -256,7 +256,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list UUID | 
+ **listId** | **String**|  | 
 
 ### Return type
 
@@ -291,7 +291,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list ID
+final listId = listId_example; // String | 
 
 try {
     final result = api_instance.exportContactList(listId);
@@ -305,7 +305,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list ID | 
+ **listId** | **String**|  | 
 
 ### Return type
 
@@ -389,7 +389,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list ID
+final listId = listId_example; // String | 
 final file = BINARY_DATA_HERE; // MultipartFile | CSV file (max 10MB)
 final columnMapping = columnMapping_example; // String | JSON mapping of CSV columns to contact fields
 final consentSource = consentSource_example; // String | Source of consent for imported contacts
@@ -407,7 +407,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list ID | 
+ **listId** | **String**|  | 
  **file** | **MultipartFile**| CSV file (max 10MB) | 
  **columnMapping** | **String**| JSON mapping of CSV columns to contact fields | [optional] 
  **consentSource** | **String**| Source of consent for imported contacts | [optional] 
@@ -497,7 +497,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list UUID
+final listId = listId_example; // String | 
 final queryContactListRequest = QueryContactListRequest(); // QueryContactListRequest | 
 
 try {
@@ -512,7 +512,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list UUID | 
+ **listId** | **String**|  | 
  **queryContactListRequest** | [**QueryContactListRequest**](QueryContactListRequest.md)|  | 
 
 ### Return type
@@ -548,8 +548,8 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = ContactListsApi();
-final listId = listId_example; // String | Contact list ID
-final contactId = contactId_example; // String | Contact ID
+final listId = listId_example; // String | 
+final contactId = contactId_example; // String | 
 final updateContactRequest = UpdateContactRequest(); // UpdateContactRequest | 
 
 try {
@@ -564,8 +564,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **listId** | **String**| Contact list ID | 
- **contactId** | **String**| Contact ID | 
+ **listId** | **String**|  | 
+ **contactId** | **String**|  | 
  **updateContactRequest** | [**UpdateContactRequest**](UpdateContactRequest.md)|  | 
 
 ### Return type

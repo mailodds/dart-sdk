@@ -25,7 +25,6 @@ class InboundProcessingApi {
   /// Parameters:
   ///
   /// * [String] messageId (required):
-  ///   Message ID
   ///
   /// * [CorrectInboundMessageRequest] correctInboundMessageRequest (required):
   Future<Response> correctInboundMessageWithHttpInfo(String messageId, CorrectInboundMessageRequest correctInboundMessageRequest,) async {
@@ -61,7 +60,6 @@ class InboundProcessingApi {
   /// Parameters:
   ///
   /// * [String] messageId (required):
-  ///   Message ID
   ///
   /// * [CorrectInboundMessageRequest] correctInboundMessageRequest (required):
   Future<GetInboundMessage200Response?> correctInboundMessage(String messageId, CorrectInboundMessageRequest correctInboundMessageRequest,) async {
@@ -310,7 +308,6 @@ class InboundProcessingApi {
   /// Parameters:
   ///
   /// * [String] messageId (required):
-  ///   Message ID
   Future<Response> getInboundMessageWithHttpInfo(String messageId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/inbound-messages/{message_id}'
@@ -344,7 +341,6 @@ class InboundProcessingApi {
   /// Parameters:
   ///
   /// * [String] messageId (required):
-  ///   Message ID
   Future<GetInboundMessage200Response?> getInboundMessage(String messageId,) async {
     final response = await getInboundMessageWithHttpInfo(messageId,);
     if (response.statusCode >= HttpStatus.badRequest) {

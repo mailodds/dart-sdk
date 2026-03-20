@@ -148,6 +148,7 @@ part 'model/get_blacklist_history200_response_checks_inner.dart';
 part 'model/get_bounce_records200_response.dart';
 part 'model/get_bounce_records200_response_records_inner.dart';
 part 'model/get_bounce_stats200_response.dart';
+part 'model/get_bounce_stats200_response_stats.dart';
 part 'model/get_bounce_stats_summary200_response.dart';
 part 'model/get_campaign_ab_results200_response.dart';
 part 'model/get_campaign_ab_results200_response_variants_inner.dart';

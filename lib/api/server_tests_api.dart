@@ -25,7 +25,6 @@ class ServerTestsApi {
   /// Parameters:
   ///
   /// * [String] testId (required):
-  ///   Server test UUID
   Future<Response> getServerTestWithHttpInfo(String testId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/server-tests/{test_id}'
@@ -59,7 +58,6 @@ class ServerTestsApi {
   /// Parameters:
   ///
   /// * [String] testId (required):
-  ///   Server test UUID
   Future<RunServerTest201Response?> getServerTest(String testId,) async {
     final response = await getServerTestWithHttpInfo(testId,);
     if (response.statusCode >= HttpStatus.badRequest) {

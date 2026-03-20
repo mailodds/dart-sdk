@@ -86,7 +86,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store connection UUID
+final storeId = storeId_example; // String | 
 
 try {
     final result = api_instance.disconnectStore(storeId);
@@ -100,7 +100,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store connection UUID | 
+ **storeId** | **String**|  | 
 
 ### Return type
 
@@ -135,7 +135,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store connection UUID
+final storeId = storeId_example; // String | 
 
 try {
     final result = api_instance.getStore(storeId);
@@ -149,7 +149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store connection UUID | 
+ **storeId** | **String**|  | 
 
 ### Return type
 
@@ -184,8 +184,8 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store ID
-final jobId = jobId_example; // String | Sync job ID
+final storeId = storeId_example; // String | 
+final jobId = jobId_example; // String | 
 final page = 56; // int | 
 final perPage = 56; // int | 
 
@@ -201,8 +201,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store ID | 
- **jobId** | **String**| Sync job ID | 
+ **storeId** | **String**|  | 
+ **jobId** | **String**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **perPage** | **int**|  | [optional] [default to 50]
 
@@ -288,7 +288,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store ID
+final storeId = storeId_example; // String | 
 final page = 56; // int | 
 final perPage = 56; // int | 
 
@@ -304,7 +304,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store ID | 
+ **storeId** | **String**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **perPage** | **int**|  | [optional] [default to 20]
 
@@ -341,7 +341,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store connection UUID
+final storeId = storeId_example; // String | 
 final idempotencyKey = idempotencyKey_example; // String | Idempotency key to prevent duplicate syncs (5 min TTL)
 
 try {
@@ -356,7 +356,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store connection UUID | 
+ **storeId** | **String**|  | 
  **idempotencyKey** | **String**| Idempotency key to prevent duplicate syncs (5 min TTL) | [optional] 
 
 ### Return type
@@ -392,7 +392,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = StoreConnectionsApi();
-final storeId = storeId_example; // String | Store connection UUID
+final storeId = storeId_example; // String | 
 final updateStoreRequest = UpdateStoreRequest(); // UpdateStoreRequest | 
 
 try {
@@ -407,7 +407,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **storeId** | **String**| Store connection UUID | 
+ **storeId** | **String**|  | 
  **updateStoreRequest** | [**UpdateStoreRequest**](UpdateStoreRequest.md)|  | 
 
 ### Return type

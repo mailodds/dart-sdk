@@ -9,18 +9,32 @@ import 'package:mailodds/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Campaign UUID | 
+**accountId** | **int** |  | [optional] 
 **name** | **String** | Campaign name | 
 **status** | **String** |  | 
-**listId** | **String** | Target subscriber list UUID | 
 **domainId** | **String** | Sending domain UUID | 
-**fromEmail** | **String** |  | 
-**fromName** | **String** |  | [optional] 
+**subject** | **String** |  | [optional] 
+**fromAddress** | **String** | Sender email address | 
 **replyTo** | **String** |  | [optional] 
+**htmlBody** | **String** |  | [optional] 
+**textBody** | **String** |  | [optional] 
+**htmlBodyDark** | **String** |  | [optional] 
+**textBodyDark** | **String** |  | [optional] 
+**campaignType** | **String** |  | [optional] 
+**autoDetectSchema** | **bool** |  | [optional] 
+**promoAnnotations** | [**Object**](.md) |  | [optional] 
+**throwawayPolicy** | **String** |  | [optional] 
 **scheduledAt** | [**DateTime**](DateTime.md) |  | [optional] 
-**sentAt** | [**DateTime**](DateTime.md) |  | [optional] 
-**cancelledAt** | [**DateTime**](DateTime.md) |  | [optional] 
-**variantCount** | **int** | Number of A/B variants | [optional] 
+**startedAt** | [**DateTime**](DateTime.md) |  | [optional] 
+**completedAt** | [**DateTime**](DateTime.md) |  | [optional] 
+**recipientCount** | **int** |  | [optional] 
+**isAbTest** | **bool** |  | [optional] 
+**winningVariantId** | **String** |  | [optional] 
+**abTestConfig** | [**Object**](.md) |  | [optional] 
+**errorMessage** | **String** |  | [optional] 
 **stats** | [**CampaignStats**](CampaignStats.md) |  | [optional] 
+**openRate** | **num** |  | [optional] 
+**clickRate** | **num** |  | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) |  | 
 **updatedAt** | [**DateTime**](DateTime.md) |  | [optional] 
 

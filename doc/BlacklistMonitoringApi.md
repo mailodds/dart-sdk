@@ -83,7 +83,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = BlacklistMonitoringApi();
-final monitorId = monitorId_example; // String | Monitor UUID
+final monitorId = monitorId_example; // String | 
 
 try {
     final result = api_instance.deleteBlacklistMonitor(monitorId);
@@ -97,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **monitorId** | **String**| Monitor UUID | 
+ **monitorId** | **String**|  | 
 
 ### Return type
 
@@ -132,7 +132,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = BlacklistMonitoringApi();
-final monitorId = monitorId_example; // String | Monitor UUID
+final monitorId = monitorId_example; // String | 
 final page = 56; // int | 
 final perPage = 56; // int | 
 
@@ -148,7 +148,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **monitorId** | **String**| Monitor UUID | 
+ **monitorId** | **String**|  | 
  **page** | **int**|  | [optional] [default to 1]
  **perPage** | **int**|  | [optional] [default to 20]
 
@@ -230,7 +230,7 @@ import 'package:mailodds/api.dart';
 //defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
 
 final api_instance = BlacklistMonitoringApi();
-final monitorId = monitorId_example; // String | Monitor UUID
+final monitorId = monitorId_example; // String | 
 
 try {
     final result = api_instance.runBlacklistCheck(monitorId);
@@ -244,7 +244,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **monitorId** | **String**| Monitor UUID | 
+ **monitorId** | **String**|  | 
 
 ### Return type
 

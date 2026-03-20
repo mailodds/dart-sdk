@@ -81,7 +81,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   Future<Response> deleteAlertRuleWithHttpInfo(String ruleId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/alert-rules/{rule_id}'
@@ -115,7 +114,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   Future<DeletePolicyRule200Response?> deleteAlertRule(String ruleId,) async {
     final response = await deleteAlertRuleWithHttpInfo(ruleId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -140,7 +138,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   Future<Response> getAlertRuleWithHttpInfo(String ruleId,) async {
     // ignore: prefer_const_declarations
     final path = r'/v1/alert-rules/{rule_id}'
@@ -174,7 +171,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   Future<CreateAlertRule201Response?> getAlertRule(String ruleId,) async {
     final response = await getAlertRuleWithHttpInfo(ruleId,);
     if (response.statusCode >= HttpStatus.badRequest) {
@@ -247,7 +243,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   ///
   /// * [UpdateAlertRuleRequest] updateAlertRuleRequest (required):
   Future<Response> updateAlertRuleWithHttpInfo(String ruleId, UpdateAlertRuleRequest updateAlertRuleRequest,) async {
@@ -283,7 +278,6 @@ class AlertRulesApi {
   /// Parameters:
   ///
   /// * [String] ruleId (required):
-  ///   Alert rule ID
   ///
   /// * [UpdateAlertRuleRequest] updateAlertRuleRequest (required):
   Future<CreateAlertRule201Response?> updateAlertRule(String ruleId, UpdateAlertRuleRequest updateAlertRuleRequest,) async {
