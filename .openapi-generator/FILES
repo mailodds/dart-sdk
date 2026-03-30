@@ -600,4 +600,3 @@ lib/model/validation_response_suppression_match.dart
 lib/model/validation_result.dart
 lib/model/validation_result_suppression.dart
 lib/model/webhook_event.dart
-test/o_auth_client_registration_test.dart

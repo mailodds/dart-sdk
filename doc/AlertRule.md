@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **metric** | **String** | Monitored metric name | [optional] 
 **threshold** | **num** | Alert threshold value (0-1) | [optional] 
 **channel** | **String** | Notification channel | [optional] 
-**windowMinutes** | **int** | Evaluation window in minutes | [optional] 
+**windowMinutes** | **int** | Evaluation window in minutes (15, 60, 1440, or 2880) | [optional] 
 **enabled** | **bool** |  | [optional] 
 **createdAt** | [**DateTime**](DateTime.md) |  | [optional] 
 **updatedAt** | [**DateTime**](DateTime.md) |  | [optional] 
