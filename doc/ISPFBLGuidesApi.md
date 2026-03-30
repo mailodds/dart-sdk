@@ -5,7 +5,7 @@
 import 'package:mailodds/api.dart';
 ```
 
-All URIs are relative to *https://api.mailodds.com/v1*
+All URIs are relative to *https://api.mailodds.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

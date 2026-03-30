@@ -11,7 +11,7 @@
 part of mailodds;
 
 class ApiClient {
-  ApiClient({this.basePath = 'https://api.mailodds.com/v1', this.authentication,});
+  ApiClient({this.basePath = 'https://api.mailodds.com', this.authentication,});
 
   final String basePath;
   final Authentication? authentication;
@@ -244,10 +244,6 @@ class ApiClient {
           return BounceAnalysisResponseAnalysisCategories.fromJson(value);
         case 'BounceAnalysisResponseAnalysisTopDomainsInner':
           return BounceAnalysisResponseAnalysisTopDomainsInner.fromJson(value);
-        case 'BulkUpdateProducts200Response':
-          return BulkUpdateProducts200Response.fromJson(value);
-        case 'BulkUpdateProductsRequest':
-          return BulkUpdateProductsRequest.fromJson(value);
         case 'Campaign':
           return Campaign.fromJson(value);
         case 'CampaignResponse':
@@ -300,8 +296,6 @@ class ApiClient {
           return CreateSendingDomain201Response.fromJson(value);
         case 'CreateSendingDomainRequest':
           return CreateSendingDomainRequest.fromJson(value);
-        case 'CreateStore201Response':
-          return CreateStore201Response.fromJson(value);
         case 'CreateStoreRequest':
           return CreateStoreRequest.fromJson(value);
         case 'CreateToken200Response':
@@ -340,8 +334,6 @@ class ApiClient {
           return DeliverResponse.fromJson(value);
         case 'DeliverResponseDelivery':
           return DeliverResponseDelivery.fromJson(value);
-        case 'DisconnectStore200Response':
-          return DisconnectStore200Response.fromJson(value);
         case 'DmarcDomain':
           return DmarcDomain.fromJson(value);
         case 'ErrorResponse':
@@ -446,8 +438,6 @@ class ApiClient {
           return GetPixelSettings200Response.fromJson(value);
         case 'GetPresignedUploadRequest':
           return GetPresignedUploadRequest.fromJson(value);
-        case 'GetProduct200Response':
-          return GetProduct200Response.fromJson(value);
         case 'GetReplyForwarding200Response':
           return GetReplyForwarding200Response.fromJson(value);
         case 'GetReputation200Response':
@@ -478,8 +468,6 @@ class ApiClient {
           return GetSendingStats200ResponseStats.fromJson(value);
         case 'GetSubscribers200Response':
           return GetSubscribers200Response.fromJson(value);
-        case 'GetSyncJobErrors200Response':
-          return GetSyncJobErrors200Response.fromJson(value);
         case 'HealthCheck200Response':
           return HealthCheck200Response.fromJson(value);
         case 'IdentityScoreCheck':
@@ -522,10 +510,6 @@ class ApiClient {
           return ListServerTests200Response.fromJson(value);
         case 'ListSpamChecks200Response':
           return ListSpamChecks200Response.fromJson(value);
-        case 'ListStores200Response':
-          return ListStores200Response.fromJson(value);
-        case 'ListSyncJobs200Response':
-          return ListSyncJobs200Response.fromJson(value);
         case 'ListWebhookDeliveries200Response':
           return ListWebhookDeliveries200Response.fromJson(value);
         case 'ListWebhookDeliveries200ResponseDeliveriesInner':
@@ -536,6 +520,8 @@ class ApiClient {
           return McpCapabilitiesPillarsInner.fromJson(value);
         case 'McpCapabilitiesPillarsInnerToolsInner':
           return McpCapabilitiesPillarsInnerToolsInner.fromJson(value);
+        case 'OAuthClientRegistration':
+          return OAuthClientRegistration.fromJson(value);
         case 'OAuthServerMetadata':
           return OAuthServerMetadata.fromJson(value);
         case 'Pagination':
@@ -578,8 +564,6 @@ class ApiClient {
           return QueryContactListRequest.fromJson(value);
         case 'QueryContactListRequestFiltersInner':
           return QueryContactListRequestFiltersInner.fromJson(value);
-        case 'QueryProducts200Response':
-          return QueryProducts200Response.fromJson(value);
         case 'RemoveSuppression200Response':
           return RemoveSuppression200Response.fromJson(value);
         case 'RemoveSuppressionRequest':
@@ -688,8 +672,6 @@ class ApiClient {
           return UpdatePolicyRequest.fromJson(value);
         case 'UpdateReplyForwardingRequest':
           return UpdateReplyForwardingRequest.fromJson(value);
-        case 'UpdateStoreRequest':
-          return UpdateStoreRequest.fromJson(value);
         case 'ValidateBatch200Response':
           return ValidateBatch200Response.fromJson(value);
         case 'ValidateBatch200ResponseSummary':

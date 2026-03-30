@@ -36,8 +36,6 @@ doc/BounceAnalysisResponse.md
 doc/BounceAnalysisResponseAnalysis.md
 doc/BounceAnalysisResponseAnalysisCategories.md
 doc/BounceAnalysisResponseAnalysisTopDomainsInner.md
-doc/BulkUpdateProducts200Response.md
-doc/BulkUpdateProductsRequest.md
 doc/BulkValidationApi.md
 doc/Campaign.md
 doc/CampaignAnalyticsApi.md
@@ -70,7 +68,6 @@ doc/CreatePolicyFromPresetRequest.md
 doc/CreatePolicyRequest.md
 doc/CreateSendingDomain201Response.md
 doc/CreateSendingDomainRequest.md
-doc/CreateStore201Response.md
 doc/CreateStoreRequest.md
 doc/CreateToken200Response.md
 doc/CreateVariantRequest.md
@@ -93,7 +90,6 @@ doc/DeliverRequestToInner.md
 doc/DeliverResponse.md
 doc/DeliverResponseDelivery.md
 doc/DeliverabilityAdvisorApi.md
-doc/DisconnectStore200Response.md
 doc/DmarcDomain.md
 doc/DomainInsightsApi.md
 doc/EmailSendingApi.md
@@ -152,7 +148,6 @@ doc/GetMessageEvents200ResponseSummary.md
 doc/GetOooStatus200Response.md
 doc/GetPixelSettings200Response.md
 doc/GetPresignedUploadRequest.md
-doc/GetProduct200Response.md
 doc/GetReplyForwarding200Response.md
 doc/GetReputation200Response.md
 doc/GetReputationTimeline200Response.md
@@ -168,7 +163,6 @@ doc/GetSendingDomainIdentityScore200Response.md
 doc/GetSendingStats200Response.md
 doc/GetSendingStats200ResponseStats.md
 doc/GetSubscribers200Response.md
-doc/GetSyncJobErrors200Response.md
 doc/GlobalSuppressionsApi.md
 doc/HealthCheck200Response.md
 doc/ISPFBLGuidesApi.md
@@ -194,8 +188,6 @@ doc/ListOooContacts200Response.md
 doc/ListSendingDomains200Response.md
 doc/ListServerTests200Response.md
 doc/ListSpamChecks200Response.md
-doc/ListStores200Response.md
-doc/ListSyncJobs200Response.md
 doc/ListWebhookDeliveries200Response.md
 doc/ListWebhookDeliveries200ResponseDeliveriesInner.md
 doc/ManagedSPFApi.md
@@ -204,6 +196,7 @@ doc/McpCapabilitiesPillarsInner.md
 doc/McpCapabilitiesPillarsInnerToolsInner.md
 doc/MessageEventsApi.md
 doc/OAuth20Api.md
+doc/OAuthClientRegistration.md
 doc/OAuthServerMetadata.md
 doc/OutOfOfficeApi.md
 doc/Pagination.md
@@ -224,12 +217,10 @@ doc/ProductFacets.md
 doc/ProductFacetsCategoriesInner.md
 doc/ProductFacetsPriceRangesInner.md
 doc/ProductFacetsStoresInner.md
-doc/ProductsApi.md
 doc/QueryContactList200Response.md
 doc/QueryContactList200ResponseEmailsInner.md
 doc/QueryContactListRequest.md
 doc/QueryContactListRequestFiltersInner.md
-doc/QueryProducts200Response.md
 doc/RemoveSuppression200Response.md
 doc/RemoveSuppressionRequest.md
 doc/ReplayWebhookDelivery200Response.md
@@ -261,7 +252,6 @@ doc/SpamCheck.md
 doc/SpamCheckChecks.md
 doc/SpamChecksApi.md
 doc/StoreConnection.md
-doc/StoreConnectionsApi.md
 doc/StoreProduct.md
 doc/SubscribeRequest.md
 doc/Subscriber.md
@@ -296,7 +286,6 @@ doc/UpdateOooContactRequest.md
 doc/UpdatePixelSettingsRequest.md
 doc/UpdatePolicyRequest.md
 doc/UpdateReplyForwardingRequest.md
-doc/UpdateStoreRequest.md
 doc/ValidateBatch200Response.md
 doc/ValidateBatch200ResponseSummary.md
 doc/ValidateBatchRequest.md
@@ -340,7 +329,6 @@ lib/api/o_auth20_api.dart
 lib/api/out_of_office_api.dart
 lib/api/pipeline_simulation_api.dart
 lib/api/pixel_settings_api.dart
-lib/api/products_api.dart
 lib/api/reputation_api.dart
 lib/api/reputation_policies_api.dart
 lib/api/sender_health_api.dart
@@ -348,7 +336,6 @@ lib/api/sending_delegations_api.dart
 lib/api/sending_domains_api.dart
 lib/api/server_tests_api.dart
 lib/api/spam_checks_api.dart
-lib/api/store_connections_api.dart
 lib/api/subscriber_lists_api.dart
 lib/api/suppression_lists_api.dart
 lib/api/system_api.dart
@@ -393,8 +380,6 @@ lib/model/bounce_analysis_response.dart
 lib/model/bounce_analysis_response_analysis.dart
 lib/model/bounce_analysis_response_analysis_categories.dart
 lib/model/bounce_analysis_response_analysis_top_domains_inner.dart
-lib/model/bulk_update_products200_response.dart
-lib/model/bulk_update_products_request.dart
 lib/model/campaign.dart
 lib/model/campaign_response.dart
 lib/model/campaign_stats.dart
@@ -420,7 +405,6 @@ lib/model/create_policy_from_preset_request.dart
 lib/model/create_policy_request.dart
 lib/model/create_sending_domain201_response.dart
 lib/model/create_sending_domain_request.dart
-lib/model/create_store201_response.dart
 lib/model/create_store_request.dart
 lib/model/create_token200_response.dart
 lib/model/create_variant_request.dart
@@ -439,7 +423,6 @@ lib/model/deliver_request_options.dart
 lib/model/deliver_request_to_inner.dart
 lib/model/deliver_response.dart
 lib/model/deliver_response_delivery.dart
-lib/model/disconnect_store200_response.dart
 lib/model/dmarc_domain.dart
 lib/model/error_response.dart
 lib/model/get_blacklist_history200_response.dart
@@ -492,7 +475,6 @@ lib/model/get_message_events200_response_summary.dart
 lib/model/get_ooo_status200_response.dart
 lib/model/get_pixel_settings200_response.dart
 lib/model/get_presigned_upload_request.dart
-lib/model/get_product200_response.dart
 lib/model/get_reply_forwarding200_response.dart
 lib/model/get_reputation200_response.dart
 lib/model/get_reputation_timeline200_response.dart
@@ -508,7 +490,6 @@ lib/model/get_sending_domain_identity_score200_response.dart
 lib/model/get_sending_stats200_response.dart
 lib/model/get_sending_stats200_response_stats.dart
 lib/model/get_subscribers200_response.dart
-lib/model/get_sync_job_errors200_response.dart
 lib/model/health_check200_response.dart
 lib/model/identity_score_check.dart
 lib/model/import_contact_list200_response.dart
@@ -530,13 +511,12 @@ lib/model/list_ooo_contacts200_response.dart
 lib/model/list_sending_domains200_response.dart
 lib/model/list_server_tests200_response.dart
 lib/model/list_spam_checks200_response.dart
-lib/model/list_stores200_response.dart
-lib/model/list_sync_jobs200_response.dart
 lib/model/list_webhook_deliveries200_response.dart
 lib/model/list_webhook_deliveries200_response_deliveries_inner.dart
 lib/model/mcp_capabilities.dart
 lib/model/mcp_capabilities_pillars_inner.dart
 lib/model/mcp_capabilities_pillars_inner_tools_inner.dart
+lib/model/o_auth_client_registration.dart
 lib/model/o_auth_server_metadata.dart
 lib/model/pagination.dart
 lib/model/policy.dart
@@ -558,7 +538,6 @@ lib/model/query_contact_list200_response.dart
 lib/model/query_contact_list200_response_emails_inner.dart
 lib/model/query_contact_list_request.dart
 lib/model/query_contact_list_request_filters_inner.dart
-lib/model/query_products200_response.dart
 lib/model/remove_suppression200_response.dart
 lib/model/remove_suppression_request.dart
 lib/model/replay_webhook_delivery200_response.dart
@@ -613,7 +592,6 @@ lib/model/update_ooo_contact_request.dart
 lib/model/update_pixel_settings_request.dart
 lib/model/update_policy_request.dart
 lib/model/update_reply_forwarding_request.dart
-lib/model/update_store_request.dart
 lib/model/validate_batch200_response.dart
 lib/model/validate_batch200_response_summary.dart
 lib/model/validation_response.dart
@@ -622,3 +600,4 @@ lib/model/validation_response_suppression_match.dart
 lib/model/validation_result.dart
 lib/model/validation_result_suppression.dart
 lib/model/webhook_event.dart
+test/o_auth_client_registration_test.dart

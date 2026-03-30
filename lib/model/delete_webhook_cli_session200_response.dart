@@ -13,8 +13,17 @@ part of mailodds;
 class DeleteWebhookCliSession200Response {
   /// Returns a new [DeleteWebhookCliSession200Response] instance.
   DeleteWebhookCliSession200Response({
+    this.deleted,
     this.status,
   });
+
+  ///
+  /// Please note: This property should have been non-nullable! Since the specification file
+  /// does not include a default value (using the "default:" property), however, the generated
+  /// source code must fall back to having a nullable type.
+  /// Consider adding a "default:" property in the specification file to hide this note.
+  ///
+  bool? deleted;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -26,18 +35,25 @@ class DeleteWebhookCliSession200Response {
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is DeleteWebhookCliSession200Response &&
+    other.deleted == deleted &&
     other.status == status;
 
   @override
   int get hashCode =>
     // ignore: unnecessary_parenthesis
+    (deleted == null ? 0 : deleted!.hashCode) +
     (status == null ? 0 : status!.hashCode);
 
   @override
-  String toString() => 'DeleteWebhookCliSession200Response[status=$status]';
+  String toString() => 'DeleteWebhookCliSession200Response[deleted=$deleted, status=$status]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
+    if (this.deleted != null) {
+      json[r'deleted'] = this.deleted;
+    } else {
+      json[r'deleted'] = null;
+    }
     if (this.status != null) {
       json[r'status'] = this.status;
     } else {
@@ -65,6 +81,7 @@ class DeleteWebhookCliSession200Response {
       }());
 
       return DeleteWebhookCliSession200Response(
+        deleted: mapValueOfType<bool>(json, r'deleted'),
         status: mapValueOfType<String>(json, r'status'),
       );
     }

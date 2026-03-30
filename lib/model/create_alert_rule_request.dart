@@ -16,21 +16,24 @@ class CreateAlertRuleRequest {
     required this.metric,
     required this.threshold,
     required this.channel,
-    this.windowMinutes = 60,
+    this.windowMinutes = const CreateAlertRuleRequestWindowMinutesEnum._(CreateAlertRuleRequestWindowMinutesEnum.number60),
     this.enabled = true,
   });
 
   /// Metric to monitor (e.g., bounce_rate, complaint_rate)
   String metric;
 
-  /// Threshold value to trigger alert
+  /// Threshold value (0-1, e.g. 0.02 for 2%)
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 1
   num threshold;
 
   /// Notification channel (e.g., webhook)
   String channel;
 
   /// Evaluation window in minutes
-  int windowMinutes;
+  CreateAlertRuleRequestWindowMinutesEnum windowMinutes;
 
   bool enabled;
 
@@ -86,7 +89,7 @@ class CreateAlertRuleRequest {
         metric: mapValueOfType<String>(json, r'metric')!,
         threshold: num.parse('${json[r'threshold']}'),
         channel: mapValueOfType<String>(json, r'channel')!,
-        windowMinutes: mapValueOfType<int>(json, r'window_minutes') ?? 60,
+        windowMinutes: CreateAlertRuleRequestWindowMinutesEnum.fromJson(json[r'window_minutes']) ?? CreateAlertRuleRequestWindowMinutesEnum.number60,
         enabled: mapValueOfType<bool>(json, r'enabled') ?? true,
       );
     }
@@ -140,4 +143,84 @@ class CreateAlertRuleRequest {
     'channel',
   };
 }
+
+/// Evaluation window in minutes
+class CreateAlertRuleRequestWindowMinutesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const CreateAlertRuleRequestWindowMinutesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final int value;
+
+  @override
+  String toString() => value.toString();
+
+  int toJson() => value;
+
+  static const number15 = CreateAlertRuleRequestWindowMinutesEnum._(15);
+  static const number60 = CreateAlertRuleRequestWindowMinutesEnum._(60);
+  static const number1440 = CreateAlertRuleRequestWindowMinutesEnum._(1440);
+  static const number2880 = CreateAlertRuleRequestWindowMinutesEnum._(2880);
+
+  /// List of all possible values in this [enum][CreateAlertRuleRequestWindowMinutesEnum].
+  static const values = <CreateAlertRuleRequestWindowMinutesEnum>[
+    number15,
+    number60,
+    number1440,
+    number2880,
+  ];
+
+  static CreateAlertRuleRequestWindowMinutesEnum? fromJson(dynamic value) => CreateAlertRuleRequestWindowMinutesEnumTypeTransformer().decode(value);
+
+  static List<CreateAlertRuleRequestWindowMinutesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <CreateAlertRuleRequestWindowMinutesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = CreateAlertRuleRequestWindowMinutesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [CreateAlertRuleRequestWindowMinutesEnum] to int,
+/// and [decode] dynamic data back to [CreateAlertRuleRequestWindowMinutesEnum].
+class CreateAlertRuleRequestWindowMinutesEnumTypeTransformer {
+  factory CreateAlertRuleRequestWindowMinutesEnumTypeTransformer() => _instance ??= const CreateAlertRuleRequestWindowMinutesEnumTypeTransformer._();
+
+  const CreateAlertRuleRequestWindowMinutesEnumTypeTransformer._();
+
+  int encode(CreateAlertRuleRequestWindowMinutesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a CreateAlertRuleRequestWindowMinutesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  CreateAlertRuleRequestWindowMinutesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case 15: return CreateAlertRuleRequestWindowMinutesEnum.number15;
+        case 60: return CreateAlertRuleRequestWindowMinutesEnum.number60;
+        case 1440: return CreateAlertRuleRequestWindowMinutesEnum.number1440;
+        case 2880: return CreateAlertRuleRequestWindowMinutesEnum.number2880;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [CreateAlertRuleRequestWindowMinutesEnumTypeTransformer] instance.
+  static CreateAlertRuleRequestWindowMinutesEnumTypeTransformer? _instance;
+}
+
 

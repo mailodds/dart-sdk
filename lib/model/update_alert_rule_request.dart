@@ -28,6 +28,8 @@ class UpdateAlertRuleRequest {
   ///
   String? metric;
 
+  /// Minimum value: 0
+  /// Maximum value: 1
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -44,13 +46,7 @@ class UpdateAlertRuleRequest {
   ///
   String? channel;
 
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? windowMinutes;
+  UpdateAlertRuleRequestWindowMinutesEnum? windowMinutes;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -132,7 +128,7 @@ class UpdateAlertRuleRequest {
         metric: mapValueOfType<String>(json, r'metric'),
         threshold: num.parse('${json[r'threshold']}'),
         channel: mapValueOfType<String>(json, r'channel'),
-        windowMinutes: mapValueOfType<int>(json, r'window_minutes'),
+        windowMinutes: UpdateAlertRuleRequestWindowMinutesEnum.fromJson(json[r'window_minutes']),
         enabled: mapValueOfType<bool>(json, r'enabled'),
       );
     }
@@ -183,4 +179,84 @@ class UpdateAlertRuleRequest {
   static const requiredKeys = <String>{
   };
 }
+
+
+class UpdateAlertRuleRequestWindowMinutesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const UpdateAlertRuleRequestWindowMinutesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final int value;
+
+  @override
+  String toString() => value.toString();
+
+  int toJson() => value;
+
+  static const number15 = UpdateAlertRuleRequestWindowMinutesEnum._(15);
+  static const number60 = UpdateAlertRuleRequestWindowMinutesEnum._(60);
+  static const number1440 = UpdateAlertRuleRequestWindowMinutesEnum._(1440);
+  static const number2880 = UpdateAlertRuleRequestWindowMinutesEnum._(2880);
+
+  /// List of all possible values in this [enum][UpdateAlertRuleRequestWindowMinutesEnum].
+  static const values = <UpdateAlertRuleRequestWindowMinutesEnum>[
+    number15,
+    number60,
+    number1440,
+    number2880,
+  ];
+
+  static UpdateAlertRuleRequestWindowMinutesEnum? fromJson(dynamic value) => UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer().decode(value);
+
+  static List<UpdateAlertRuleRequestWindowMinutesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <UpdateAlertRuleRequestWindowMinutesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = UpdateAlertRuleRequestWindowMinutesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [UpdateAlertRuleRequestWindowMinutesEnum] to int,
+/// and [decode] dynamic data back to [UpdateAlertRuleRequestWindowMinutesEnum].
+class UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer {
+  factory UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer() => _instance ??= const UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer._();
+
+  const UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer._();
+
+  int encode(UpdateAlertRuleRequestWindowMinutesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a UpdateAlertRuleRequestWindowMinutesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  UpdateAlertRuleRequestWindowMinutesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case 15: return UpdateAlertRuleRequestWindowMinutesEnum.number15;
+        case 60: return UpdateAlertRuleRequestWindowMinutesEnum.number60;
+        case 1440: return UpdateAlertRuleRequestWindowMinutesEnum.number1440;
+        case 2880: return UpdateAlertRuleRequestWindowMinutesEnum.number2880;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer] instance.
+  static UpdateAlertRuleRequestWindowMinutesEnumTypeTransformer? _instance;
+}
+
 

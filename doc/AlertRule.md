@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  | [optional] 
 **metric** | **String** | Monitored metric name | [optional] 
-**threshold** | **num** | Alert threshold value | [optional] 
+**threshold** | **num** | Alert threshold value (0-1) | [optional] 
 **channel** | **String** | Notification channel | [optional] 
 **windowMinutes** | **int** | Evaluation window in minutes | [optional] 
 **enabled** | **bool** |  | [optional] 

@@ -40,7 +40,10 @@ class AlertRule {
   ///
   String? metric;
 
-  /// Alert threshold value
+  /// Alert threshold value (0-1)
+  ///
+  /// Minimum value: 0
+  /// Maximum value: 1
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
   /// does not include a default value (using the "default:" property), however, the generated
@@ -59,13 +62,7 @@ class AlertRule {
   String? channel;
 
   /// Evaluation window in minutes
-  ///
-  /// Please note: This property should have been non-nullable! Since the specification file
-  /// does not include a default value (using the "default:" property), however, the generated
-  /// source code must fall back to having a nullable type.
-  /// Consider adding a "default:" property in the specification file to hide this note.
-  ///
-  int? windowMinutes;
+  AlertRuleWindowMinutesEnum? windowMinutes;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -185,7 +182,7 @@ class AlertRule {
         metric: mapValueOfType<String>(json, r'metric'),
         threshold: num.parse('${json[r'threshold']}'),
         channel: mapValueOfType<String>(json, r'channel'),
-        windowMinutes: mapValueOfType<int>(json, r'window_minutes'),
+        windowMinutes: AlertRuleWindowMinutesEnum.fromJson(json[r'window_minutes']),
         enabled: mapValueOfType<bool>(json, r'enabled'),
         createdAt: mapDateTime(json, r'created_at', r''),
         updatedAt: mapDateTime(json, r'updated_at', r''),
@@ -238,4 +235,84 @@ class AlertRule {
   static const requiredKeys = <String>{
   };
 }
+
+/// Evaluation window in minutes
+class AlertRuleWindowMinutesEnum {
+  /// Instantiate a new enum with the provided [value].
+  const AlertRuleWindowMinutesEnum._(this.value);
+
+  /// The underlying value of this enum member.
+  final int value;
+
+  @override
+  String toString() => value.toString();
+
+  int toJson() => value;
+
+  static const number15 = AlertRuleWindowMinutesEnum._(15);
+  static const number60 = AlertRuleWindowMinutesEnum._(60);
+  static const number1440 = AlertRuleWindowMinutesEnum._(1440);
+  static const number2880 = AlertRuleWindowMinutesEnum._(2880);
+
+  /// List of all possible values in this [enum][AlertRuleWindowMinutesEnum].
+  static const values = <AlertRuleWindowMinutesEnum>[
+    number15,
+    number60,
+    number1440,
+    number2880,
+  ];
+
+  static AlertRuleWindowMinutesEnum? fromJson(dynamic value) => AlertRuleWindowMinutesEnumTypeTransformer().decode(value);
+
+  static List<AlertRuleWindowMinutesEnum> listFromJson(dynamic json, {bool growable = false,}) {
+    final result = <AlertRuleWindowMinutesEnum>[];
+    if (json is List && json.isNotEmpty) {
+      for (final row in json) {
+        final value = AlertRuleWindowMinutesEnum.fromJson(row);
+        if (value != null) {
+          result.add(value);
+        }
+      }
+    }
+    return result.toList(growable: growable);
+  }
+}
+
+/// Transformation class that can [encode] an instance of [AlertRuleWindowMinutesEnum] to int,
+/// and [decode] dynamic data back to [AlertRuleWindowMinutesEnum].
+class AlertRuleWindowMinutesEnumTypeTransformer {
+  factory AlertRuleWindowMinutesEnumTypeTransformer() => _instance ??= const AlertRuleWindowMinutesEnumTypeTransformer._();
+
+  const AlertRuleWindowMinutesEnumTypeTransformer._();
+
+  int encode(AlertRuleWindowMinutesEnum data) => data.value;
+
+  /// Decodes a [dynamic value][data] to a AlertRuleWindowMinutesEnum.
+  ///
+  /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
+  /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
+  /// cannot be decoded successfully, then an [UnimplementedError] is thrown.
+  ///
+  /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
+  /// and users are still using an old app with the old code.
+  AlertRuleWindowMinutesEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data != null) {
+      switch (data) {
+        case 15: return AlertRuleWindowMinutesEnum.number15;
+        case 60: return AlertRuleWindowMinutesEnum.number60;
+        case 1440: return AlertRuleWindowMinutesEnum.number1440;
+        case 2880: return AlertRuleWindowMinutesEnum.number2880;
+        default:
+          if (!allowNull) {
+            throw ArgumentError('Unknown enum value to decode: $data');
+          }
+      }
+    }
+    return null;
+  }
+
+  /// Singleton [AlertRuleWindowMinutesEnumTypeTransformer] instance.
+  static AlertRuleWindowMinutesEnumTypeTransformer? _instance;
+}
+
 

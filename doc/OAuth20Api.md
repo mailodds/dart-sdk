@@ -5,13 +5,14 @@
 import 'package:mailodds/api.dart';
 ```
 
-All URIs are relative to *https://api.mailodds.com/v1*
+All URIs are relative to *https://api.mailodds.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createToken**](OAuth20Api.md#createtoken) | **POST** /oauth/token | Create token
 [**getJwks**](OAuth20Api.md#getjwks) | **GET** /.well-known/jwks.json | Get JSON Web Key Set
 [**introspectToken**](OAuth20Api.md#introspecttoken) | **POST** /oauth/introspect | Introspect token
+[**oauthRegisterClient**](OAuth20Api.md#oauthregisterclient) | **POST** /oauth/register | Register OAuth client
 [**oauthServerMetadata**](OAuth20Api.md#oauthservermetadata) | **GET** /.well-known/oauth-authorization-server | OAuth server metadata
 [**revokeToken**](OAuth20Api.md#revoketoken) | **POST** /oauth/revoke | Revoke token
 
@@ -157,6 +158,45 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/x-www-form-urlencoded
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **oauthRegisterClient**
+> OAuthClientRegistration oauthRegisterClient()
+
+Register OAuth client
+
+Dynamic Client Registration (RFC 7591). Allows MCP clients to auto-register without user interaction.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+
+final api_instance = OAuth20Api();
+
+try {
+    final result = api_instance.oauthRegisterClient();
+    print(result);
+} catch (e) {
+    print('Exception when calling OAuth20Api->oauthRegisterClient: $e\n');
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**OAuthClientRegistration**](OAuthClientRegistration.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
