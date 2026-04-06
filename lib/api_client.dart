@@ -262,6 +262,8 @@ class ApiClient {
           return ClassifyContentRequest.fromJson(value);
         case 'ConfirmSubscription200Response':
           return ConfirmSubscription200Response.fromJson(value);
+        case 'ConnectDnsProviderRequest':
+          return ConnectDnsProviderRequest.fromJson(value);
         case 'ContactList':
           return ContactList.fromJson(value);
         case 'CorrectInboundMessageRequest':
@@ -298,6 +300,8 @@ class ApiClient {
           return CreateSendingDomainRequest.fromJson(value);
         case 'CreateStoreRequest':
           return CreateStoreRequest.fromJson(value);
+        case 'CreateStorefrontDomainRequest':
+          return CreateStorefrontDomainRequest.fromJson(value);
         case 'CreateToken200Response':
           return CreateToken200Response.fromJson(value);
         case 'CreateVariantRequest':

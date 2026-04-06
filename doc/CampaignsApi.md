@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**cancelCampaign**](CampaignsApi.md#cancelcampaign) | **POST** /v1/campaigns/{campaign_id}/cancel | Cancel a campaign
 [**createCampaign**](CampaignsApi.md#createcampaign) | **POST** /v1/campaigns | Create a campaign
 [**createCampaignVariant**](CampaignsApi.md#createcampaignvariant) | **POST** /v1/campaigns/{campaign_id}/variants | Create A/B variant
+[**deleteCampaign**](CampaignsApi.md#deletecampaign) | **DELETE** /v1/campaigns/{campaign_id} | Delete a campaign
 [**getCampaign**](CampaignsApi.md#getcampaign) | **GET** /v1/campaigns/{campaign_id} | Get campaign with stats
 [**listCampaigns**](CampaignsApi.md#listcampaigns) | **GET** /v1/campaigns | List campaigns
 [**scheduleCampaign**](CampaignsApi.md#schedulecampaign) | **POST** /v1/campaigns/{campaign_id}/schedule | Schedule a campaign
@@ -163,6 +164,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deleteCampaign**
+> DeletePolicyRule200Response deleteCampaign(campaignId)
+
+Delete a campaign
+
+Permanently delete a campaign. Only campaigns in draft, sent, failed, or cancelled status can be deleted.
+
+### Example
+```dart
+import 'package:mailodds/api.dart';
+// TODO Configure HTTP Bearer authorization: BearerAuth
+// Case 1. Use String Token
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken('YOUR_ACCESS_TOKEN');
+// Case 2. Use Function which generate token.
+// String yourTokenGeneratorFunction() { ... }
+//defaultApiClient.getAuthentication<HttpBearerAuth>('BearerAuth').setAccessToken(yourTokenGeneratorFunction);
+
+final api_instance = CampaignsApi();
+final campaignId = campaignId_example; // String | Campaign UUID
+
+try {
+    final result = api_instance.deleteCampaign(campaignId);
+    print(result);
+} catch (e) {
+    print('Exception when calling CampaignsApi->deleteCampaign: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignId** | **String**| Campaign UUID | 
+
+### Return type
+
+[**DeletePolicyRule200Response**](DeletePolicyRule200Response.md)
+
+### Authorization
+
+[BearerAuth](../README.md#BearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

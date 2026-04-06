@@ -49,6 +49,7 @@ doc/ClassifyContent200ResponseContentCheck.md
 doc/ClassifyContentRequest.md
 doc/ConfigurationSetsApi.md
 doc/ConfirmSubscription200Response.md
+doc/ConnectDnsProviderRequest.md
 doc/ContactList.md
 doc/ContactListsApi.md
 doc/ContentClassificationApi.md
@@ -69,6 +70,7 @@ doc/CreatePolicyRequest.md
 doc/CreateSendingDomain201Response.md
 doc/CreateSendingDomainRequest.md
 doc/CreateStoreRequest.md
+doc/CreateStorefrontDomainRequest.md
 doc/CreateToken200Response.md
 doc/CreateVariantRequest.md
 doc/CreateWebhookCliSession201Response.md
@@ -78,6 +80,7 @@ doc/CrossReferenceBounces200ResponseCrossReference.md
 doc/CrossReferenceBounces200ResponseCrossReferenceEntriesInner.md
 doc/DKIMManagementApi.md
 doc/DMARCMonitoringApi.md
+doc/DNSProviderApi.md
 doc/DeleteJob200Response.md
 doc/DeleteOooContact200Response.md
 doc/DeletePolicy200Response.md
@@ -253,6 +256,7 @@ doc/SpamCheckChecks.md
 doc/SpamChecksApi.md
 doc/StoreConnection.md
 doc/StoreProduct.md
+doc/StorefrontDomainsApi.md
 doc/SubscribeRequest.md
 doc/Subscriber.md
 doc/SubscriberList.md
@@ -313,6 +317,7 @@ lib/api/content_classification_api.dart
 lib/api/deliverability_advisor_api.dart
 lib/api/dkim_management_api.dart
 lib/api/dmarc_monitoring_api.dart
+lib/api/dns_provider_api.dart
 lib/api/domain_insights_api.dart
 lib/api/email_sending_api.dart
 lib/api/email_validation_api.dart
@@ -336,6 +341,7 @@ lib/api/sending_delegations_api.dart
 lib/api/sending_domains_api.dart
 lib/api/server_tests_api.dart
 lib/api/spam_checks_api.dart
+lib/api/storefront_domains_api.dart
 lib/api/subscriber_lists_api.dart
 lib/api/suppression_lists_api.dart
 lib/api/system_api.dart
@@ -389,6 +395,7 @@ lib/model/classify_content200_response.dart
 lib/model/classify_content200_response_content_check.dart
 lib/model/classify_content_request.dart
 lib/model/confirm_subscription200_response.dart
+lib/model/connect_dns_provider_request.dart
 lib/model/contact_list.dart
 lib/model/correct_inbound_message_request.dart
 lib/model/create_alert_rule201_response.dart
@@ -406,6 +413,7 @@ lib/model/create_policy_request.dart
 lib/model/create_sending_domain201_response.dart
 lib/model/create_sending_domain_request.dart
 lib/model/create_store_request.dart
+lib/model/create_storefront_domain_request.dart
 lib/model/create_token200_response.dart
 lib/model/create_variant_request.dart
 lib/model/create_webhook_cli_session201_response.dart
@@ -600,3 +608,7 @@ lib/model/validation_response_suppression_match.dart
 lib/model/validation_result.dart
 lib/model/validation_result_suppression.dart
 lib/model/webhook_event.dart
+test/connect_dns_provider_request_test.dart
+test/create_storefront_domain_request_test.dart
+test/dns_provider_api_test.dart
+test/storefront_domains_api_test.dart
